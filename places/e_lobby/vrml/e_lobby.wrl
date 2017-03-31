@@ -1,0 +1,1599 @@
+#VRML V2.0 utf8
+
+EXTERNPROTO BlaxxunZone [ 
+eventIn MFNode addEvents 
+eventIn MFNode removeEvents 
+eventIn MFNode addAvatars 
+eventIn MFNode removeAvatars 
+exposedField MFNode events 
+exposedField MFNode avatars 
+eventOut MFNode events_added 
+eventOut MFNode events_removed 
+eventOut MFNode avatars_added 
+eventOut MFNode avatars_removed
+eventIn SFInt32 set_myAvatarGesture 
+eventIn SFInt32 myAvatarGestureFromServer 
+eventOut SFInt32 myAvatarGesture_changed 
+eventOut SFInt32 myAvatarGestureToServer 
+exposedField MFString sendToChat
+exposedField SFFloat beamToDistance
+exposedField MFString groupChatName
+exposedField MFString groupChat
+] "http://www.cybertown.com/externprotos/bxx/shared.wrl#BlaxxunZone" 
+
+EXTERNPROTO SharedObject [
+exposedField SFVec3f translation
+exposedField SFRotation rotation
+exposedField MFNode children 
+exposedField SFString name
+exposedField SFString id
+eventIn SFBool startMove
+eventOut SFBool isOver
+eventOut SFTime touchTime
+eventOut SFVec3f newPosition
+eventOut SFRotation newRotation
+] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+
+
+
+EXTERNPROTO CasinoElevator[
+eventIn MFNode set_loaded
+eventIn MFString set_load
+field SFVec3f translation
+field SFRotation rotation
+field MFString parameter
+field SFInt32 startFloor
+field SFBool sound
+eventOut MFString nav_changed
+eventOut SFTime  loaded_changed
+]"../../ent_complex/elevator/elevator.wrl#CasinoElevator"
+
+DEF Entry
+Viewpoint
+{
+position -.63906 1.225 40.372
+orientation 0 -1 0 .01886
+fieldOfView .60243
+}
+NavigationInfo {
+headlight FALSE
+type "WALK"
+}
+Background
+{
+backUrl "city_image2.jpg"
+frontUrl "city_image2.jpg"
+leftUrl "city_image2.jpg"
+rightUrl "city_image2.jpg"
+}
+PointLight
+{
+color .7098 .7098 .7098,
+location -165.61 39.989 -80.251,
+radius 409.18
+}
+PointLight
+{
+color .48627 .48627 .48627,
+location 57.759 -101.4 -86.018,
+radius 409.18
+}
+PointLight
+{
+color .60392 .60392 .60392,
+location 94.44 107.36 148.2,
+radius 409.18
+}
+
+Transform
+{
+children [
+DEF a
+TimeSensor {
+cycleInterval 1.6667
+loop TRUE
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+Material
+{
+ambientIntensity .035294
+diffuseColor 0 .15294 .93333
+specularColor .045 .045 .045
+emissiveColor 0 .030588 .18667
+shininess .2875
+}
+}
+geometry
+IndexedFaceSet {
+coord
+DEF b
+Coordinate {
+point [
+-10.5 0 8.9, -6.8 0 18, 11.1 0 11, 20.2 0 -11.4, 3.2 0 -28.5, -17.4 0 2, -10.6 0 36.8, -17.5 0 43.7, -26.6 0 47.4, -19.6 0 63.6, 2.8 0 74.4, 19.9 0 57.4, 11.1 0 35.1, -6.8 0 27.8, -66 0 74.1, -43.7 0 63.5, -36.4 0 47.3, -45.4 0 43.6, -52.3 0 36.6, -56 0 27.6, -73.9 0 34.6, -83 0 56.9, -73.8 0 10.4, -55.9 0 17.8, -52.2 0 8.8, -45.2 0 1.9, -65.5 0 -28.8, -82.7 0 -11.8, -9.5 -1.5 8.3, -6.1 -1.5 16.4, 10.2 -1.5 10, 18.8 -1.5 -11.1, 3.4 -1.5 -26.6, -15.8 -1.5 1.9, -9.6 -1.5 37.5, -16.9 -1.5 44.7, -25 -1.5 48, -18.6 -1.5 62.7, 2.5 -1.5 72.9, 18.5 -1.5 57.1, 10.1 -1.5 36, -6.2 -1.5 29.3, -65.7 -1.5 72.6, -44.6 -1.5 62.6, -38 -1.5 48, -46.1 -1.5 44.6, -53.3 -1.5 37.3, -56.6 -1.5 29.1, -73 -1.5 35.5, -81.6 -1.5 56.7, -72.9 -1.5 9.5, -56.6 -1.5 16.2, -53.2 -1.5 8.1, -46.8 -1.5 1.7, -65.7 -1.5 -26.9, -81.3 -1.5 -11.5,
+]
+}
+coordIndex [
+33 31 32 -1, 33 30 31 -1, 28 30 33 -1, 28 29 30 -1, 37 35 36 -1, 34 40 41 -1, 34 39 40 -1, 34 38 39 -1, 34 37 38 -1, 34 35 37 -1, 45 43 44 -1, 48 46 47 -1, 49 46 48 -1, 42 46 49 -1, 43 46 42 -1, 45 46 43 -1, 55 53 54 -1, 50 53 55 -1, 50 52 53 -1, 51 52 50 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+Material
+{
+ambientIntensity .19826
+#diffuseColor .74118 .52549 .51765
+specularColor .045 .045 .045
+emissiveColor .74118 .52549 .51765
+shininess .2875
+}
+texture
+ImageTexture
+{
+url "poolborder.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+USE b
+coordIndex [
+28 0 1 -1, 29 28 1 -1, 29 1 2 -1, 30 29 2 -1, 30 2 3 -1, 31 30 3 -1, 31 3 4 -1, 32 31 4 -1, 32 4 5 -1, 33 32 5 -1, 33 5 0 -1, 28 33 0 -1, 34 6 7 -1, 35 34 7 -1, 35 7 8 -1, 36 35 8 -1, 36 8 9 -1, 37 36 9 -1, 37 9 10 -1, 38 37 10 -1, 38 10 11 -1, 39 38 11 -1, 39 11 12 -1, 40 39 12 -1, 40 12 13 -1, 41 40 13 -1, 41 13 6 -1, 34 41 6 -1, 42 14 15 -1, 43 42 15 -1, 43 15 16 -1, 44 43 16 -1, 44 16 17 -1, 45 44 17 -1, 45 17 18 -1, 46 45 18 -1, 46 18 19 -1, 47 46 19 -1, 47 19 20 -1, 48 47 20 -1, 48 20 21 -1, 49 48 21 -1, 49 21 14 -1, 42 49 14 -1, 50 22 23 -1, 51 50 23 -1, 51 23 24 -1, 52 51 24 -1, 52 24 25 -1, 53 52 25 -1, 53 25 26 -1, 54 53 26 -1, 54 26 27 -1, 55 54 27 -1, 55 27 22 -1, 50 55 22 -1,
+]
+texCoord
+DEF c
+TextureCoordinate {
+point [
+1 0, 0 0, 1 1, 0 1,
+]
+}
+texCoordIndex [
+1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 3 2 0 -1, 1 3 0 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 3 2 0 -1, 1 3 0 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 3 2 0 -1, 1 3 0 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 1 0 2 -1, 3 1 2 -1, 3 2 0 -1, 1 3 0 -1,
+]
+}
+}
+]
+translation 21.963 0 -15.945
+scale .7 .7 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+DEF d
+Appearance {
+material
+DEF e
+Material {
+ambientIntensity .11155
+#diffuseColor 1 1 1
+specularColor .045 .045 .045
+shininess .2875
+}
+texture
+ImageTexture
+{
+url "bluecolumns.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-4 -.7 -95.3, -31.5 -.7 -90.1, -32 -19 -92.7, -4.5 -19 -98, -32 -44 -92.7, -4.5 -44 -98, -32.9 -24.5 -97.6, -5.4 -24.5 -103, -32.9 -44 -97.6, -5.4 -44 -103, -5.4 -.7 -103, -32.9 -.7 -97.6,
+]
+}
+coordIndex [
+4 2 6 -1, 6 8 4 -1, 3 5 9 -1, 9 7 3 -1, 2 1 11 -1, 11 6 2 -1, 1 0 10 -1, 10 11 1 -1, 10 3 7 -1, 3 10 0 -1, 7 10 11 -1, 7 11 6 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+0 0, 5 0, 5 2, 0 2, 5 1, 0 1, 1 0, 1 1.3, 1.6 2.2, 0 2.2,
+]
+}
+solid FALSE
+texCoordIndex [
+6 7 5 -1, 5 0 6 -1, 7 6 0 -1, 0 5 7 -1, 7 8 9 -1, 9 5 7 -1, 0 1 2 -1, 2 3 0 -1, 9 7 5 -1, 7 9 8 -1, 1 4 5 -1, 1 5 0 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+DEF f
+Appearance {
+material
+Material
+{
+ambientIntensity .027451
+#diffuseColor .78431 .18431 .066667
+specularColor .36 .36 .36
+shininess .43
+}
+texture
+ImageTexture
+{
+url "stainedglass.png"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-48.3 -.7 -49.2, 26.9 -.7 -63.5, 66.5 -19 -26.9, 71.7 -19 .6, 66 -19 28, 50.3 -19 51.1, 26.9 -19 66.5, -.6 -19 71.7, -28 -19 66, -51.1 -19 50.3, -66.5 -19 26.9, -71.7 -19 -.6, -66 -19 -28, -50.3 -19 -51.1, 28 -19 -66, 51.1 -19 -50.3, -49.2 -.7 48.3, -26.9 -.7 63.5, 49.2 -.7 -48.3, 63.9 -.7 -25.8, 68.9 -.7 .6, -63.5 -.7 -26.9, -68.9 -.7 -.6, -63.9 -.7 25.8, -.6 -.7 68.9, 25.8 -.7 63.9, 48.3 -.7 49.2, 63.5 -.7 26.9,
+]
+}
+coordIndex [
+16 17 8 -1, 8 9 16 -1, 1 18 15 -1, 15 14 1 -1, 18 19 2 -1, 2 15 18 -1, 20 19 2 -1, 2 3 20 -1, 0 21 12 -1, 12 13 0 -1, 21 22 11 -1, 11 12 21 -1, 22 23 10 -1, 10 11 22 -1, 23 16 9 -1, 9 10 23 -1, 17 24 7 -1, 7 8 17 -1, 24 25 6 -1, 6 7 24 -1, 25 26 5 -1, 5 6 25 -1, 26 27 4 -1, 4 5 26 -1, 27 20 3 -1, 3 4 27 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+0 0, 3 0, 0 1, 3 1,
+]
+}
+solid FALSE
+texCoordIndex [
+3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children
+Shape
+{
+appearance
+USE f
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+5 12.5 -25.9, -5.2 12.5 -25.9, 9.2 10.6 -47.8, -9.8 10.6 -47.7, 12.5 2.5 -91, -13 2.5 -90.9, 9.2 7.3 -74.7, -9.8 7.3 -74.6,
+]
+}
+coordIndex [
+0 2 3 1 -1, 6 4 5 7 -1, 3 2 6 7 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+2 0, 0 2, 0 0, 2 2, .3 2, 1.8 2, .4 2, 1.5 2,
+]
+}
+solid FALSE
+texCoordIndex [
+6 2 0 7 -1, 4 2 0 5 -1, 2 0 3 1 -1,
+]
+}
+}
+translation 0 9.848 -.2166
+scale .7 .7 .7
+}
+Transform
+{
+children
+Shape
+{
+appearance
+DEF g
+Appearance {
+material
+DEF h
+Material {
+ambientIntensity .23093
+#diffuseColor .48627 .61176 .98039
+specularColor .045 .045 .045
+shininess .2875
+}
+texture
+DEF i
+ImageTexture {
+url "canopy2.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+0 40 -.1, 0 39.2 -26.4, -10.1 39.2 -24.4, -18.6 39.2 -18.7, -24.3 39.2 -10.2, -26.3 39.2 -.1, -24.3 39.2 9.9, -18.6 39.2 18.5, -10.1 39.2 24.1, 0 39.2 26.1, 10 39.2 24.1, 18.6 39.2 18.5, 24.2 39.2 9.9, 26.2 39.2 -.1, 24.2 39.2 -10.2, 18.6 39.2 -18.7, 10 39.2 -24.4, 0 26.7 -48.7, -18.6 26.7 -45, -34.4 26.7 -34.5, -44.9 26.7 -18.7, -48.6 26.7 -.1, -44.9 26.7 18.5, -34.4 26.7 34.2, -18.6 26.7 44.7, 0 26.7 48.4, 18.6 26.7 44.7, 34.3 26.7 34.2, 44.8 26.7 18.5, 48.5 26.7 -.1, 44.8 26.7 -18.7, 34.3 26.7 -34.5, 18.6 26.7 -45, -46.2 7.9 -46.3, -60.4 7.9 -25.1, -65.4 7.9 -.1, -60.4 7.9 24.9, -46.2 7.9 46.1, -25 7.9 60.2, 0 7.9 65.2, 25 7.9 60.2, 46.2 7.9 46.1, 60.3 7.9 24.9, 65.3 7.9 -.1, 60.3 7.9 -25.1, 46.2 7.9 -46.3, 25 7.9 -60.5, -4.5 -.7 -95.2, -30.9 -.7 -90.2, -48.3 -.7 -49.2, -60.7 -.7 -25.5, -65.8 -.7 -.3, -60.9 -.7 24.8, -46.7 -.7 46.3, -25.5 -.7 60.6, -.3 -.7 65.7, 24.9 -.7 60.8, 46.3 -.7 46.7, 60.7 -.7 25.4, 65.8 -.7 .2, 60.9 -.7 -25, 46.7 -.7 -46.4, 26.9 -.7 -63.5, -.1 33.2 -48.6, -18.7
+33.2 -45, -5.1 7.9 -91.7, -30.1 7.9 -86.7, -46.4 7.5 -73.5, 15 7.4 -85.8, -48.5 -1.1 -76.4, 17 -1.2 -88.8, -5.3 22.8 -75.1, -23.8 22.8 -71.4, -41.3 7.5 -47.3, 20.1 7.4 -59.5, -47 -1.1 -49.4, 25.7 -1.2 -63.2,
+]
+}
+coordIndex [
+0 1 2 -1, 0 2 3 -1, 0 3 4 -1, 0 4 5 -1, 0 5 6 -1, 0 6 7 -1, 0 7 8 -1, 0 8 9 -1, 0 9 10 -1, 0 10 11 -1, 0 11 12 -1, 0 12 13 -1, 0 13 14 -1, 0 14 15 -1, 0 15 16 -1, 0 16 1 -1, 2 18 19 3 -1, 3 19 20 4 -1, 4 20 21 5 -1, 5 21 22 6 -1, 6 22 23 7 -1, 7 23 24 8 -1, 8 24 25 9 -1, 9 25 26 10 -1, 10 26 27 11 -1, 11 27 28 12 -1, 12 28 29 13 -1, 13 29 30 14 -1, 14 30 31 15 -1, 15 31 32 16 -1, 16 32 17 1 -1, 18 33 19 -1, 19 33 34 20 -1, 20 34 35 21 -1, 21 35 36 22 -1, 22 36 37 23 -1, 23 37 38 24 -1, 24 38 39 25 -1, 25 39 40 26 -1, 26 40 41 27 -1, 27 41 42 28 -1, 28 42 43 29 -1, 29 43 44 30 -1, 30 44 45 31 -1, 31 45 46 32 -1, 32 46 17 -1, 66 48 69 -1, 66 69 67 -1, 33 49 50 -1, 33 50 34 -1, 34 50 51 -1, 34 51 35 -1, 35 51 52 -1, 35 52 36 -1, 36 52 53 -1, 36 53 37 -1, 37 53 54 -1, 37 54 38 -1, 38 54 55 -1, 38 55 39 -1, 39 55 56 -1, 39 56 40 -1, 40 56 57 -1, 40 57 41 -1, 41 57 58 -1, 41 58 42 -1, 42 58 59 -1, 42 59 43 -1, 43 59 60 -1, 43 60 44 -1, 44 60 61 -1, 44 61 45 -1, 45 61 62 -1, 45 62 46 -1, 68 70
+47 -1, 68 47 65 -1, 1 17 63 -1, 2 64 18 -1, 63 17 65 -1, 65 71 63 -1, 66 64 72 -1, 64 66 18 -1, 67 18 66 -1, 65 17 68 -1, 75 73 67 -1, 67 69 75 -1, 68 76 70 -1, 76 68 74 -1, 49 33 73 -1, 73 75 49 -1, 46 62 76 -1, 76 74 46 -1, 74 46 17 -1, 74 17 68 -1, 73 18 33 -1, 67 18 73 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+1 1, 0 0, 1 0, 0 1,
+]
+}
+solid FALSE
+texCoordIndex [
+1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 1 2 0 -1, 0 3 1 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 0 3 1 2 -1, 1 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 1 2 0 3 -1, 0 3 1 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 1 2 0 -1, 1 0 3 -1, 0 3 1 -1, 0 1 2 -1, 1 2 0 -1, 0 3 1 -1, 1 2 0 -1, 0 3 1 -1, 1 0 3 -1, 0 1 2 -1, 0 1 2 -1, 3 1 0 -1, 0 3 1 -1, 1 2 0 -1, 1 0 3 -1, 0 1 2 -1, 1 2 0 -1, 0 3 1 -1, 1 2 0 -1, 0 3 1 -1, 0 3 1 -1, 1 2 0 -1, 1 2 0
+-1, 1 2 0 -1,
+]
+}
+}
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+DEF j
+Appearance {
+material
+USE e texture
+USE i textureTransform
+DEF a1
+TextureTransform {
+rotation 1.5708
+center .5 .5
+}
+}
+geometry
+DEF a2
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+.7 0 0, .2 0 -.7, -.6 0 -.4, -.6 0 .4, .2 0 .7, 1.1 6.4 0, .3 6.4 -1.1, -.9 6.4 -.7, -.9 6.4 .7, .3 6.4 1.1, 2.8 8 0, .9 8 -2.6, -2.2 8 -1.6, -2.2 8 1.6, .9 8 2.6,
+]
+}
+coordIndex [
+0 6 5 -1, 0 1 6 -1, 1 7 6 -1, 1 2 7 -1, 2 8 7 -1, 2 3 8 -1, 3 9 8 -1, 3 4 9 -1, 4 5 9 -1, 4 0 5 -1, 5 11 10 -1, 5 6 11 -1, 6 12 11 -1, 6 7 12 -1, 7 13 12 -1, 7 8 13 -1, 8 14 13 -1, 8 9 14 -1, 9 10 14 -1, 9 5 10 -1,
+]
+texCoord
+USE c
+solid FALSE
+texCoordIndex [
+1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1, 1 2 3 -1, 1 0 2 -1,
+]
+}
+}
+USE a
+]
+translation 37.42 0 -24.859
+rotation 0 -1 0 .48869
+scale .7 .7 .7
+}
+Transform
+{
+children [
+DEF a3
+Shape {
+appearance
+USE j geometry
+USE a2 }
+USE a
+]
+translation 30.983 0 -7.1965
+rotation 0 -1 0 .69813
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation 30.742 0 7.3746
+rotation 0 -1 0 .36652
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation 37.487 0 24.603
+rotation 0 -1 0 .24435
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation 24.881 0 37.462
+rotation 0 1 0 .29671
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation 8.5213 0 44.114
+rotation 0 -1 0 .15708
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation -25.258 0 37.188
+rotation 0 -1 0 .94248
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation -8.9858 0 44.052
+rotation 0 -1 0 .48869
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation -37.598 0 -24.67
+rotation 0 1 0 2.8972
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation -30.854 0 -7.4419
+rotation 0 1 0 2.7751
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation -31.094 0 7.1292
+rotation 0 1 0 2.4435
+scale .7 .7 .7
+}
+Transform
+{
+children [
+USE a3 USE a
+]
+translation -37.532 0 24.792
+rotation 0 1 0 2.6529
+scale .7 .7 .7
+}
+Transform
+{
+children
+Shape
+{
+appearance
+DEF a4
+Appearance {
+material
+Material
+{
+ambientIntensity .15381
+#diffuseColor .27843 .19216 .91373
+specularColor .045 .045 .045
+shininess .2875
+}
+texture
+ImageTexture
+{
+url "light_map.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+28.3 -19 -14.3, 31.7 -19 3.6, -28.2 -19 14.9, -31.6 -19 -3, 34.4 -19 -30.5, 43.5 -19 17.1, 57 -19 24.5, 43.4 -19 44.4, 23.2 -19 57.6, -.5 -19 62.1, -24.1 -19 57.3, -44.1 -19 43.7, -34.2 -19 31.1, -43.4 -19 -16.5, -56.9 -19 -23.9, -47.7 -19 -37.4, 30.7 -19 -52.4, 44.2 -19 -43.1, -50.3 -19 -51.1, 28 -19 -66, 34.4 -15 -30.5, 28.3 -15 -14.3, 31.7 -15 3.6, 43.5 -15 17.1, -34.2 -15 31.1, -28.2 -15 14.9, -31.6 -15 -3, -43.4 -15 -16.5, 57 -15 24.5, 43.4 -15 44.4, 23.2 -15 57.6, -.5 -15 62.1, -24.1 -15 57.3, -44.1 -15 43.7, -56.9 -15 -23.9, -47.7 -15 -37.4, 30.7 -15 -52.4, 44.2 -15 -43.1, 19.4 -44 38.1, -4.3 -44 42.7, 14.4 -44 30.8, 37.6 -19 10.3, 37.6 -15 10.3, -31.2 -15 23, -31.2 -19 23, -2.2 -44 34, 19.5 -40.1 38.2, 14.4 -40.1 30.8, -4.3 -40.1 42.6, -2.2 -40.1 34, -50.3 -15 -51.1, 28 -15 -66,
+]
+}
+coordIndex [
+20 21 0 4 -1, 21 22 1 0 -1, 41 1 22 42 -1, 43 25 2 44 -1, 25 26 3 2 -1, 26 27 13 3 -1, 23 28 6 5 -1, 28 29 7 6 -1, 29 30 8 7 -1, 30 31 9 8 -1, 31 32 10 9 -1, 32 33 11 10 -1, 33 24 12 11 -1, 27 34 14 13 -1, 34 35 15 14 -1, 36 37 17 16 -1, 37 20 4 17 -1, 46 23 5 -1, 5 38 46 -1, 42 47 40 -1, 40 41 42 -1, 24 48 39 -1, 39 12 24 -1, 49 43 44 -1, 44 45 49 -1, 35 50 18 15 -1, 51 36 16 19 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+12 1, 0 1, 0 0, 12 0,
+]
+}
+solid FALSE
+texCoordIndex [
+3 2 1 0 -1, 3 2 1 0 -1, 1 0 3 3 -1, 3 2 1 3 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 0 -1, 3 2 1 -1, 1 0 3 -1, 3 2 1 -1, 1 0 3 -1, 3 2 1 -1, 1 0 3 -1, 1 0 3 -1, 1 0 3 -1, 3 2 1 0 -1, 3 2 1 0 -1,
+]
+}
+}
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children
+Inline
+{
+url "lightbeams.wrl"
+}
+translation 0 0 -.2166
+scale .7 .7 .7
+}
+Transform
+{
+children
+Inline
+{
+url "pyramids.wrl"
+}
+translation 0 0 -.2166
+scale .7 .7 .7
+}
+Transform
+{
+children
+Inline
+{
+url "jumbotron.wrl"
+}
+translation 0 0 -.2166
+scale .7 .7 .7
+}
+Transform
+{
+children
+Shape
+{
+appearance
+USE g
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+.9 21.4 0, .3 21.4 -.9, -.7 21.4 -.5, -.7 21.4 .5, .3 21.4 .9, 3.2 26.6 0, 1 26.6 -3, -2.6 26.6 -1.9, -2.6 26.6 1.9, 1 26.6 3, .3 12.2 -.3, -.1 12.2 -.4, -.4 12.2 0, -.1 12.2 .4, .3 12.2 .3, 1.3 24.4 -1, -.5 24.4 -1.5, -1.6 24.4 0, -.5 24.4 1.5, 1.3 24.4 1, .7 21.4 -.5, .4 12.2 0, .1 12.2 -.4, -.3 21.4 -.8, -.4 12.2 -.3, -.9 21.4 0, -.4 12.2 .3, -.3 21.4 .8, .1 12.2 .4, .7 21.4 .5, .5 24.4 -1.6, 2.5 26.6 -1.8, 1.7 24.4 0, -1.3 24.4 -1, -1 26.6 -3, -1.3 24.4 1, -3.1 26.6 0, .5 24.4 1.6, -1 26.6 3, 2.5 26.6 1.8,
+]
+}
+coordIndex [
+1 20 10 22 -1, 0 21 10 20 -1, 2 23 11 24 -1, 1 22 11 23 -1, 3 25 12 26 -1, 2 24 12 25 -1, 4 27 13 28 -1, 3 26 13 27 -1, 0 29 14 21 -1, 4 28 14 29 -1, 0 20 15 32 -1, 1 30 15 20 -1, 6 31 15 30 -1, 5 32 15 31 -1, 1 23 16 30 -1, 2 33 16 23 -1, 7 34 16 33 -1, 6 30 16 34 -1, 2 25 17 33 -1, 3 35 17 25 -1, 8 36 17 35 -1, 7 33 17 36 -1, 3 27 18 35 -1, 4 37 18 27 -1, 9 38 18 37 -1, 8 35 18 38 -1, 4 29 19 37 -1, 0 32 19 29 -1, 5 39 19 32 -1, 9 37 19 39 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+0 1, 1 1, 0 0,
+]
+}
+solid FALSE
+texCoordIndex [
+1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1, 1 0 2 0 -1,
+]
+}
+}
+translation 0 0 -.2166
+scale .44304 .7 .44304
+}
+Transform
+{
+children [
+USE a
+Shape
+{
+appearance
+DEF a5
+Appearance {
+material
+USE e texture
+USE i
+textureTransform
+TextureTransform
+{
+rotation 3.1416
+center .5 .5
+}
+}
+geometry
+IndexedFaceSet {
+coord
+DEF a6
+Coordinate {
+point [
+66.5 -19 -26.9, 71.7 -19 .6, 66 -19 28, 50.3 -19 51.1, 26.9 -19 66.5, -.6 -19 71.7, -28 -19 66, -51.1 -19 50.3, -66.5 -19 26.9, -71.7 -19 -.6, -66 -19 -28, -50.3 -19 -51.1, -32 -19 -92.7, -4.5 -19 -98, 28 -19 -66, 51.1 -19 -50.3, 66.5 -44 -26.9, 71.7 -44 .6, 66 -44 28, 50.3 -44 51.1, 26.9 -44 66.5, -.6 -44 71.7, -28 -44 66, -51.1 -44 50.3, -66.5 -44 26.9, -71.7 -44 -.6, -66 -44 -28, -50.3 -44 -51.1, 28 -44 -66, 51.1 -44 -50.3, -50.5 -19.4 -78.4, 18 -19.5 -91.3, -50.5 -44 -78.4, -32 -44 -92.7, -4.5 -44 -98, 18 -44 -91.3,
+]
+}
+coordIndex [
+32 30 12 -1, 32 12 33 -1, 28 14 15 -1, 28 15 29 -1, 27 11 10 -1, 27 10 26 -1, 26 10 9 -1, 26 9 25 -1, 24 8 7 -1, 24 7 23 -1, 23 7 6 -1, 23 6 22 -1, 20 4 3 -1, 20 3 19 -1, 19 3 2 -1, 19 2 18 -1, 18 2 1 -1, 18 1 17 -1,
+]
+texCoord
+DEF a7
+TextureCoordinate {
+point [
+0 0, 0 3, 1 0, 1 3, 3 0, 3 1, 0 1,
+]
+}
+solid FALSE
+texCoordIndex [
+4 5 6 -1, 4 6 0 -1, 0 2 3 -1, 0 3 1 -1, 3 1 0 -1, 3 0 2 -1, 3 1 0 -1, 3 0 2 -1, 3 1 0 -1, 3 0 2 -1, 3 1 0 -1, 3 0 2 -1, 3 1 0 -1, 3 0 2 -1, 3 1 0 -1, 3 0 2 -1, 3 1 0 -1, 3 0 2 -1,
+]
+}
+}
+Shape
+{
+appearance
+USE j
+geometry
+IndexedFaceSet {
+coord
+USE a6
+coordIndex [
+13 31 35 -1, 13 35 34 -1, 15 0 16 -1, 15 16 29 -1, 16 17 1 -1, 16 1 0 -1, 9 8 24 -1, 9 24 25 -1, 21 22 6 -1, 21 6 5 -1,
+]
+texCoord
+USE a7
+solid FALSE
+texCoordIndex [
+0 4 5 -1, 0 5 6 -1, 0 4 5 -1, 0 5 6 -1, 5 6 0 -1, 5 0 4 -1, 0 4 5 -1, 0 5 6 -1, 5 6 0 -1, 5 0 4 -1,
+]
+}
+}
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+Appearance
+{
+material
+Material
+{
+ambientIntensity .1586
+#diffuseColor .10588 .67059 .65098
+specularColor .045 .045 .045
+shininess .2875
+}
+texture
+ImageTexture
+{
+url "steps.jpg"
+}
+textureTransform
+USE a1
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+43.5 -19 17.1, -34.2 -19 31.1, 19.4 -44 38.1, -4.3 -44 42.7, 14.4 -44 30.8, 37.6 -19 10.3, -31.2 -19 23, -2.2 -44 34,
+]
+}
+coordIndex [
+2 0 5 -1, 2 5 4 -1, 1 3 7 -1, 1 7 6 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+1 0, 0 0, 0 1, 1 1,
+]
+}
+solid FALSE
+texCoordIndex [
+1 0 3 -1, 1 3 2 -1, 0 1 2 -1, 0 2 3 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+DEF a8
+Appearance {
+material
+Material
+{
+ambientIntensity .16819
+#diffuseColor .6549 .65098 .20784
+specularColor .045 .045 .045
+shininess .2875
+}
+texture
+ImageTexture
+{
+url "swirl.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+DEF a9
+Coordinate {
+point [
+-48.3 -.7 -49.2, -60.7 -.7 -25.5, -65.8 -.7 -.3, -60.9 -.7 24.8, -46.7 -.7 46.3, -25.5 -.7 60.6, -.3 -.7 65.7, 24.9 -.7 60.8, 46.3 -.7 46.7, 60.7 -.7 25.4, 65.8 -.7 .2, 60.9 -.7 -25, 46.7 -.7 -46.4, 26.9 -.7 -63.5, -49.2 -.7 48.3, -26.9 -.7 63.5, 49.2 -.7 -48.3, 63.9 -.7 -25.8, 68.9 -.7 .6, -63.5 -.7 -26.9, -68.9 -.7 -.6, -63.9 -.7 25.8, -.6 -.7 68.9, 25.8 -.7 63.9, 48.3 -.7 49.2, 63.5 -.7 26.9,
+]
+}
+coordIndex [
+4 5 6 7 8 9 10 11 17 18 25 24 23 22 15 14 21 20 19 0 1 2 3 -1, 13 12 11 17 16 -1,
+]
+convex FALSE
+solid FALSE
+}
+}
+Shape
+{
+appearance
+USE a4
+geometry
+IndexedFaceSet {
+coord
+USE a9
+coordIndex [
+4 5 6 7 8 9 10 11 17 18 25 24 23 22 15 14 21 20 19 0 1 2 3 -1, 13 12 11 17 16 -1,
+]
+convex FALSE
+solid FALSE
+}
+}
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+USE a8
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+28.3 -19 -14.3, 31.7 -19 3.6, -28.2 -19 14.9, -31.6 -19 -3, 34.4 -19 -30.5, 43.5 -19 17.1, 57 -19 24.5, 43.4 -19 44.4, 23.2 -19 57.6, -.5 -19 62.1, -24.1 -19 57.3, -44.1 -19 43.7, -34.2 -19 31.1, -43.4 -19 -16.5, -56.9 -19 -23.9, -47.7 -19 -37.4, 30.7 -19 -52.4, 44.2 -19 -43.1, 66.5 -19 -26.9, 71.7 -19 .6, 66 -19 28, 50.3 -19 51.1, 26.9 -19 66.5, -.6 -19 71.7, -28 -19 66, -51.1 -19 50.3, -66.5 -19 26.9, -71.7 -19 -.6, -66 -19 -28, -50.3 -19 -51.1, 28 -19 -66, 51.1 -19 -50.3, .1 -44 .3, 23.3 -44 -9.1, 25.1 -44 .5, 23.1 -44 10.1, 17.6 -44 18.2, 9.4 -44 23.5, -.2 -44 25.4, -9.7 -44 23.4, -17.8 -44 17.9, -23.2 -44 9.7, -25 -44 .1, -23 -44 -9.5, -17.5 -44 -17.6, -9.3 -44 -22.9, .3 -44 -24.8, 9.9 -44 -22.8, 17.9 -44 -17.3, 39.5 -44 -19.4, 44.1 -44 4.3, 57 -44 24.5, 43.4 -44 44.4, 19.4 -44 38.1, -4.3 -44 42.7, -24.1 -44 57.3, -44.1 -44 43.7, -39.4 -44 20, -44 -44 -3.7, -56.9 -44 -23.9, -43.3 -44 -43.8, -23.1 -44 -57.1, .6 -44 -61.6, 24.2 -44 -56.7, 44.2 -44 -43.1, 66.5 -44 -26.9, 71.7 -44 .6,
+66 -44 28, 50.3 -44 51.1, 26.9 -44 66.5, -.6 -44 71.7, -28 -44 66, -51.1 -44 50.3, -66.5 -44 26.9, -71.7 -44 -.6, -66 -44 -28, -50.3 -44 -51.1, -26.9 -44 -66.5, .6 -44 -71.7, 28 -44 -66, 51.1 -44 -50.3, 14.4 -44 30.8, 37.6 -19 10.3, -31.2 -19 23, -2.2 -44 34, -50.5 -44 -78.4, -32 -44 -92.7, -4.5 -44 -98, 18 -44 -91.3, -32.9 -44 -97.6, -5.4 -44 -103, 20.2 -44 73.9, 8.3 -44 76.1,
+]
+}
+coordIndex [
+0 5 4 -1, 0 1 82 -1, 83 13 12 -1, 2 3 13 -1, 4 19 18 -1, 4 5 19 -1, 5 6 19 -1, 19 6 20 -1, 6 21 20 -1, 6 7 21 -1, 7 22 21 -1, 7 8 22 -1, 8 23 22 -1, 8 9 23 -1, 9 24 23 -1, 9 10 24 -1, 10 25 24 -1, 10 11 25 -1, 11 26 25 -1, 11 12 26 -1, 12 27 26 -1, 12 13 27 -1, 13 14 27 -1, 27 14 28 -1, 14 29 28 -1, 14 15 29 -1, 16 31 30 -1, 16 17 31 -1, 17 18 31 -1, 17 4 18 -1, 32 34 33 -1, 32 35 34 -1, 32 36 35 -1, 32 37 36 -1, 32 38 37 -1, 32 39 38 -1, 32 40 39 -1, 32 41 40 -1, 32 42 41 -1, 32 43 42 -1, 32 44 43 -1, 32 45 44 -1, 32 46 45 -1, 32 47 46 -1, 32 48 47 -1, 32 33 48 -1, 33 50 49 -1, 33 34 50 -1, 37 54 81 -1, 37 84 54 -1, 41 58 57 -1, 41 42 58 -1, 44 61 60 -1, 44 45 61 -1, 45 62 61 -1, 45 46 62 -1, 46 63 62 -1, 46 47 63 -1, 49 66 65 -1, 49 50 66 -1, 50 67 66 -1, 50 51 67 -1, 51 68 67 -1, 51 52 68 -1, 52 69 68 -1, 52 53 69 -1, 53 70 69 -1, 53 54 70 -1, 54 71 70 -1, 54 55 71 -1, 55 72 71 -1, 55 56 72 -1, 56 73 72 -1, 56 57 73 -1, 57 74 73 -1, 57 58 74 -1, 58 75 74 -1, 58 59 75 -1, 59 76 75 -1,
+59 60 76 -1, 60 77 76 -1, 60 61 77 -1, 61 78 77 -1, 61 62 78 -1, 62 79 78 -1, 62 63 79 -1, 63 80 79 -1, 63 64 80 -1, 64 65 80 -1, 64 49 65 -1, 81 54 53 -1, 0 82 5 -1, 2 13 83 -1, 37 38 84 -1, 77 76 85 -1, 85 86 77 -1, 78 77 86 -1, 86 87 78 -1, 79 78 87 -1, 87 88 79 -1, 87 86 89 -1, 89 90 87 -1, 69 70 92 -1, 92 91 69 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+11.1 8.5, 11.1 6.6, 4.3 6.7, 4.3 8.6, 12.1 10.1, 12.1 5, 13.4 3.9, 11.5 2.1, 9 1.2, 6.3 1.2, 3.9 2.2, 2 4, 3.3 5.1, 3.3 10.2, 2 11.3, 3.3 12.5, 12.2 12.5, 13.5 11.2, 15.6 9.1, 15.6 6.1, 14.3 3.4, 12.1 1.3, 9.2 .2, 6.1 .2, 3.3 1.3, 1.1 3.4, -.1 6.2, -.1 9.1, 1.1 11.9, 3.3 14, 12.2 13.9, 14.4 11.8, 7.7 7.6, 10.5 8.1, 10.5 7.1, 10 6.1, 9.3 5.4, 8.3 5, 7.2 5, 6.2 5.4, 5.4 6.1, 5 7.1, 5 8.1, 5.4 9.1, 6.2 9.8, 7.2 10.2, 8.3 10.2, 9.3 9.8, 10.1 9.1, 12.5 8.9, 12.5 6.3, 9 3.3, 6.3 3.3, 3 6.3, 3 8.9, 3.9 13.1, 6.4 14, 9.1 14, 11.6 13, 6.2 15.1, 9.3 15.1, 8.6 4.1, 11.6 5.8, 3.8 5.9, 6.8 4.1, 3.9 16.8, 6.2 17.9, 9.3 17.9, 11.6 16.8, 6.2 18.5, 9.3 18.5, 8.4 -.5, 7 -.4,
+]
+}
+solid FALSE
+texCoordIndex [
+0 5 4 -1, 0 1 62 -1, 63 13 12 -1, 2 3 13 -1, 4 19 18 -1, 4 5 19 -1, 5 6 19 -1, 19 6 20 -1, 6 21 20 -1, 6 7 21 -1, 7 22 21 -1, 7 8 22 -1, 8 23 22 -1, 8 9 23 -1, 9 24 23 -1, 9 10 24 -1, 10 25 24 -1, 10 11 25 -1, 11 26 25 -1, 11 12 26 -1, 12 27 26 -1, 12 13 27 -1, 13 14 27 -1, 27 14 28 -1, 14 29 28 -1, 14 15 29 -1, 16 31 30 -1, 16 17 31 -1, 17 18 31 -1, 17 4 18 -1, 32 34 33 -1, 32 35 34 -1, 32 36 35 -1, 32 37 36 -1, 32 38 37 -1, 32 39 38 -1, 32 40 39 -1, 32 41 40 -1, 32 42 41 -1, 32 43 42 -1, 32 44 43 -1, 32 45 44 -1, 32 46 45 -1, 32 47 46 -1, 32 48 47 -1, 32 33 48 -1, 33 50 49 -1, 33 34 50 -1, 37 52 61 -1, 37 64 52 -1, 41 54 53 -1, 41 42 54 -1, 44 56 55 -1, 44 45 56 -1, 45 57 56 -1, 45 46 57 -1, 46 58 57 -1, 46 47 58 -1, 49 19 18 -1, 49 50 19 -1, 50 20 19 -1, 50 6 20 -1, 6 21 20 -1, 6 7 21 -1, 7 22 21 -1, 7 51 22 -1, 51 23 22 -1, 51 52 23 -1, 52 24 23 -1, 52 10 24 -1, 10 25 24 -1, 10 11 25 -1, 11 26 25 -1, 11 53 26 -1, 53 27 26 -1, 53 54 27 -1, 54 28 27 -1, 54 14 28 -1, 14 29 28 -1, 14 55
+29 -1, 55 59 29 -1, 55 56 59 -1, 56 60 59 -1, 56 57 60 -1, 57 30 60 -1, 57 58 30 -1, 58 31 30 -1, 58 17 31 -1, 17 18 31 -1, 17 49 18 -1, 61 52 51 -1, 0 62 5 -1, 2 13 63 -1, 37 38 64 -1, 59 29 65 -1, 65 66 59 -1, 60 59 66 -1, 66 67 60 -1, 30 60 67 -1, 67 68 30 -1, 67 66 69 -1, 69 70 67 -1, 22 23 72 -1, 72 71 22 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+USE a5
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+26.9 -19 66.5, -.6 -19 71.7, 26.9 -44 66.5, -.6 -44 71.7, 20.2 -25.7 73.9, 8.3 -25.7 76.1, 20.2 -44 73.9, 8.3 -44 76.1,
+]
+}
+coordIndex [
+3 1 5 -1, 5 7 3 -1, 0 2 6 -1, 6 4 0 -1,
+]
+texCoord
+DEF ba
+TextureCoordinate {
+point [
+0 0, 1 0, 0 1, 1 1,
+]
+}
+solid FALSE
+texCoordIndex [
+1 0 2 -1, 2 3 1 -1, 0 1 3 -1, 3 2 0 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+USE a8
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+26.9 -19 66.5, -.6 -19 71.7, 20.2 -25.7 73.9, 8.3 -25.7 76.1,
+]
+}
+coordIndex [
+1 0 2 -1, 2 3 1 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+9.2 .2, 6.1 .2, 8.4 -.5, 7 -.4,
+]
+}
+solid FALSE
+texCoordIndex [
+1 0 2 -1, 2 3 1 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+Appearance
+{
+material
+Material
+{
+ambientIntensity .1
+#diffuseColor .5 .5 .5
+specularColor .045 .045 .045
+emissiveColor .5 .5 .5
+shininess .2875
+transparency .8
+}
+texture
+ImageTexture
+{
+url "sparkle.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-12.5 0 77.8, 12.5 0 77.8, -12.5 0 -77.8, 12.5 0 -77.8,
+]
+}
+coordIndex [
+2 0 3 -1, 1 3 0 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+0 0, 2 0, 0 8, 2 8,
+]
+}
+texCoordIndex [
+2 0 3 -1, 1 3 0 -1,
+]
+}
+}
+USE a
+]
+translation -.17216 .012558 -10.735
+scale .28 .7 .84
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+Appearance
+{
+material
+Material
+{
+ambientIntensity .09281
+#diffuseColor .91765 .72941 .40784
+specularColor 1.26 1.26 1.26
+emissiveColor .91765 .72941 .40784
+shininess .3255
+}
+texture
+ImageTexture
+{
+url "elevtext.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-4.5 -.7 -95.2, -30.9 -.7 -90.2, -5.1 7.9 -91.7, -30.1 7.9 -86.7,
+]
+}
+coordIndex [
+2 0 1 -1, 2 1 3 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+1 0, 0 0, 1 1, 0 1,
+]
+}
+solid FALSE
+texCoordIndex [
+2 0 1 -1, 2 1 3 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+USE a
+Shape
+{
+appearance
+Appearance
+{
+material
+DEF bb
+Material {
+ambientIntensity .1
+#diffuseColor .5 .5 .5
+specularColor .045 .045 .045
+emissiveColor .5 .5 .5
+shininess .2875
+}
+texture
+ImageTexture
+{
+url "jumbotron_placeholder.jpg"
+}
+textureTransform
+DEF bc
+TextureTransform {
+rotation -1.5708
+center .5 .5
+}
+}
+geometry
+IndexedFaceSet {
+coord
+DEF bd
+Coordinate {
+point [
+-4 -.7 -95.3, -31.5 -.7 -90.1, -50.3 -19 -51.1, -32 -19 -92.7, -4.5 -19 -98, 28 -19 -66, -48.5 -1.1 -76.4, 17 -1.2 -88.8, -50.5 -19.4 -78.4, 18 -19.5 -91.3, -47 -1.1 -49.4, 25.7 -1.2 -63.2, 6.8 -19.3 -94.6, 6.5 -.9 -92, 21.3 -1.2 -76, 23 -19.3 -78.7, -50.4 -19.2 -64.7, -47.8 -1.1 -62.9, -40 -.9 -83.2, -41.2 -19.2 -85.5,
+]
+}
+coordIndex [
+16 10 2 -1, 17 10 16 -1, 5 11 14 -1, 5 14 15 -1,
+]
+texCoord
+DEF be
+TextureCoordinate {
+point [
+0 0, 1 0, 1 1, 0 1,
+]
+}
+solid FALSE
+texCoordIndex [
+2 0 1 -1, 3 0 2 -1, 2 3 0 -1, 2 0 1 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+USE bb
+texture
+ImageTexture
+{
+url "casino.jpg"
+}
+textureTransform
+USE bc
+}
+geometry
+IndexedFaceSet {
+coord
+USE bd
+coordIndex [
+8 19 6 -1, 19 18 6 -1,
+]
+texCoord
+USE be
+solid FALSE
+texCoordIndex [
+1 2 0 -1, 2 3 0 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+USE bb
+texture
+ImageTexture
+{
+url "ent_complex.jpg"
+}
+textureTransform
+USE a1
+}
+geometry
+IndexedFaceSet {
+coord
+USE bd
+coordIndex [
+1 18 3 -1, 18 19 3 -1,
+]
+texCoord
+USE be
+solid FALSE
+texCoordIndex [
+1 2 0 -1, 2 3 0 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+USE bb
+texture
+ImageTexture
+{
+url "gallery.jpg"
+}
+textureTransform
+USE bc
+}
+geometry
+IndexedFaceSet {
+coord
+USE bd
+coordIndex [
+12 13 0 -1, 12 0 4 -1,
+]
+texCoord
+USE be
+solid FALSE
+texCoordIndex [
+2 3 0 -1, 2 0 1 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+USE bb
+texture
+ImageTexture
+{
+url "nightclub.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord
+USE bd
+coordIndex [
+13 12 7 -1, 7 12 9 -1,
+]
+texCoord
+USE be
+solid FALSE
+texCoordIndex [
+3 0 2 -1, 2 0 1 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+USE bb
+texture
+ImageTexture
+{
+url "arcade.jpg"
+}
+textureTransform
+USE bc
+}
+geometry
+IndexedFaceSet {
+coord
+USE bd
+coordIndex [
+15 14 7 -1, 15 7 9 -1,
+]
+texCoord
+USE be
+solid FALSE
+texCoordIndex [
+2 3 0 -1, 2 0 1 -1,
+]
+}
+}
+Shape
+{
+appearance
+Appearance
+{
+material
+USE bb
+texture
+ImageTexture
+{
+url "movies.jpg"
+}
+textureTransform
+USE a1
+}
+geometry
+IndexedFaceSet {
+coord
+USE bd
+coordIndex [
+17 8 6 -1, 16 8 17 -1,
+]
+texCoord
+USE be
+solid FALSE
+texCoordIndex [
+2 0 1 -1, 3 0 2 -1,
+]
+}
+}
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+USE d
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-32.9 -24.5 -97.6, -5.4 -24.5 -103, -32.9 -44 -97.6, -5.4 -44 -103, -20.3 -44 -100.1, -25.7 -44 -99, -14.8 -44 -101.2, -23.5 -44 -99.5, -18 -44 -100.5, -12.6 -44 -101.6, -25.7 -35 -99, -32.9 -35 -97.6, -5.4 -35 -103, -18 -35 -100.5, -20.3 -35 -100.1, -23.5 -35 -99.5, -12.6 -35 -101.6, -14.8 -35 -101.2,
+]
+}
+coordIndex [
+2 10 11 -1, 14 13 1 -1, 10 15 1 -1, 17 16 1 -1, 15 14 1 -1, 13 17 1 -1, 16 12 1 -1, 11 10 0 -1, 10 1 0 -1, 9 3 12 -1, 7 4 14 -1, 2 5 10 -1, 8 6 17 -1, 15 7 14 -1, 13 8 17 -1, 16 9 12 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+0 1, 5 1, 0 0, 5 0, 2.3 0, 1.3 0, 3.3 0, 1.7 0, 2.7 0, 3.7 0, 1.3 .5, 0 .5, 5 .5, 2.7 .5, 2.3 .5, 1.7 .5, 3.7 .5, 3.3 .5,
+]
+}
+solid FALSE
+texCoordIndex [
+2 10 11 -1, 14 13 1 -1, 10 15 1 -1, 17 16 1 -1, 15 14 1 -1, 13 17 1 -1, 16 12 1 -1, 11 10 0 -1, 10 1 0 -1, 9 3 12 -1, 7 4 14 -1, 2 5 10 -1, 8 6 17 -1, 15 7 14 -1, 13 8 17 -1, 16 9 12 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+USE d
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+20.2 -25.7 73.9, 8.3 -25.7 76.1, 20.2 -44 73.9, 8.3 -44 76.1, 18.7 -28.5 72.7, 9.2 -28.5 74.5, 18.7 -44 72.7, 9.2 -44 74.5, 17.6 -30.5 73, 10.5 -30.5 74.2, 17.6 -44 73, 10.5 -44 74.2, 17.8 -30.5 74.2, 10.7 -30.5 75.5, 17.8 -44 74.2, 10.7 -44 75.5,
+]
+}
+coordIndex [
+15 13 12 -1, 15 12 14 -1, 3 1 5 -1, 5 7 3 -1, 1 0 4 -1, 4 5 1 -1, 0 2 6 -1, 6 4 0 -1, 7 5 9 -1, 9 11 7 -1, 5 4 8 -1, 8 9 5 -1, 4 6 10 -1, 10 8 4 -1, 11 9 13 -1, 13 15 11 -1, 9 8 12 -1, 12 13 9 -1, 8 10 14 -1, 14 12 8 -1,
+]
+texCoord
+USE ba
+solid FALSE
+texCoordIndex [
+3 2 0 -1, 3 0 1 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1, 0 1 3 -1, 3 2 0 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children
+Shape
+{
+appearance
+USE d
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-48.3 -.7 -49.2, 26.9 -.7 -63.5, -50.3 -19 -51.1, 28 -19 -66, -47 -1.1 -49.4, 25.7 -1.2 -63.2,
+]
+}
+coordIndex [
+3 5 1 -1, 2 0 4 -1,
+]
+solid FALSE
+}
+}
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+Transform
+{
+children [
+Shape
+{
+appearance
+Appearance
+{
+material
+USE h texture
+USE i textureTransform
+USE a1
+}
+geometry
+IndexedFaceSet {
+coord
+Coordinate
+{
+point [
+-50.3 -19 -51.1, 28 -19 -66, -50.3 -44 -51.1, 28 -44 -66, -50.5 -19.4 -78.4, 18 -19.5 -91.3, -50.5 -44 -78.4, 18 -44 -91.3, -40.1 -33.7 -52.4, 18.1 -33.7 -63.4, -40.1 -44 -52.4, 18.1 -44 -63.4, -38.4 -34.1 -65.1, 11.8 -34.2 -74.5, -38.4 -44 -65.1, 11.8 -44 -74.5,
+]
+}
+coordIndex [
+10 8 12 -1, 12 14 10 -1, 13 11 15 -1, 11 13 9 -1, 4 6 14 -1, 14 12 4 -1, 7 5 13 -1, 13 15 7 -1, 1 3 11 -1, 11 9 1 -1, 2 0 8 -1, 8 10 2 -1, 0 4 12 -1, 12 8 0 -1, 5 1 9 -1, 9 13 5 -1,
+]
+texCoord
+TextureCoordinate
+{
+point [
+0 0, 1 0, 1 1, 0 1,
+]
+}
+solid FALSE
+texCoordIndex [
+0 1 2 -1, 2 3 0 -1, 0 2 3 -1, 2 0 1 -1, 0 1 2 -1, 2 3 0 -1, 0 1 2 -1, 2 3 0 -1, 0 1 2 -1, 2 3 0 -1, 0 1 2 -1, 2 3 0 -1, 0 1 2 -1, 2 3 0 -1, 0 1 2 -1, 2 3 0 -1,
+]
+}
+}
+USE a
+]
+translation 0 9.848 -.2166
+rotation 0 -1 0 .19199
+scale .7 .22364 .7
+}
+
+
+
+
+Transform {
+scale 0.85 0.7 0.85
+children[
+Transform
+{children
+Transform
+{children
+Transform
+{children[
+Transform{
+children DEF Elev1 CasinoElevator{
+translation 5 0 -84.3
+rotation   0 -1 0 54.98
+startFloor 0
+}}]}}}]}
+
+
+Transform {
+scale 0.85 0.7 0.85
+children [
+Transform
+{children
+Transform
+{children
+Transform
+{children[
+Transform{
+children DEF Elev2 CasinoElevator{
+translation 0.25 0 -84.3
+rotation   0 -1 0 54.98
+startFloor 0
+}}]} }}]}
+
+
+Transform {
+scale 0.85 0.7 0.85
+children [
+Transform
+{children
+Transform
+{children
+Transform
+{children[
+Transform{
+children DEF Elev3 CasinoElevator{
+translation -4.5 0 -84.3
+rotation   0 -1 0 54.98
+startFloor 0
+}}]}}}]}
+
+
+
+
+
+
+
+Transform
+{
+children
+Collision
+{
+children
+Transform
+{
+children
+Group
+{
+children [
+DEF q
+TimeSensor {
+cycleInterval 25
+loop TRUE
+}
+DEF s
+ScalarInterpolator {
+key [
+0 1
+]
+keyValue [
+0 1
+]
+}
+DEF t
+Script {
+eventIn SFFloat set_trans
+eventOut SFVec2f value_changed
+url "vrmlscript:
+function set_trans(v){value_changed = new SFVec2f(v * -1,0 );}
+
+
+"
+}
+Transform
+{
+children
+Shape
+{
+appearance
+Appearance
+{
+material
+Material
+{
+#diffuseColor 0 .5 1
+transparency .7
+}
+texture
+ImageTexture
+{
+url "water11.gif"
+}
+textureTransform
+DEF w
+TextureTransform {
+scale 20 20
+}
+}
+geometry
+Box
+{
+size 75 .1 75
+}
+}
+}
+]
+}
+}
+collide FALSE
+}
+translation 0 -.35 0
+}
+Transform
+{
+children
+DEF y
+Inline {
+url "fountain.wrl"
+}
+translation 35 0 -1
+}
+Transform
+{
+children
+USE y
+translation -35 0 -1
+}
+Transform
+{
+children
+Group
+{
+children
+Transform
+{
+children
+Sound
+{
+source
+DEF x
+AudioClip {
+url "bkg.wav"
+loop TRUE
+startTime -1
+}
+minBack 100
+minFront 100
+maxBack 100
+maxFront 100
+intensity  1
+
+}
+}
+}
+}
+DEF z
+TimeSensor {
+cycleInterval .099999
+loop TRUE
+
+}
+ROUTE q.fraction_changed TO s.set_fraction
+ROUTE s.value_changed TO t.set_trans
+ROUTE t.value_changed TO w.set_translation
+ROUTE z.cycleTime TO x.set_startTime
+ROUTE z.cycleTime TO z.set_stopTime

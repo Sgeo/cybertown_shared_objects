@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.css"/>
+      <script type="text/javascript" src="https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.min.js"></script>
+   <style>
+X3DCanvas {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+}
+   </style>
+   </head>
+   <body>
+      <X3DCanvas src="places/e_lobby/vrml/e_lobby.wrl">
+         <p>Your browser may not support all features required by Cobweb!</p>
+      </X3DCanvas>
+      <script type="text/javascript">
+        setTimeout(function() {
+            window.Browser = X3D.getBrowser(document.getElementsByTagName("X3DCanvas")[0]);
+            console.log("Retrieved Browser");
+        }, 5000);
+      </script>
+   </body>
+</html>

@@ -1,0 +1,36 @@
+PROTO BXXShim [] {
+    Script {
+        url "vrmlscript:
+            function initialize() {
+                Browser.getTime = function() {
+                    return this.systemTime;
+                };
+                if(!Browser.getAvatarHeight) {
+                    Browser.getAvatarHeight = Browser.navigationInfoNode.getAvatarHeight.bind(Browser.navigationInfoNode);
+                }
+                if(!Browser.viewpointPosition) {
+                    Object.defineProperty(Browser, 'viewpointPosition', {
+                        get: function() {
+                            //return Browser.currentPosition;
+                            return Browser.getActiveLayer().getViewpoint().getPosition();
+                        }
+                    });
+                }
+                if(!Browser.viewpointOrientation) {
+                    Object.defineProperty(Browser, 'viewpointOrientation', {
+                        get: function() {
+                            return Browser.getActiveLayer().getViewpoint().getOrientation();
+                        }
+                    });
+                }
+                // Workaround for Cobweb defect https://github.com/create3000/cobweb/issues/34
+                if(!window.SFString) {
+                    window.SFString = X3D.SFString;
+                }
+                if(!window.SFBool) {
+                    window.SFBool = X3D.SFBool;
+                }
+            }
+        "
+    }
+}
