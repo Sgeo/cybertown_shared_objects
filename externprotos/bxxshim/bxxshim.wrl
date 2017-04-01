@@ -1,5 +1,15 @@
 PROTO BXXShim [] {
-    Script {
+    DEF prox ProximitySensor {
+        size 1000000 1000000 1000000
+        enabled FALSE
+    }
+    DEF scr Script {
+        mustEvaluate TRUE
+        eventOut SFBool emulatePosOr
+        field SFNode self USE scr
+        eventIn SFVec3f position
+        eventIn SFRotation orientation
+        
         url "vrmlscript:
             function initialize() {
                 Browser.getTime = function() {
@@ -9,28 +19,20 @@ PROTO BXXShim [] {
                     Browser.getAvatarHeight = Browser.navigationInfoNode.getAvatarHeight.bind(Browser.navigationInfoNode);
                 }
                 if(!Browser.viewpointPosition) {
-                    Object.defineProperty(Browser, 'viewpointPosition', {
-                        get: function() {
-                            //return Browser.currentPosition;
-                            return Browser.getActiveLayer().getViewpoint().getPosition();
-                        }
-                    });
+                    emulatePosOr = true;
                 }
-                if(!Browser.viewpointOrientation) {
-                    Object.defineProperty(Browser, 'viewpointOrientation', {
-                        get: function() {
-                            return Browser.getActiveLayer().getViewpoint().getOrientation();
-                        }
-                    });
-                }
-                // Workaround for Cobweb defect https://github.com/create3000/cobweb/issues/34
-                if(!window.SFString) {
-                    window.SFString = X3D.SFString;
-                }
-                if(!window.SFBool) {
-                    window.SFBool = X3D.SFBool;
-                }
+            }
+            function position(pos, time) {
+                Browser.viewpointPosition = pos;
+            }
+            
+            function orientation(or, time) {
+                Browser.viewpointOrientation = or;
             }
         "
     }
+    ROUTE scr.emulatePosOr TO prox.set_enabled
+    ROUTE prox.position_changed TO scr.position
+    ROUTE prox.orientation_changed TO scr.orientation
+    
 }
