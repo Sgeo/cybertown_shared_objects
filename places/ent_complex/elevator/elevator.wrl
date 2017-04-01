@@ -1,5 +1,9 @@
 #VRML V2.0 utf8
 
+EXTERNPROTO BXXShim[]["../../../externprotos/bxxshim/bxxshim.wrl#BXXShim"]
+
+BXXShim{}
+
 PROTO ElevatorControl_2[
 field MFString floorNames ["Lobby","Casino","Arcade","Art Gallery","Arena", "vDrome","Black Sun Club"]
 field MFString floorUrls ["/cgi-bin/colonycity/place?plc=e_lobby&ac=place&ID=0000000000000038&force=p"
@@ -744,19 +748,18 @@ set_loaded(sg,t);
 function initialize(){
 if(!sound){Browser.setSoundEnabled(false);}
 if(sound){
-h  = Browser.createVrmlFromString('Sound{intensity 1 source AudioClip{url [\"../../ent_complex/elevator/engine.wav\"]loop FALSE} maxBack 100 maxFront 100 minBack 10 minFront 10}');
-d = Browser.createVrmlFromString('Sound{intensity 1 source AudioClip{url [\"../../ent_complex/elevator/bzzz.wav\"]loop FALSE} maxBack 100 maxFront 100 minBack 10 minFront 10}');
-sg.addChildren = h;
-sg.addChildren = d;
-Browser.addRoute(self,'hum_startTime_changed',sg.children[0].source,'set_startTime');
-Browser.addRoute(self,'hum_loop_changed',sg.children[0].source,'set_loop');
-Browser.addRoute(self,'hum_stopTime_changed',sg.children[0].source,'set_stopTime');
-Browser.addRoute(ds,'openTime_changed',sg.children[1].source,'set_startTime');
+h  = Browser.createVrmlFromString('Sound{intensity 1 source AudioClip{url [\"../../ent_complex/elevator/engine.wav\"]loop FALSE} maxBack 100 maxFront 100 minBack 10 minFront 10}')[0];
+d = Browser.createVrmlFromString('Sound{intensity 1 source AudioClip{url [\"../../ent_complex/elevator/bzzz.wav\"]loop FALSE} maxBack 100 maxFront 100 minBack 10 minFront 10}')[0];
+sg.addChildren = new MFNode(h, d);
+Browser.addRoute(self,'hum_startTime_changed',h.source,'set_startTime');
+Browser.addRoute(self,'hum_loop_changed',h.source,'set_loop');
+Browser.addRoute(self,'hum_stopTime_changed',h.source,'set_stopTime');
+Browser.addRoute(ds,'openTime_changed',d.source,'set_startTime');
 }
 time = Browser.getTime();
 hum_loop_changed = true;
 hum_startTime_changed = time;
-view.bind = new SFBool(true);
+view.set_bind = true;
 pos = view.position = new SFVec3f(6,1.75,0);
 or = view.orientation = new SFRotation(0,1,0,1.571);
 pos_interp.keyValue = new MFVec3f(new SFVec3f(0,0,0),new SFVec3f(-6,0,0),new SFVec3f(-8 - (Math.random() * 4),0, ((Math.random() * 6) - 3) ));
