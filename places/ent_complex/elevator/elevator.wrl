@@ -183,7 +183,7 @@ eventOut MFString nav_changed
 eventOut SFTime loaded_changed
 ]{
 
-
+Group{children[
 Transform{  translation IS translation rotation IS rotation
 children[
 
@@ -765,6 +765,8 @@ or = view.orientation = new SFRotation(0,1,0,1.571);
 pos_interp.keyValue = new MFVec3f(new SFVec3f(0,0,0),new SFVec3f(-6,0,0),new SFVec3f(-8 - (Math.random() * 4),0, ((Math.random() * 6) - 3) ));
 }
 "}
+
+]}
 
 ROUTE ud_script.stop_changed TO up_clock.set_stopTime
 ROUTE ud_script.stop_changed TO down_clock.set_stopTime
