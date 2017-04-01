@@ -4414,7 +4414,8 @@ shininess .2875
 transparency .5
 }
 texture MovieTexture {
-url "energy.gif"
+loop TRUE
+url "energy.mp4"
 }
 }
 geometry IndexedFaceSet {
