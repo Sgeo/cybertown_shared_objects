@@ -7,7 +7,7 @@ EXTERNPROTO HUD[
 	eventIn MFNode addChildren
 	eventIn MFNode removeChildren
 ]
-["nodes.wrl#HUD"]
+["../../../externprotos/bxx/nodes.wrl#HUD"]
 
 Inline{url"/places/no_cache/shopping/temp.wrl"}
 
@@ -27,7 +27,7 @@ eventOut SFBool isActive
 eventOut SFTime enterTime
 eventOut SFTime exitTime
 ]
-["nodes.wrl#Occlusion"]
+["../../../externprotos/bxx/nodes.wrl#Occlusion"]
 
 EXTERNPROTO malldirectory[
 field SFVec3f position 
