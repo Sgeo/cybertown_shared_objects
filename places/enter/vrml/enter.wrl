@@ -1,5 +1,14 @@
 #VRML V2.0 utf8
 
+EXTERNPROTO HUD[
+ 	field SFVec3f bboxSize 
+	field SFVec3f bboxCenter 
+	exposedField MFNode children 
+	eventIn MFNode addChildren
+	eventIn MFNode removeChildren
+]
+["../../../externprotos/bxx/nodes.wrl#HUD"]
+
 
 DEF Scene Group {}
 
@@ -3750,8 +3759,7 @@ texCoordIndex [
 PROTO Jumpgate [
 field SFVec3f position 0 0 0
 field SFRotation rotation 0 1 0 0
-exposedField MFNode receive [
-]
+eventIn MFNode receive
 eventOut SFBool isActive
 eventOut SFTime chooseTime
 ]
@@ -4839,14 +4847,15 @@ headlines_changed = new SFVec2f(v,0);
 }
 ]
 }
+
+]
+}
+]
+}
 ROUTE e.fraction_changed TO f.set_fraction
 ROUTE f.cvn_changed TO d.set_translation
 ROUTE f.headlines_changed TO c.set_translation
 ROUTE prox.enterTime TO audio.set_startTime
-]
-}
-]
-}
 #&######################################################################
 #end newskiosk
 ########################################################################
