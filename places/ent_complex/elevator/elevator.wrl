@@ -253,10 +253,7 @@ coordIndex    [ 6, 1, 2, 7, -1, 0, 8, 9,
 ]}
 
 
-LOD{
-center IS translation
-range IS LODrange
-level[
+
 
 Transform{ translation IS translation rotation IS rotation
 children[
@@ -647,8 +644,7 @@ Viewpoint {position -3 1.75 0 orientation 0 1 0 -1.571}
 DEF s Group{}
 ]}#END main positioning Transform
 
-Group{}
-]}#END LOD
+
 
 DEF limit_clock TimeSensor{cycleInterval 3 loop FALSE enabled TRUE}
 
