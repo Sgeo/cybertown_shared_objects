@@ -6450,7 +6450,7 @@ minFront 5
 DEF loadInfo Script {
 eventIn MFNode receive
 field SFNode self USE loadInfo
-field MFString loadURL "/places/no_cache/enter/enter_dat.wrl"
+field MFString loadURL "enter_dat.wrl"
 field SFNode jumpgate USE jumpgate
 field SFNode marquee USE marquee_texture
 field MFNode banners [
