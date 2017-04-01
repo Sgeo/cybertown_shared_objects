@@ -7,7 +7,7 @@ EXTERNPROTO HUD[
 	eventIn MFNode addChildren
 	eventIn MFNode removeChildren
 ]
-["urn:inet:blaxxun.com:node:HUD","http://www.blaxxun.com/vrml/protos/nodes.wrl#HUD"]
+["nodes.wrl#HUD"]
 
 Inline{url"/places/no_cache/shopping/temp.wrl"}
 
@@ -33,18 +33,7 @@ EXTERNPROTO malldirectory[
 field SFVec3f position 
 ]"malldirectory_cobweb.wrl#MallDirectory"
 
-EXTERNPROTO SharedObject [
-exposedField SFVec3f translation
-exposedField SFRotation rotation
-exposedField MFNode children 
-exposedField SFString name
-exposedField SFString id
-eventIn SFBool startMove
-eventOut SFTime touchTime
-eventOut SFBool isOver
-eventOut SFVec3f newPosition
-eventOut SFRotation newRotation
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+
 
 PROTO SharedEvent [
 field SFBool local FALSE
@@ -1152,7 +1141,6 @@ bcolor [2] = new SFColor(r,c,c);
 DEF dayNight Script{
 eventIn MFNode receive
 eventIn SFTime getTime IS getTime 
-field MFString scriptUrl "http://www.cybertown.com/cgi-bin/games/vrmltime.pl"
 field SFNode self USE dayNight
 field SFBool isGet FALSE 
 eventOut SFTime time_changed
@@ -1166,15 +1154,15 @@ function set_time(min,hour,t){
 function receive(v,t)
 {
  if (v.length==0) return; // hg 
- min = v[0].min; 
- hour = v[0].hour + 2;
+ min = v.min; 
+ hour = v.hour;
  if(hour >= 24){hour -= 24;}
  set_time(min,hour,t);
  if(isGet){time = new SFVec2f(min,hour);isGet = false;}
 }
-function getTime(){isGet = true;Browser.createVrmlFromURL(scriptUrl,self,'receive');}
-function initialize(){Browser.createVrmlFromURL(scriptUrl,self,'receive');}
-
+function getTime(){isGet = true;sendDate();}
+function initialize(){sendDate();}
+function sendDate() {var d = new Date(); receive({hour: d.getHours(), min: d.getMinutes()}, Browser.getTime());}
 "}
 DEF dnClock TimeSensor{cycleInterval 86400 loop FALSE enabled TRUE} 
 ]}
@@ -1415,7 +1403,6 @@ PROTO AnalogClock[
 eventIn SFTime getTime
 exposedField SFVec3f position 0 0 0
 exposedField SFRotation rotation 0 1 0 0 
-exposedField MFString scriptUrl ["http://www.cybertown.com/cgi-bin/games/vrmltime.pl"]
 exposedField MFNode minuteChildren [
  Transform{translation 0 .5 0 scale 1 1 .25
   children Shape{
@@ -1453,7 +1440,6 @@ children[
 
 DEF analogClock Script{
 eventIn MFNode receive 
-field MFString scriptUrl "http://www.cybertown.com/cgi-bin/games/vrmltime.pl"
 field SFNode self USE analogClock 
 eventOut SFTime min_changed
 eventOut SFBool min_loop
@@ -1468,16 +1454,16 @@ function set_min(v,t){
  min_changed = t - (v * 60);
 }
 function receive(v,t){
- if (v.length==0) return; // hg 
- min = v[0].min; 
- hour = v[0].hour + 2;
+ min = v.min; 
+ hour = v.hour;
  if(hour >= 24){hour -= 23;}
  if(hour >= 12){hour -= 11;}
  set_min(min,t);
  set_hour(hour,t);
 }
-function getTime(){Browser.createVrmlFromURL(scriptUrl,self,'receive');}
-function initialize(){Browser.createVrmlFromURL(scriptUrl,self,'receive');}
+function getTime(){sendDate();}
+function initialize(){sendDate();}
+function sendDate() {var d = new Date(); receive({hour: d.getHours(), min: d.getMinutes()}, Browser.getTime());}
 "}
 ]}
 ROUTE analogClock.min_changed TO minClock.set_startTime
