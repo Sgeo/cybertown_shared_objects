@@ -6436,7 +6436,7 @@ url "hum1.wav"
 loop TRUE
 }
 direction 1 0 0
-intensity 40
+intensity 1
 location -58.73 .3558 14.32
 maxBack 20
 maxFront 20
