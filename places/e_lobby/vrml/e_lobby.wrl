@@ -1,5 +1,9 @@
 #VRML V2.0 utf8
 
+EXTERNPROTO BXXShim[]["../../../externprotos/bxxshim/bxxshim.wrl#BXXShim"]
+
+BXXShim{}
+
 EXTERNPROTO BlaxxunZone [ 
 eventIn MFNode addEvents 
 eventIn MFNode removeEvents 

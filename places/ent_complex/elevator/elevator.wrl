@@ -1,9 +1,5 @@
 #VRML V2.0 utf8
 
-EXTERNPROTO BXXShim[]["../../../externprotos/bxxshim/bxxshim.wrl#BXXShim"]
-
-BXXShim{}
-
 PROTO ElevatorControl_2[
 field MFString floorNames ["Lobby","Casino","Arcade","Art Gallery","Arena", "vDrome","Black Sun Club"]
 field MFString floorUrls ["/cgi-bin/colonycity/place?plc=e_lobby&ac=place&ID=0000000000000038&force=p"
