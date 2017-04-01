@@ -3,7 +3,24 @@
    <head>
       <meta charset="utf-8"/>
       <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.css"/>
-      <script type="text/javascript" src="https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.min.js"></script>
+      <script type="text/javascript">
+        function sgLoadWorld(url) {
+            var elem = document.getElementById("elem");
+            while(elem.firstChild) {
+                elem.removeChild(elem.firstChild);
+            }
+            var x3d = document.createElement("X3DCanvas");
+            x3d.setAttribute("src", url);
+            elem.appendChild(x3d);
+            var script = document.createElement("script");
+            script.src = "https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.min.js";
+            document.body.appendChild(script);
+            setTimeout(function() {
+                window.Browser = X3D.getBrowser(x3d);
+                console.log("Retrieved Browser");
+            }, 5000);
+        }
+      </script>
    <style>
 X3DCanvas {
    width: 100%;
@@ -13,14 +30,12 @@ X3DCanvas {
    </style>
    </head>
    <body>
-      <X3DCanvas src="places/e_lobby/vrml/e_lobby.wrl">
-         <p>Your browser may not support all features required by Cobweb!</p>
-      </X3DCanvas>
-      <script type="text/javascript">
-        setTimeout(function() {
-            window.Browser = X3D.getBrowser(document.getElementsByTagName("X3DCanvas")[0]);
-            console.log("Retrieved Browser");
-        }, 5000);
-      </script>
+   <div id="elem">
+    <ul>
+     <li><a href="javascript:sgLoadWorld('places/e_lobby/vrml/e_lobby.wrl');">Cybertown ePlex Lobby</a></li>
+     <li><a href="javascript:sgLoadWorld('places/shopping/vrml/shopping_cobweb.wrl');">Cybertown Mall</a></li>
+     <li><a href="javascript:sgLoadWorld('places/jail/vrml/jail.wrl');">Cybertown Jail</a></li>
+    </ul>
+   </div>
    </body>
 </html>
