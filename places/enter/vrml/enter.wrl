@@ -3622,7 +3622,7 @@ material Material {
 
 }
 texture DEF sign0 ImageTexture {
-url "/places/no_cache/enter/images/signtemplate02.jpg"
+url "signtemplate02_nocache.jpg"
 }
 textureTransform TextureTransform {
 center .5 .5
