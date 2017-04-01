@@ -357,8 +357,8 @@ function initialize(){
   s0_changed = new MFString(storeNames[0]);
   s1_changed = new MFString(storeNames[1]);
   s2_changed = new MFString(storeNames[2]);
-  storeNames[storeNames.length] = new SFString('');
-  storeNames[storeNames.length] = new SFString('');
+  storeNames[storeNames.length] = '';
+  storeNames[storeNames.length] = '';
   max += 2;
  }
  else{
