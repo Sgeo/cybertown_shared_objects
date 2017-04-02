@@ -1633,6 +1633,12 @@ DEF elev_clock TimeSensor{loop FALSE}
 DEF elev_interp PositionInterpolator{key[0,.1,.9,1] keyValue[0 0 0,0 0 0,0 0 0,0 0 0]}
 DEF elev_prox ProximitySensor{size 10 3 10 center -17.5 1.25 -14.5}
 DEF elev_orinterp OrientationInterpolator{key[0,.1,.9,1] keyValue[0 1 0 0,0 1 0 0,0 1 0 0]}
+DEF elev_nav NavigationInfo {
+avatarSize[ .25 1.75 .75 ]
+headlight FALSE speed 1
+type "NONE"
+visibilityLimit 140
+}
 DEF elev_script Script{
 eventIn SFTime set_up
 eventIn SFTime set_down
@@ -1671,21 +1677,30 @@ function set_floor(v){
 function set_up(v,t){ currentFloor += 1; set_floor();}
 function set_down(v,t){ currentFloor -= 1; set_floor();}
 function set_go(v,t){
- elevatorView.set_orientation = Browser.viewpointOrientation;
- elevatorView.set_position = Browser.viewpointPosition;
+ var viewOffsetPos;
+ var viewOffsetOr;
+ if(elevatorView.isBound) {
+   viewOffsetPos = elevatorView.position.subtract(Browser.viewpointPosition);
+   viewOffsetOr = elevatorView.orientation.multiply(Browser.viewpointOrientation.inverse());
+ } else {
+   viewOffsetPos = new SFVec3f(0, 0, 0);
+   viewOffsetOr = new SFRotation(0, 1, 0, 0);
+ }
+ elevatorView.set_orientation = Browser.viewpointOrientation.multiply(viewOffsetOr);
+ elevatorView.set_position = Browser.viewpointPosition.add(viewOffsetPos);
  elevatorView.set_bind = true;
  if(((currentFloor*floorHeight) + Browser.getAvatarHeight()) < (Browser.viewpointPosition[1] + .25) && ((currentFloor*floorHeight) + Browser.getAvatarHeight()) > (Browser.viewpointPosition[1] - .25)){return;}
  keyValue_changed = new MFVec3f(
-  Browser.viewpointPosition,
-  new SFVec3f(offset[0],Browser.viewpointPosition[1],offset[2]),
-  new SFVec3f(offset[0],(currentFloor*floorHeight) + Browser.getAvatarHeight(),offset[2]),  
-  new SFVec3f(fp[0],(currentFloor*floorHeight) + Browser.getAvatarHeight(),fp[2])
+  Browser.viewpointPosition.add(viewOffsetPos),
+  new SFVec3f(offset[0],Browser.viewpointPosition[1],offset[2]).add(viewOffsetPos),
+  new SFVec3f(offset[0],(currentFloor*floorHeight) + Browser.getAvatarHeight(),offset[2]).add(viewOffsetPos),  
+  new SFVec3f(fp[0],(currentFloor*floorHeight) + Browser.getAvatarHeight(),fp[2]).add(viewOffsetPos)
  );
  orValue_changed = new MFRotation(
-  Browser.viewpointOrientation,
-  Browser.viewpointOrientation,
-  r,
-  r
+  viewOffsetOr.multiply(Browser.viewpointOrientation),
+  viewOffsetOr.multiply(Browser.viewpointOrientation),
+  viewOffsetOr.multiply(r),
+  viewOffsetOr.multiply(r)
  );
  interval_changed = Math.abs(((Browser.viewpointPosition[1] -Browser.getAvatarHeight())/floorHeight) - (currentFloor)) * 1; 
  startTime_changed = t;
@@ -1711,6 +1726,7 @@ ROUTE elev_script.interval_changed TO elev_clock.set_cycleInterval
 ROUTE elev_script.startTime_changed TO elev_clock.set_startTime
 ROUTE elev_clock.fraction_changed TO elev_interp.set_fraction
 ROUTE elev_clock.fraction_changed TO elev_orinterp.set_fraction
+ROUTE elev_clock.isActive TO elev_nav.set_bind
 ROUTE elev_script.keyValue_changed TO elev_interp.set_keyValue
 ROUTE elev_script.orValue_changed TO elev_orinterp.set_keyValue
 ROUTE elev_interp.value_changed TO elev_script.set_position
