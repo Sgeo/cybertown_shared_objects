@@ -2837,7 +2837,7 @@ url "http://www.3dfx.com"
 parameter "target=external"
 description "3Dfx"
 children Shape{
- appearance Appearance{texture ImageTexture{url"../../../ad/voodoobanner2.gif"}}
+ appearance Appearance{texture ImageTexture{url"voodoobanner2.gif"}}
  geometry IndexedFaceSet{
   coord Coordinate{point[-5 -3 0,5 -3 0,5 3 0,-5 3 0]}
   coordIndex [0,1,2,3,-1]
