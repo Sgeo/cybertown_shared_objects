@@ -459,7 +459,7 @@ ROUTE RandomEntry.newOrientation TO V.set_orientation
 Transform{
 children[
 Inline{
-url"/places/no_cache/enter/temp.wrl"
+url"temp.wrl"
 }
 ]}
 
