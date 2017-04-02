@@ -400,6 +400,17 @@ position 41.02 142.7 1.848
 orientation 0.1075 -0.7329 -0.6718 -2.905
 description "Flythrough"
 }
+DEF nav_flythrough NavigationInfo {
+headlight FALSE
+type [
+"NONE"
+]
+visibilityLimit 150
+avatarSize [
+1 1.75 .9
+]
+}
+ROUTE flythrough.isBound TO nav_flythrough.set_bind
 Viewpoint{description "Beam Station"             position -75.086 1.766 4.22        orientation 0 -1 0 2.17 }
 Viewpoint {
 position 124.8 -0.318 1.351
