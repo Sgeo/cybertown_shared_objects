@@ -1,15 +1,6 @@
 #VRML V2.0 utf8
 #hg 09/2001 VRML syntax fixes
-EXTERNPROTO HUD[
- 	field SFVec3f bboxSize 
-	field SFVec3f bboxCenter 
-	exposedField MFNode children 
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-]
-["urn:inet:blaxxun.com:node:HUD","http://www.blaxxun.com/vrml/protos/nodes.wrl#HUD"]
 
-Inline{url"/places/no_cache/shopping/temp.wrl"}
 
 EXTERNPROTO Occlusion[
 exposedField SFVec3f bboxSize
@@ -23,24 +14,13 @@ eventOut SFBool isActive
 eventOut SFTime enterTime
 eventOut SFTime exitTime
 ]
-["nodes.wrl#Occlusion"]
+["../../../externprotos/bxx/nodes.wrl#Occlusion"]
 
 EXTERNPROTO malldirectory[
 field SFVec3f position 
 ]"../../../externprotos/malldirectory/malldirectory.wrl#MallDirectory"
 
-EXTERNPROTO SharedObject [
-exposedField SFVec3f translation
-exposedField SFRotation rotation
-exposedField MFNode children 
-exposedField SFString name
-exposedField SFString id
-eventIn SFBool startMove
-eventOut SFTime touchTime
-eventOut SFBool isOver
-eventOut SFVec3f newPosition
-eventOut SFRotation newRotation
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+
 
 PROTO SharedEvent [
 field SFBool local FALSE
