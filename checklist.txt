@@ -1,0 +1,5 @@
+* diffuseColors sometimes gets ignored in Blaxxun (when textured? Color textured?) but not other renderers, so some CT assets have nonsense diffuseColors on some textured items
+* Blaxxun provides functions that other renderers do not, hence bxxshim.wrl.. Maybe replace with just a script + script nodes?
+* Some references to stuff on blaxxun.com and uri: stuff needs to be deleted for stuff to render.
+* Blaxxun accepts multiple nodes in PROTOs, while Cobweb does not. Unsure which is correct, but just Group the nodes in PROTOs.
+* In Cobweb, gravity takes effect during moving Viewpoints. Unsure which behavior is correct, workaround is a NavigationInfo identical to main one except NONE navigation with routing to hook them up.
