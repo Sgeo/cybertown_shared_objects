@@ -57,14 +57,14 @@ exposedField MFString galleryParam1 "target=_new"
 exposedField MFString galleryParam2 "target=_new"
 exposedField MFString galleryParam3 "target=_new"
 
-exposedField MFString floorImage []
-exposedField MFString stoneImage []
-exposedField MFString roofImage []
-exposedField MFString stuccImage []
-exposedField MFString officeImage []
-exposedField MFString doorImage []
-exposedField MFString sunwinImage []
-exposedField MFString fernImage []
+exposedField MFString floorImage "images/floor.gif"
+exposedField MFString stoneImage "images/stone.jpg"
+exposedField MFString roofImage "images/roof.jpg"
+exposedField MFString stuccImage "images/stucc.gif"
+exposedField MFString officeImage "images/office.jpg"
+exposedField MFString doorImage "images/door.jpg"
+exposedField MFString sunwinImage "images/sunwin2.jpg"
+exposedField MFString fernImage "images/fern.jpg"
 ]{
 Group {
 children [
@@ -555,5 +555,3 @@ ROUTE doorCloseInterp.value_changed TO door.set_translation
 ROUTE doorProx.enterTime TO doorOpen.set_startTime
 ROUTE doorProx.exitTime TO doorClose.set_startTime
 }#END Club PROTO
-
-Club{}
