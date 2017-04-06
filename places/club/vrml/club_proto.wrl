@@ -9,28 +9,9 @@ field MFNode children []
 Group{
 children[
 Group{ children IS children}
-DEF TS TouchSensor{enabled FALSE}
-DEF link_script Script{
-eventIn SFTime set_click
-eventIn SFBool set_over
-field MFString link IS url
-field MFString parameter IS parameter
-field MFString description ""
-eventOut SFBool enabled_changed
-url "vrmlscript:
-function set_click(v,t){ Browser.loadURL(link,parameter);}
-function set_over(v,t){
-  if(v){Browser.setDescription(description);}
-  else{Browser.setDescription('');}
-}
-function initialize(){
- if(link != 'empty' && link != ''){enabled_changed = true; description = link[0];}
-}
-"}
+
 ]}
-ROUTE TS.isOver TO link_script.set_over
-ROUTE TS.touchTime TO link_script.set_click
-ROUTE link_script.enabled_changed TO TS.set_enabled
+
 }#END Link PROTO
 
 
