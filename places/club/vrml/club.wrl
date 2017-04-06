@@ -5,58 +5,15 @@
 
 
 EXTERNPROTO Club[
-exposedField SFColor roofColor
-exposedField SFColor wallColor
-exposedField SFColor floorColor
-exposedField MFString meetingPicture
-exposedField MFString assemblyPicture
-exposedField MFString galleryPicture1
-exposedField MFString galleryPicture2
-exposedField MFString galleryPicture3
-]"<$g_HTMLRoot>/places/clubs/vrml/club_proto.wrl#Club"
+
+]"club_proto.wrl#Club"
 
 Group{
 children[
 
 
 DEF thisClub Club{
-roofColor <$CEC>
-wallColor <$WAC>
-floorColor <$FLC>
-<!--#ifdef variable="ST1" value="1"-->
-galleryPicture1 ["<$g_HTMLRoot>/places/clubs/images/locked.gif"]
-<!--#endif variable="ST1" -->
-<!--#ifdef variable="ST1" value="0"-->
-galleryPicture1 ["<$g_HTMLRoot><$GP1>"]
-<!--#endif variable="ST1" -->
 
-<!--#ifdef variable="ST2" value="1"-->
-galleryPicture2 ["<$g_HTMLRoot>/places/clubs/images/locked.gif"]
-<!--#endif variable="ST2" -->
-<!--#ifdef variable="ST2" value="0"-->
-galleryPicture2 ["<$g_HTMLRoot><$GP2>"]
-<!--#endif variable="ST2" -->
-
-<!--#ifdef variable="ST3" value="1"-->
-galleryPicture3 ["<$g_HTMLRoot>/places/clubs/images/locked.gif"]
-<!--#endif variable="ST3" -->
-<!--#ifdef variable="ST3" value="0"-->
-galleryPicture3 ["<$g_HTMLRoot><$GP3>"]
-<!--#endif variable="ST3" -->
-
-<!--#ifdef variable="STM" value="1"-->
-meetingPicture ["<$g_HTMLRoot>/places/clubs/images/locked.gif"]
-<!--#endif variable="STM" -->
-<!--#ifdef variable="STM" value="0"-->
-meetingPicture   ["<$g_HTMLRoot><$MRP>"]
-<!--#endif variable="STM" -->
-
-<!--#ifdef variable="STA" value="1"-->
-assemblyPicture ["<$g_HTMLRoot>/places/clubs/images/locked.gif"]
-<!--#endif variable="STA" -->
-<!--#ifdef variable="STA" value="0"-->
-assemblyPicture  ["<$g_HTMLRoot><$ARP>"]
-<!--#endif variable="STA" -->
 }
 
 
