@@ -20,11 +20,11 @@ exposedField SFColor roofColor .9 .9 .85
 exposedField SFColor wallColor 0 .2 0
 exposedField SFColor floorColor .6 .55 .45
 
-exposedField MFString meetingPicture []
-exposedField MFString assemblyPicture []
-exposedField MFString galleryPicture1 []
-exposedField MFString galleryPicture2 []
-exposedField MFString galleryPicture3 []
+exposedField MFString meetingPicture  "../images/locked.gif"
+exposedField MFString assemblyPicture "../images/locked.gif"
+exposedField MFString galleryPicture1 "../images/locked.gif"
+exposedField MFString galleryPicture2 "../images/locked.gif"
+exposedField MFString galleryPicture3 "../images/locked.gif"
 
 exposedField MFString meetingUrl  "empty"
 exposedField MFString assemblyUrl "empty"
