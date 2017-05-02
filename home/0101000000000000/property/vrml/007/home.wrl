@@ -125,6 +125,7 @@ DEF utClock TimeSensor{cycleInterval 1 loop FALSE enabled TRUE}
 DEF dtProx ProximitySensor{enterTime IS triggerTime size IS size center IS downposition}
 DEF dtInterp PositionInterpolator{key IS downkey keyValue IS downpath}
 DEF dtClock TimeSensor{cycleInterval 1 loop FALSE enabled TRUE}
+DEF antiGrav NavigationInfo {avatarSize [ .25 1.6 .5 ] headlight FALSE speed 1 type "NONE" visibilityLimit 100}
 DEF t Transform{children[
 DEF tView Viewpoint{orientation IS orientation jump TRUE}
 ]}#END t
@@ -186,6 +187,9 @@ ROUTE dtInterp.value_changed TO t.set_translation
 
 ROUTE utClock.isActive TO ts.set_up
 ROUTE dtClock.isActive TO ts.set_down
+
+ROUTE utClock.isActive TO antiGrav.set_bind
+ROUTE dtClock.isActive TO antiGrav.set_bind
 
 ROUTE ts.bind_changed TO tView.set_bind
 
