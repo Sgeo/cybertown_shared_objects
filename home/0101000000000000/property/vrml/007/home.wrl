@@ -857,7 +857,6 @@ Shape {
 appearance Appearance {
 material Material {
 ambientIntensity 0
-diffuseColor 1 0 .5
 specularColor 0 0 0
 emissiveColor .09 0 .04
 }
@@ -5475,7 +5474,7 @@ texCoordIndex [ 6 3 7 10 -1 4 5 9 8 -1 10 7 11 15 -1 8 9 14 13 -1 15 11 12 16 -1
 
 DEF basement_floor Transform {
 children Shape {
-appearance Appearance {texture ImageTexture {url "../textures/4002.JPG"}}
+appearance Appearance {texture ImageTexture {url "../textures/4002.jpg"}}
 geometry DEF _35 IndexedFaceSet {
 coord Coordinate {
 point [ -5 -20 57
@@ -6211,7 +6210,7 @@ children[Shape {appearance Appearance{material DEF moonColor Material{diffuseCol
 
 DEF stars Transform{translation 0 20 0
 children[ Shape {
-appearance Appearance {material DEF starColor Material {diffuseColor 0 0 0}texture ImageTexture{url ["../textures/stars.gif"] }textureTransform TextureTransform{scale 7 7 }}
+appearance Appearance {material DEF starColor Material {}texture ImageTexture{url ["../textures/stars.gif"] }textureTransform TextureTransform{scale 7 7 }}
 geometry IndexedFaceSet {ccw FALSE coord 
 Coordinate {point [.363 .807 -.499,-.363 .807 -.499,-.587 .807 .191,0 .807 .617,.587 .807 .191,.587 -.191 .807,.949 .191 .308,0 .191 .998,.587 .191 -.807,.949 -.191 -.308,0 -.191 -.998,-.587 .191 -.807,-.949 -.191 -.308,-.949 .191 .308,-.587 -.191 .807,.567 -.245 .78,-.567 -.245 .78,.917 -.245 -.298,0 -.245 -.965,-.917 -.245 -.298]}
 coordIndex [19,14,12,-1,16,14,19,-1,13,12,14,-1,18,12,10,-1,19,12,18,-1,11,10,12,-1,18,10,17,-1,8,17,10,-1,9,17,8,-1,17,9,15,-1,6,15,9,-1,5,15,6,-1,16,15,14,-1,15,5,14,-1,7,14,5,-1,13,14,2,-1,7,2,14,-1,3,2,7,-1,2,1,13,-1,1,11,13,-1,12,13,11,-1,1,8,11,-1,0,8,1,-1,10,11,8,-1,4,9,0,-1,6,9,4,-1,8,0,9,-1,7,5,3,-1,6,4,5,-1,4,3,5,-1,2,4,0,-1,2,3,4,-1,0,1,2,-1]
@@ -7091,7 +7090,6 @@ ROUTE daytime.float_changed TO dayControl.set_time
 ROUTE bgrounder.bcolor TO sky.set_skyColor 
 ROUTE bgrounder.bcolor TO sky.set_groundColor
 ROUTE bgrounder.stars TO stars.set_scale 
-ROUTE bgrounder.starlight TO starColor.set_diffuseColor 
 ROUTE bgrounder.starlight TO starColor.set_emissiveColor
 ROUTE dayControl.value_changed TO sunOrient.set_fraction 
 ROUTE sunOrient.value_changed TO sun.set_rotation
