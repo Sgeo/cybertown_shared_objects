@@ -2,7 +2,8 @@
 <html>
    <head>
       <meta charset="utf-8"/>
-      <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/create3000/cobweb/master/stable/3/3.0/cobweb.css"/>
+      <script type="text/javascript" src="/webvr-ui.min.js"></script>
       <script type="text/javascript">
         function sgLoadWorld(url) {
             var elem = document.getElementById("elem");
@@ -13,7 +14,7 @@
             x3d.setAttribute("src", url);
             elem.appendChild(x3d);
             var script = document.createElement("script");
-            script.src = "https://cdn.rawgit.com/create3000/cobweb/master/stable/2/2.6/cobweb.min.js";
+            script.src = "/cobweb.uncompressed.js";
             document.body.appendChild(script);
             setTimeout(function() {
                 window.Browser = X3D.getBrowser(x3d);
