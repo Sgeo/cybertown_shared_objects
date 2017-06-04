@@ -14,7 +14,7 @@
             x3d.setAttribute("src", url);
             elem.appendChild(x3d);
             var script = document.createElement("script");
-            script.src = "/cobweb.uncompressed.js";
+            script.src = "/cobweb.min.js";
             document.body.appendChild(script);
             setTimeout(function() {
                 window.Browser = X3D.getBrowser(x3d);
