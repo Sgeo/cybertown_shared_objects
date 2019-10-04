@@ -1,4 +1,6 @@
 * diffuseColors sometimes gets ignored in Blaxxun (when textured? Color textured?) but not other renderers, so some CT assets have nonsense diffuseColors on some textured items
+    * Spec says to ignore on colored texture, which Blaxxun obeys. Spec is often not followed by other renderers
+    * Easiest fix is to replace with diffuseColor 1 1 1 (not erasing the diffuseColor)
 * Blaxxun provides functions that other renderers do not, hence bxxshim.wrl.. Maybe replace with just a script + script nodes?
 * Some references to stuff on blaxxun.com and uri: stuff needs to be deleted for stuff to render.
 * Blaxxun accepts multiple nodes in PROTOs, while Cobweb does not. Unsure which is correct, but just Group the nodes in PROTOs.
