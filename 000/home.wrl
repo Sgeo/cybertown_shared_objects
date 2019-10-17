@@ -39,7 +39,7 @@ NavigationInfo {
 headlight FALSE
 type "WALK"
 visibilityLimit 70
-speed 0.3
+speed 3.0
 }
 
 
@@ -105,7 +105,7 @@ DEF corridwall01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -138,7 +138,7 @@ DEF corridwall02-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -170,7 +170,7 @@ DEF Box01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.2 0.5529 0.1765
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1062,7 +1062,7 @@ DEF Box02-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.3098 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1120,7 +1120,7 @@ DEF door2-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.3098 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1201,7 +1201,7 @@ DEF bigrooom-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1219,7 +1219,7 @@ DEF awroom01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1251,7 +1251,7 @@ DEF awroom02-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1283,7 +1283,7 @@ DEF awroom03-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1315,7 +1315,7 @@ DEF awroom04-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1347,7 +1347,7 @@ DEF awroom05-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1379,7 +1379,7 @@ DEF awroom06-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1411,7 +1411,7 @@ DEF awroom07-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1443,7 +1443,7 @@ DEF dawindow-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1937,7 +1937,7 @@ DEF Line05-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5451 0.1922 0.5176
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -1988,7 +1988,7 @@ DEF Line06-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2006,7 +2006,7 @@ DEF aroom01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2038,7 +2038,7 @@ DEF aroom02-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2069,7 +2069,7 @@ DEF Line07-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2103,7 +2103,7 @@ DEF Box04-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2138,7 +2138,7 @@ DEF Box05-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2173,7 +2173,7 @@ DEF Box06-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2208,7 +2208,7 @@ DEF Box07-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2243,7 +2243,7 @@ DEF Box08-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2278,7 +2278,7 @@ DEF Box09-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2313,7 +2313,7 @@ DEF Box10-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2348,7 +2348,7 @@ DEF Box11-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.3882 0.5294 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2397,7 +2397,7 @@ DEF room3a01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2429,7 +2429,7 @@ DEF room3b01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2461,7 +2461,7 @@ DEF room3c01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2493,7 +2493,7 @@ DEF room3d01-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2525,7 +2525,7 @@ DEF Box12-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.2 0.5529 0.1765
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2568,7 +2568,7 @@ DEF Box13-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.1922 0.2
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2758,7 +2758,7 @@ DEF Box16-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.1922 0.2
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -2974,7 +2974,7 @@ DEF Box21-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -3018,7 +3018,7 @@ DEF Box22-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -3065,7 +3065,7 @@ DEF Box23-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.6549 0.3569 0.1922
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -3153,7 +3153,7 @@ DEF bigrooom-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.1922 0.4745 0.5451
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -3175,7 +3175,7 @@ DEF Line06-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
@@ -3291,7 +3291,7 @@ DEF Line11-ROOT Transform {
     Shape {
       appearance Appearance {
         material Material {
-          diffuseColor 0.5373 0.1961 0.1961
+          diffuseColor 1 1 1
           shininess 0.25
           transparency 0
         }
