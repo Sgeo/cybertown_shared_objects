@@ -14,7 +14,7 @@ exposedField SFNode texCoord
 field SFBool ccw
 field SFBool solid
 ]
-["urn:inet:blaxxun.com:node:NurbsSurface" "http://www.blaxxun.com/vrml/protos/nurbs.wrl#NurbsSurface"]
+["/externprotos/nurbs.wrl#NurbsSurface"]
 PROTO Avatar[
 exposedField SFTime gesture1 0
 exposedField SFTime gesture2 0

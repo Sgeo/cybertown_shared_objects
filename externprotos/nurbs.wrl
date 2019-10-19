@@ -231,7 +231,7 @@ PROTO NurbsCurve2ILS [
     	# Declarations of what's in this Script node:
 		field SFNode ils USE ils	# the ILS for visualization 
 		field SFNode mtr USE mtr
-		field MFVec3f cvs IS controlPoint
+		exposedField MFVec3f cvs IS controlPoint
 		eventOut MFNode	set_Children
 
     	url "javascript:
@@ -346,7 +346,7 @@ PROTO NurbsSurface2ILS [
 		field        SFInt32  uDimension        IS  uDimension    
 		field        SFInt32  vDimension        IS   vDimension
 		field SFNode mtr USE mtr
-		field MFVec3f cvs IS controlPoint     
+		exposedField MFVec3f cvs IS controlPoint     
 		field SFNode ils USE ils	# the ILS for visualization 
 		eventOut MFNode	set_Children
 
