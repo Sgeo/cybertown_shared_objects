@@ -32,6 +32,7 @@
                 window.avImport = browser.currentScene.getImportedNode("DefaultAvatar")
                 console.log(window.avImport);
                 browser.currentScene.addRootNode(avInline);
+                avImport.set_translation = new X3D.SFVec3f(0.0, 2.0, 0.0);
             }
         });
     });
