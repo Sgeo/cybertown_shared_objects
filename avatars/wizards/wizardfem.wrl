@@ -40,7 +40,7 @@ PROTO Avatar[
     DEF vis VisibilitySensor { size 1 2 1  center 0 1 0 }
 #------------------------------------------------------
     Shape {
-     appearance Appearance{ material Material{diffuseColor 0.56 0.22 0.15} texture ImageTexture{url "honor6wa.jpg" } }
+     appearance Appearance{ material Material{diffuseColor 1 1 1} texture ImageTexture{url "honor6wa.jpg" } }
      geometry IndexedFaceSet {
       solid FALSE
       creaseAngle 3.14
