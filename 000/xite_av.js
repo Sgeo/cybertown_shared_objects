@@ -29,8 +29,8 @@
                 
                 let avInline = await loadInlineAsync(browser, "/avatars/default.wrl");
                 browser.currentScene.updateImportedNode(avInline, "Avatar", "DefaultAvatar");
-                window.av = browser.currentScene.getImportedNode("DefaultAvatar")
-                console.log(window.av);
+                window.avImport = browser.currentScene.getImportedNode("DefaultAvatar")
+                console.log(window.avImport);
                 browser.currentScene.addRootNode(avInline);
             }
         });
