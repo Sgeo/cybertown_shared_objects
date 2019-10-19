@@ -1521,4 +1521,5 @@ ROUTE h.value_changed TO cl.set_scaleOrientation
 ROUTE i.value_changed TO a.set_translation
 ROUTE j.value_changed TO a.set_rotation
 }
-Avatar {}
+DEF Avatar Avatar {}
+EXPORT Avatar
