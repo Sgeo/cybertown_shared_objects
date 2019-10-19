@@ -12,8 +12,9 @@
     }
     
     X3D(function() {
+        console.log("Browser ready");
         let browser = X3D.getBrowser();
-        browser.addBrowserCallback(null, async function(eventType) {
+        browser.addBrowserCallback({}, async function(eventType) {
             console.log(eventType);
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
                 
