@@ -16,6 +16,10 @@ X3D(function() {
             Object.defineProperty(browserProto, 'viewpointOrientation', { get: function() {
                 return prox.orientation_changed;
             } });
+            
+            browserProto.getTime = function() {
+                return (new Date().getTime())/1000
+            }
         }
     });
     
