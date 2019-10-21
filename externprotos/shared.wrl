@@ -261,7 +261,7 @@ children[
 DEF RotControlKnob Transform{ scale 1 .5 1 children[ 
 Shape{appearance Appearance{material Material{diffuseColor 0 0 .5 specularColor 1 1 1 }}geometry Sphere{radius .1}}
 ]}
-DEF RotControlSensor CylinderSensor{minAngle -3.142 maxAngle 3.142}
+DEF RotControlSensor CylinderSensor{}
 ]}#END RotationControl
 
 Transform{#Panel
