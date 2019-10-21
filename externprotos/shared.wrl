@@ -203,7 +203,7 @@ eventOut SFBool isOver
 eventOut SFVec3f newPosition
 eventOut SFRotation newRotation
 ] {
-
+Group {children [
 DEF T1 Transform {
 translation IS translation
 rotation IS rotation
@@ -388,6 +388,9 @@ function initialize() {
 ]}#END HUD
 ]}
 ]}#END SOSwitch
+
+#END MOVE HUD CODE#
+]} # End grouping
 ROUTE X.translation_changed TO SOScript.set_X
 ROUTE Y.translation_changed TO SOScript.set_Y
 ROUTE Z.translation_changed TO SOScript.set_Z
@@ -398,8 +401,6 @@ ROUTE SOScript.rotation_changed TO T1.set_rotation
 ROUTE DoneButton.isActive TO SOScript.set_done
 ROUTE CancelButton.isActive TO SOScript.set_cancel
 ROUTE SOScript.choice_changed TO SOSwitch.set_whichChoice
-#END MOVE HUD CODE#
-
 }#END SharedObject PROTO
 
 # SharedObjectEvent PROTO
