@@ -321,14 +321,15 @@ eventIn MFString attributesFromServer IS attributesFromServer
 exposedField SFString name IS name
 exposedField SFString id IS id
 exposedField SFFloat rate 10
-exposedField SFVec3f initialPosition IS translation
-exposedField SFRotation initialRotation IS rotation
-exposedField SFVec3f currentPosition 0 0 0
-exposedField SFRotation currentRotation 0 0 0 0
-exposedField SFVec3f XlastChange 0 0 0
-exposedField SFVec3f YlastChange 0 0 0
-exposedField SFVec3f ZlastChange 0 0 0
-exposedField SFFloat ROTlastChange 0
+field SFNode initialT1 USE T1
+field SFVec3f initialPosition 0 0 0
+field SFRotation initialRotation 0 1 0 0
+field SFVec3f currentPosition 0 0 0
+field SFRotation currentRotation 0 0 0 0
+field SFVec3f XlastChange 0 0 0
+field SFVec3f YlastChange 0 0 0
+field SFVec3f ZlastChange 0 0 0
+field SFFloat ROTlastChange 0
 eventOut SFVec3f position_changed
 eventOut SFRotation rotation_changed
 eventOut SFVec3f new_position IS newPosition
@@ -380,6 +381,8 @@ function attributesFromServer(v){
  attributes_changed = v;
 }
 function initialize() {
+ initialRotation = initialT1.rotation;
+ initialPosition = initialT1.translation;
  currentRotation = initialRotation;
  currentPosition = initialPosition;
 }
