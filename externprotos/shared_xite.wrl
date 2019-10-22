@@ -11,7 +11,7 @@ exposedField MFNode children
 eventIn MFNode addChildren
 eventIn MFNode removeChildren
 ]
-["urn:inet:blaxxun.com:node:HUD","nodes.wrl#HUD"]
+["urn:inet:blaxxun.com:node:HUD","nodes_xite.wrl#HUD"]
 
 PROTO BlaxxunZone [ 
 eventIn         MFNode   addEvents 

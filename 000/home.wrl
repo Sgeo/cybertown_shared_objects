@@ -32,7 +32,7 @@ eventOut SFBool isOver
 eventOut SFTime touchTime
 eventOut SFVec3f newPosition
 eventOut SFRotation newRotation
-] "/externprotos/shared.wrl#SharedObject"
+] "/externprotos/shared_xite.wrl#SharedObject"
 
 DEF Scene Group {}
 NavigationInfo {
