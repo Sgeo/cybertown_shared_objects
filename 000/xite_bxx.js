@@ -17,9 +17,7 @@ X3D(function() {
                 return prox.orientation_changed;
             } });
             
-            browserProto.getTime = function() {
-                return (new Date().getTime())/1000
-            }
+            browserProto.getTime = browserProto.getCurrentTime;
         }
     });
     
