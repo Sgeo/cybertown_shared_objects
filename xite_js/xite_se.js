@@ -57,6 +57,9 @@ BxxEvents.addEventListener("SE:toServer", function(e) {
                     console.log("No SharedZone detected!");
                     return;
                 }
+                
+                let eventNodeMap = new Map();
+                
                 for(let i = 0; i < sharedZone.events.length; i++) {
                     let eventNode = sharedZone.events[i];
                     for(let typeName of Object.keys(TYPES)) {
@@ -65,7 +68,20 @@ BxxEvents.addEventListener("SE:toServer", function(e) {
                             BxxEvents.dispatchEvent(new CustomEvent("SE:toServer", {detail: eventObj}));
                         });
                     }
+                    
+                    if(!eventNodeMap.has(eventNode.name)) {
+                        eventNodeMap.set(eventNode.name, []);
+                    }
+                    eventNodeMap.get(eventNode.name).push(eventNode);
+                    
                 }
+                
+                BxxEvents.addEventListener("SE:fromServer", function(e) {
+                    let eventObj = e.detail;
+                    for(let node of eventNodeMap.get(eventObj.name)) {
+                        node[eventObj.type + "FromServer"] = TYPES[eventObj.type].fromJSON(eventObj.value);
+                    }
+                });
             }
         });
     });
