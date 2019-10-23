@@ -7,8 +7,6 @@ WorldInfo {
  ]
 }
 
-Inline{	url "../../wbginline.wrl" } #burbs menusensor navigation on pop-up	PSHII & qbertrocks 11/02
-
 PROTO BlaxxunZone [ 
  eventIn         MFNode   addEvents 
  eventIn         MFNode   removeEvents 
