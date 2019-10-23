@@ -1,3 +1,7 @@
+BxxEvents.addEventListener("SO:upload:position", e => console.log(e));
+BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
+
+
 (function() {
     function addSO(browser, obj) {
         let sharedObject = browser.currentScene.createProto("SharedObject");
@@ -9,6 +13,28 @@
         inline.url = new X3D.MFString(obj.url);
         sharedObject.children[0] = inline;
         browser.currentScene.addRootNode(sharedObject);
+        
+        sharedObject.addFieldCallback("newPosition", {}, function(pos) {
+            BxxEvents.dispatchEvent(new CustomEvent("SO:upload:position", {
+                detail: {
+                    x: pos.x,
+                    y: pos.y,
+                    z: pos.z
+                }
+            }));
+        });
+        
+        sharedObject.addFieldCallback("newRotation", {}, function(rot) {
+            BxxEvents.dispatchEvent(new CustomEvent("SO:upload:rotation", {
+                detail: {
+                    x: rot.x,
+                    y: rot.y,
+                    z: rot.z,
+                    angle: rot.angle
+                }
+            }));
+        });
+        
         return sharedObject
     }
     
