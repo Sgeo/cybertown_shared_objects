@@ -1,3 +1,4 @@
+BxxEvents = new EventTarget();
 
 X3D(function() {
     let browser = X3D.getBrowser();
