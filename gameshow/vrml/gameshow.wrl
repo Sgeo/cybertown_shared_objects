@@ -7,6 +7,8 @@ WorldInfo {
  ]
 }
 
+NavigationInfo { type ["WALK" "ANY"] }
+
 PROTO BlaxxunZone [ 
  eventIn         MFNode   addEvents 
  eventIn         MFNode   removeEvents 
@@ -3223,37 +3225,37 @@ DEF BlueScoreScript Script {
   eventOut MFString    blue_score
   url "vrmlscript:
       function scoreZero( ) {
-          blue_score = 0;
+          blue_score = new MFString(0);
       }
       function scoreOne( ) {
-          blue_score = 1;
+          blue_score = new MFString(1);
       }
       function scoreTwo( ) {
-          blue_score = 2;
+          blue_score = new MFString(2);
       }
       function scoreThree( ) {
-          blue_score = 3;
+          blue_score = new MFString(3);
       }
       function scoreFour( ) {
-          blue_score = 4;
+          blue_score = new MFString(4);
       }
       function scoreFive( ) {
-          blue_score = 5;
+          blue_score = new MFString(5);
       }
       function scoreSix( ) {
-          blue_score = 6;
+          blue_score = new MFString(6);
       }
       function scoreSeven( ) {
-          blue_score = 7;
+          blue_score = new MFString(7);
       }
       function scoreEight( ) {
-          blue_score = 8;
+          blue_score = new MFString(8);
       }
       function scoreNine( ) {
-          blue_score = 9;
+          blue_score = new MFString(9);
       }
       function scoreTen( ) {
-          blue_score = 10;
+          blue_score = new MFString(10);
       }
 
       "
@@ -3274,37 +3276,37 @@ DEF RedScoreScript Script {
  eventOut MFString red_score
  url "vrmlscript:
    function scoreZero( ) {
-     red_score = 0;
+     red_score = new MFString(0);
      }
    function scoreOne( ) {
-     red_score = 1;
+     red_score = new MFString(1);
      }
    function scoreTwo( ) {
-     red_score = 2;
+     red_score = new MFString(2);
      }
         function scoreThree( ) {
-          red_score = 3;
+          red_score = new MFString(3);
       }
       function scoreFour( ) {
-          red_score = 4;
+          red_score = new MFString(4);
       }
       function scoreFive( ) {
-          red_score = 5;
+          red_score = new MFString(5);
       }
       function scoreSix( ) {
-          red_score = 6;
+          red_score = new MFString(6);
       }
       function scoreSeven( ) {
-          red_score = 7;
+          red_score = new MFString(7);
       }
       function scoreEight( ) {
-          red_score = 8;
+          red_score = new MFString(8);
       }
       function scoreNine( ) {
-          red_score = 9;
+          red_score = new MFString(9);
       }
       function scoreTen( ) {
-          red_score = 10;
+          red_score = new MFString(10);
       }
  "
 }
@@ -3534,44 +3536,44 @@ DEF GameSelectionScript Script {
   eventOut MFString     selectedGameImage
   url "vrmlscript:
       function selectGame1( ) {
-            selectedGameText = '1: Black Sun Club';
-            selectedGameImage = 'game1.jpg';
+            selectedGameText = new MFString('1: Black Sun Club');
+            selectedGameImage = new MFString('game1.jpg');
       }
       function selectGame2( ) {
-            selectedGameText = '2: Water Park';
-            selectedGameImage = 'game2.jpg';
+            selectedGameText = new MFString('2: Water Park');
+            selectedGameImage = new MFString('game2.jpg');
       }
       function selectGame3( ) {
-            selectedGameText = '3: City Hall';
-            selectedGameImage = 'game3.jpg';
+            selectedGameText = new MFString('3: City Hall');
+            selectedGameImage = new MFString('game3.jpg');
       }
       function selectGame4( ) {
-            selectedGameText = '4: Virtual Worlds';
-            selectedGameImage = 'game4.jpg';
+            selectedGameText = new MFString('4: Virtual Worlds');
+            selectedGameImage = new MFString('game4.jpg');
       }
       function selectGame5( ) {
-            selectedGameText = '5: Inner Realms';
-            selectedGameImage = 'game5.jpg';
+            selectedGameText = new MFString('5: Inner Realms');
+            selectedGameImage = new MFString('game5.jpg');
       }
       function selectGame6( ) {
-            selectedGameText = '6: Jail';
-            selectedGameImage = 'game6.jpg';
+            selectedGameText = new MFString('6: Jail');
+            selectedGameImage = new MFString('game6.jpg');
       }
       function selectGame7( ) {
-            selectedGameText = '7: Employment';
-            selectedGameImage = 'game7.jpg';
+            selectedGameText = new MFString('7: Employment');
+            selectedGameImage = new MFString('game7.jpg');
       }
       function selectGame8( ) {
-            selectedGameText = '8: SciFi Plaza';
-            selectedGameImage = 'game8.jpg';
+            selectedGameText = new MFString('8: SciFi Plaza');
+            selectedGameImage = new MFString('game8.jpg');
       }
       function selectGame9( ) {
-            selectedGameText = '9: Mall';
-            selectedGameImage = 'game9.jpg';
+            selectedGameText = new MFString('9: Mall');
+            selectedGameImage = new MFString('game9.jpg');
       }
       function selectGame10( ) {
-            selectedGameText = '10: Sunset Beach';
-            selectedGameImage = 'game10.jpg';
+            selectedGameText = new MFString('10: Sunset Beach');
+            selectedGameImage = new MFString('game10.jpg');
       }
   "
 }
