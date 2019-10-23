@@ -17,9 +17,13 @@ BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
         sharedObject.addFieldCallback("newPosition", {}, function(pos) {
             BxxEvents.dispatchEvent(new CustomEvent("SO:upload:position", {
                 detail: {
-                    x: pos.x,
-                    y: pos.y,
-                    z: pos.z
+                    id: sharedObject.id,
+                    type: "position",
+                    value: {
+                        x: pos.x,
+                        y: pos.y,
+                        z: pos.z
+                    }
                 }
             }));
         });
@@ -27,10 +31,14 @@ BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
         sharedObject.addFieldCallback("newRotation", {}, function(rot) {
             BxxEvents.dispatchEvent(new CustomEvent("SO:upload:rotation", {
                 detail: {
-                    x: rot.x,
-                    y: rot.y,
-                    z: rot.z,
-                    angle: rot.angle
+                    id: sharedObject.id,
+                    type: "rotation",
+                    value: {
+                        x: rot.x,
+                        y: rot.y,
+                        z: rot.z,
+                        angle: rot.angle
+                    }
                 }
             }));
         });
