@@ -63,7 +63,7 @@ BxxEvents.addEventListener("SE:toServer", function(e) {
                 for(let i = 0; i < sharedZone.events.length; i++) {
                     let eventNode = sharedZone.events[i];
                     for(let typeName of Object.keys(TYPES)) {
-                        eventNode.addFieldCallback(typeName + "ToServer", {}, function(val) {
+                        eventNode.addFieldCallback(typeName + "ToServer", {}, function(val) { // TODO: confirm validity of adding to possibly non-existent field
                             let eventObj = {name: eventNode.name, type: typeName, value: TYPES[typeName].toJSON(val)};
                             BxxEvents.dispatchEvent(new CustomEvent("SE:toServer", {detail: eventObj}));
                         });
