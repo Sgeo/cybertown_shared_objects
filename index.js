@@ -21,6 +21,12 @@ io.on('connection', function(socket){
     console.log(msg);
     io.emit("SE", msg);
   });
+  socket.on("AV", function(msg) {
+    msg.id = socket.id;
+    msg.wrl = "/avatars/default.wrl";
+    console.log(msg);
+    socket.broadcast.emit("AV", msg);
+  });
 });
 
 

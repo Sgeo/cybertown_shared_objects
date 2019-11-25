@@ -37,30 +37,49 @@
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
                 
                 
+
+                
                 BxxEvents.addEventListener("AV:fromServer", async function(e) {
-                    let eventDetail = e.detail;
-                    let avatar = AVATARS.get(eventDetail.id);
-                    let avImport;
-                    if(avatar) {
-                        avImport = avatar["import"];
-                    } else {
-                        let avInline = await loadInlineAsync(browser, eventDetail.wrl);
+                    let eventData = e.detail;
+                    let avatar = AVATARS.get(eventData.id);
+                    if(!avatar) {
+                        avatar = {};
+                        AVATARS.set(eventData.id, avatar);
+                    }
+                    avatar.transform = {};
+                    if(eventData.translation) {
+                        avatar.transform.translation = eventData.translation;
+                    }
+                    if(eventData.rotation) {
+                        avatar.transform.rotation = eventData.rotation;
+                    }
+                    
+                    if(!avatar.loading && !avatar.loaded) {
+                        avatar.loading = true;
+                        let avInline = await loadInlineAsync(browser, eventData.wrl);
                         let uniqueID = unique("Av-");
                         browser.currentScene.updateImportedNode(avInline, "Avatar", uniqueID);
                         avImport = browser.currentScene.getImportedNode(uniqueID);
                         browser.currentScene.addRootNode(avInline);
-                        AVATARS.set(eventDetail.id, { "inline": avInline, "import": avImport});
+                        avatar.loading = false;
+                        avatar.loaded = true;
+                        avatar["inline"] = avInline;
+                        avatar["import"] = avImport;
                     }
-                    if(eventDetail.translation) {
-                        avImport.set_translation.x = eventDetail.translation.x;
-                        avImport.set_translation.y = eventDetail.translation.y;
-                        avImport.set_translation.z = eventDetail.translation.z;
-                    }
-                    if(eventDetail.rotation) {
-                        avImport.set_rotation.x = eventDetail.rotation.x;
-                        avImport.set_rotation.y = eventDetail.rotation.y;
-                        avImport.set_rotation.z = eventDetail.rotation.z;
-                        avImport.set_rotation.angle = eventDetail.rotation.angle;
+                    
+                    // avatar.transform may have changed during above await;
+                    if(avatar["inline"]) {
+                        if(avatar.transform.translation) {
+                            avatar["import"].set_translation.x = avatar.transform.translation.x;
+                            avatar["import"].set_translation.y = avatar.transform.translation.y;
+                            avatar["import"].set_translation.z = avatar.transform.translation.z;
+                        }
+                        if(avatar.transform.rotation) {
+                            avatar["import"].set_rotation.x = avatar.transform.rotation.x;
+                            avatar["import"].set_rotation.y = avatar.transform.rotation.y;
+                            avatar["import"].set_rotation.z = avatar.transform.rotation.z;
+                            avatar["import"].set_rotation.angle = avatar.transform.rotation.angle;
+                        }
                     }
                 });
             }
