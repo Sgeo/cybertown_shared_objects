@@ -1,9 +1,18 @@
 (function() {
     
+    let uniqValue = 0;
+    function unique(prefix) {
+        uniqValue += 1;
+        return prefix + uniqValue.toString();
+    }
+    
+    let AVATARS = new Map();
+    
     function loadInlineAsync(browser, url) {
         browser.endUpdate();
         let inline = browser.currentScene.createNode("Inline");
         inline.url = new X3D.MFString(url);
+        console.log(inline.url);
         let loadSensor = browser.currentScene.createNode("LoadSensor");
         loadSensor.watchList[0] = inline;
         let callbackKey = {};
@@ -23,16 +32,37 @@
     
     X3D(function() {
         let browser = X3D.getBrowser();
-        browser.addBrowserCallback({}, async function(eventType) {
+        browser.addBrowserCallback({}, function(eventType) {
             console.log(eventType);
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
                 
-                let avInline = await loadInlineAsync(browser, "/avatars/default.wrl");
-                browser.currentScene.updateImportedNode(avInline, "Avatar", "DefaultAvatar");
-                window.avImport = browser.currentScene.getImportedNode("DefaultAvatar")
-                console.log(window.avImport);
-                browser.currentScene.addRootNode(avInline);
-                avImport.set_translation = new X3D.SFVec3f(0.0, 2.0, 0.0);
+                
+                BxxEvents.addEventListener("AV:fromServer", async function(e) {
+                    let eventDetail = e.detail;
+                    let avatar = AVATARS.get(eventDetail.id);
+                    let avImport;
+                    if(avatar) {
+                        avImport = avatar["import"];
+                    } else {
+                        let avInline = await loadInlineAsync(browser, eventDetail.wrl);
+                        let uniqueID = unique("Av-");
+                        browser.currentScene.updateImportedNode(avInline, "Avatar", uniqueID);
+                        avImport = browser.currentScene.getImportedNode(uniqueID);
+                        browser.currentScene.addRootNode(avInline);
+                        AVATARS.set(eventDetail.id, { "inline": avInline, "import": avImport});
+                    }
+                    if(eventDetail.translation) {
+                        avImport.set_translation.x = eventDetail.translation.x;
+                        avImport.set_translation.y = eventDetail.translation.y;
+                        avImport.set_translation.z = eventDetail.translation.z;
+                    }
+                    if(eventDetail.rotation) {
+                        avImport.set_rotation.x = eventDetail.rotation.x;
+                        avImport.set_rotation.y = eventDetail.rotation.y;
+                        avImport.set_rotation.z = eventDetail.rotation.z;
+                        avImport.set_rotation.angle = eventDetail.rotation.angle;
+                    }
+                });
             }
         });
     });
