@@ -2573,7 +2573,8 @@ for(i=876;i<880;i++){W[i]=m4.multVecMatrix(V[i]);}
  ROUTE Walker.walkFrac TO Welder.fooEvents
 }#PROTO Avatar
 #------------------------------------------------------
-Avatar{}
+DEF Avatar Avatar{}
+EXPORT Avatar
 
 #[AVATAR STUDIO]
 

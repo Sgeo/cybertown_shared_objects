@@ -70,15 +70,10 @@
                     // avatar.transform may have changed during above await;
                     if(avatar["inline"]) {
                         if(avatar.transform.translation) {
-                            avatar["import"].set_translation.x = avatar.transform.translation.x;
-                            avatar["import"].set_translation.y = avatar.transform.translation.y;
-                            avatar["import"].set_translation.z = avatar.transform.translation.z;
+                            avatar["import"].set_position = new X3D.SFVec3f(avatar.transform.translation.x, avatar.transform.translation.y, avatar.transform.translation.z);
                         }
                         if(avatar.transform.rotation) {
-                            avatar["import"].set_rotation.x = avatar.transform.rotation.x;
-                            avatar["import"].set_rotation.y = avatar.transform.rotation.y;
-                            avatar["import"].set_rotation.z = avatar.transform.rotation.z;
-                            avatar["import"].set_rotation.angle = avatar.transform.rotation.angle;
+                            avatar["import"].rotation = new X3D.SFRotation(avatar.transform.rotation.x, avatar.transform.rotation.y, avatar.transform.rotation.z, avatar.transform.rotation.angle);
                         }
                     }
                 });

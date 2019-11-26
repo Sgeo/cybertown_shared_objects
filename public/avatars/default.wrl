@@ -2,7 +2,7 @@
 
 PROTO Avatar [
 exposedField SFBool isAvatar TRUE
-exposedField SFVec3f translation 0 1.75 0
+exposedField SFVec3f position 0 1.75 0
 exposedField SFRotation rotation 0 1 0 0
 exposedField SFTime gesture1 0
 exposedField SFTime gesture2 0
@@ -15,7 +15,7 @@ exposedField SFTime gesture8 0
 exposedField MFString gestureNames ["Hallo","Hey","Agree","Like","Dislike","Disagree","Not now","Good bye","Appear","Disappear"]
 ]
 {
-Transform { scale 0.1 0.1 0.1 translation IS translation rotation IS rotation
+Transform { scale 0.1 0.1 0.1 translation IS position rotation IS rotation
 children [
 Anchor { url "" parameter IS gestureNames },
 Transform {
