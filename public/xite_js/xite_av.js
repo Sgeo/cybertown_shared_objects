@@ -1,5 +1,6 @@
 (function() {
     
+    
     let uniqValue = 0;
     function unique(prefix) {
         uniqValue += 1;
@@ -31,6 +32,9 @@
     }
     
     X3D(function() {
+        
+        const ROTATE180 = new X3D.SFRotation(0, 1, 0, Math.PI);
+        
         let browser = X3D.getBrowser();
         browser.addBrowserCallback({}, function(eventType) {
             console.log(eventType);
@@ -73,7 +77,7 @@
                             avatar["import"].set_position = new X3D.SFVec3f(avatar.transform.translation.x, avatar.transform.translation.y, avatar.transform.translation.z);
                         }
                         if(avatar.transform.rotation) {
-                            avatar["import"].rotation = new X3D.SFRotation(avatar.transform.rotation.x, avatar.transform.rotation.y, avatar.transform.rotation.z, avatar.transform.rotation.angle);
+                            avatar["import"].rotation = ROTATE180.multiply(new X3D.SFRotation(avatar.transform.rotation.x, avatar.transform.rotation.y, avatar.transform.rotation.z, avatar.transform.rotation.angle));
                         }
                     }
                 });
