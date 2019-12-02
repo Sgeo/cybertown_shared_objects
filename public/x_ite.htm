@@ -19,6 +19,11 @@
                 browser.setAttribute("src", worldURL);
                 document.querySelector("#world").appendChild(browser);
                 BxxEvents.dispatchEvent(new CustomEvent("INIT"));
+                X3D.getBrowser().addBrowserCallback({}, function(eventType) {
+                    if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
+                        BxxEvents.dispatchEvent(new CustomEvent("INIT:network"));
+                    }
+                });
             });
         })();
     </script>
