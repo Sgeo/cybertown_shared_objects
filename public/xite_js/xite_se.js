@@ -2,10 +2,10 @@
 // SE:toServer triggered when VRML wants to send events to the server
 // SE:fromServer should be triggered on incoming events
 
-BxxEvents.addEventListener("SE:toServer", function(e) {
-    console.log("Event:", e.detail);
-    BxxEvents.dispatchEvent(new CustomEvent("SE:fromServer", {detail: e.detail}));
-});
+//BxxEvents.addEventListener("SE:toServer", function(e) {
+//    console.log("Event:", e.detail);
+//    BxxEvents.dispatchEvent(new CustomEvent("SE:fromServer", {detail: e.detail}));
+//});
 
 (function() {
     const TYPES = {
