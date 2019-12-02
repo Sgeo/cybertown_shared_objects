@@ -6,14 +6,21 @@
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="https://code.create3000.de/x_ite/4.6.8/dist/x_ite.min.js"></script>
     <script type="text/javascript">
-        window.addEventListener("hashchange", function(e) {
-            location.reload();
-        });
-        X3D(function() {
-            let browser = X3D.createBrowser();
-            browser.setAttribute("src", location.hash.substr(1));
-            document.querySelector("#world").appendChild(browser);
-        });
+        (async function() {
+            window.addEventListener("hashchange", function(e) {
+                location.reload();
+            });
+            const [worldID, subroom] = location.hash.substr(1).split("|");
+            const worldData = await fetch("/data/worlds.json").then(resp => resp.json()).then(worlds => worlds[worldID]);
+            const worldURL = worldData.url;
+            const room = worldData.room + (subroom ? "|" + subroom : "");
+            X3D(function() {
+                let browser = X3D.createBrowser();
+                browser.setAttribute("src", worldURL);
+                document.querySelector("#world").appendChild(browser);
+                BxxEvents.dispatchEvent(new CustomEvent("INIT"));
+            });
+        })();
     </script>
     <script type="text/javascript" src="/xite_js/xite_bxx.js"></script>
     <!--<script type="text/javascript" src="/xite_js/xite_so.js"></script>-->

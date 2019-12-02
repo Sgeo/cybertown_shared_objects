@@ -47,7 +47,7 @@
         }
     };
     
-    X3D(function() {
+    BxxEvents.addEventListener("INIT", function() {
         X3D.getBrowser().addBrowserCallback({}, function(eventType) {
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
                 let sharedZone;

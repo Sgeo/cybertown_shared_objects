@@ -46,7 +46,7 @@ BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
         return sharedObject
     }
     
-    X3D(function() {
+    BxxEvents.addEventListener("INIT", function() {
         console.log("Browser ready");
         let browser = X3D.getBrowser();
         window.SOs = new Map();

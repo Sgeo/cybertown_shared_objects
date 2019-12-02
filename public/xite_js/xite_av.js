@@ -31,7 +31,7 @@
         return promise;
     }
     
-    X3D(function() {
+    BxxEvents.addEventListener("INIT", function() {
         
         const ROTATE180 = new X3D.SFRotation(0, 1, 0, Math.PI);
         

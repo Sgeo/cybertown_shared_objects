@@ -1,6 +1,6 @@
 BxxEvents = new EventTarget();
 
-X3D(function() {
+BxxEvents.addEventListener("INIT", function() {
     let browser = X3D.getBrowser();
     let browserProto = Object.getPrototypeOf(browser);
     browser.addBrowserCallback({}, function(eventType) {
