@@ -81,6 +81,19 @@
                         }
                     }
                 });
+                
+                BxxEvents.addEventListener("AV:fromServer:del", async function(e) {
+                    let id = e.detail;
+                    let avatar = AVATARS.get(id);
+                    if(avatar.inline) {
+                        browser.currentScene.removeRootNode(avatar.inline);
+                    }
+                    if(avatar.import) {
+                        console.log(avatar.import.getImportedName());
+                        browser.currentScene.removeImportedNode(avatar.import.getImportedName());
+                    }
+                    AVATARS.delete(id);
+                });
             }
         });
     });

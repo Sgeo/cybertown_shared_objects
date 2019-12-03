@@ -12,4 +12,7 @@ BxxEvents.addEventListener("INIT:network", function(){
   socket.on("AV", function(e) {
     BxxEvents.dispatchEvent(new CustomEvent("AV:fromServer", {detail: e}));
   });
-})();
+  socket.on("AV:del", function(e) {
+    BxxEvents.dispatchEvent(new CustomEvent("AV:fromServer:del", {detail: e}));
+  });
+});

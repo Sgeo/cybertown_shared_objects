@@ -19,11 +19,11 @@ let AVATARS = new Map();
 
 io.on('connection', function(socket){
   console.log('a user connected');
-  AVATARS.set(socket.id, {translation: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 1, z: 0, angle: 0}});
   for(let [id, av] of AVATARS) {
     console.log("Preexisting:", [id, av]);
     socket.emit("AV", {id: id, wrl: "/avatars/default.wrl", translation: av.translation, rotation: av.rotation});
   }
+  AVATARS.set(socket.id, {translation: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 1, z: 0, angle: 0}});
   socket.on("SE", function(msg) {
     console.log(msg);
     io.emit("SE", msg);
@@ -41,6 +41,10 @@ io.on('connection', function(socket){
         AVATARS.get(socket.id).rotation = msg.rotation;
       }
     }
+  });
+  socket.on("disconnect", function() {
+    AVATARS.delete(socket.id);
+    io.emit("AV:del", socket.id);
   });
 });
 
