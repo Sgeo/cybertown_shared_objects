@@ -1,5 +1,5 @@
-BxxEvents.addEventListener("SO:upload:position", e => console.log(e));
-BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
+BxxEvents.addEventListener("SO:toServer:position", e => console.log(e));
+BxxEvents.addEventListener("SO:toServer:rotation", e => console.log(e));
 
 
 (function() {
@@ -15,7 +15,7 @@ BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
         browser.currentScene.addRootNode(sharedObject);
         
         sharedObject.addFieldCallback("newPosition", {}, function(pos) {
-            BxxEvents.dispatchEvent(new CustomEvent("SO:upload:position", {
+            BxxEvents.dispatchEvent(new CustomEvent("SO:toServer:position", {
                 detail: {
                     id: sharedObject.id,
                     type: "position",
@@ -29,7 +29,7 @@ BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
         });
         
         sharedObject.addFieldCallback("newRotation", {}, function(rot) {
-            BxxEvents.dispatchEvent(new CustomEvent("SO:upload:rotation", {
+            BxxEvents.dispatchEvent(new CustomEvent("SO:toServer:rotation", {
                 detail: {
                     id: sharedObject.id,
                     type: "rotation",
@@ -49,16 +49,14 @@ BxxEvents.addEventListener("SO:upload:rotation", e => console.log(e));
     BxxEvents.addEventListener("INIT", function() {
         console.log("Browser ready");
         let browser = X3D.getBrowser();
-        window.SOs = new Map();
-        browser.addBrowserCallback({}, async function(eventType) {
-            console.log(eventType);
+        browser.addBrowserCallback({}, function(eventType) {
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
-                
-                let SOs = await fetch("SOs.json").then(resp => resp.json());
-                for(sharedObject of SOs) {
+                window.SOs = new Map();
+                BxxEvents.addEventListener("SO:fromServer:existingObject", function(e) {
+                    let sharedObject = e.detail;
                     let sharedObjectInstance = addSO(browser, sharedObject);
                     window.SOs.set(sharedObject.id, sharedObjectInstance);
-                }
+                });
             }
         });
     });
