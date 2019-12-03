@@ -1,4 +1,4 @@
-(function(){
+BxxEvents.addEventListener("INIT:network", function(){
   let socket = io();
   BxxEvents.addEventListener("SE:toServer", function(e) {
     socket.emit("SE", e.detail);

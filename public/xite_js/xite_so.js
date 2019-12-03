@@ -46,7 +46,8 @@ BxxEvents.addEventListener("SO:toServer:rotation", e => console.log(e));
         return sharedObject
     }
     
-    X3D(function() {
+    BxxEvents.addEventListener("INIT", function() {
+        console.log("Browser ready");
         let browser = X3D.getBrowser();
         browser.addBrowserCallback({}, function(eventType) {
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
