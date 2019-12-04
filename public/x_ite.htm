@@ -21,7 +21,16 @@
                 BxxEvents.dispatchEvent(new CustomEvent("INIT"));
                 X3D.getBrowser().addBrowserCallback({}, function(eventType) {
                     if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
-                        BxxEvents.dispatchEvent(new CustomEvent("INIT:network"));
+                        let { x: pos_x, y: pos_y, z: pos_z } = X3D.getBrowser().viewpointPosition;
+                        let { x: rot_x, y: rot_y, z: rot_z, angle: rot_angle } = X3D.getBrowser().viewpointOrientation;
+                        BxxEvents.dispatchEvent(new CustomEvent("INIT:network", {
+                            detail: {
+                                room: room,
+                                avatar: localStorage.getItem("avatar") || "default",
+                                pos: {x: pos_x, y: pos_y, z: pos_z},
+                                rot: {x: rot_x, y: rot_y, z: rot_z, angle: rot_angle}
+                            }
+                        }));
                     }
                 });
             });

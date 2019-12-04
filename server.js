@@ -17,34 +17,48 @@ app.get('/', (req, res) => {
 
 let AVATARS = new Map();
 
-io.on('connection', function(socket){
+io.on('connection', async function(socket){
   console.log('a user connected');
-  for(let [id, av] of AVATARS) {
-    console.log("Preexisting:", [id, av]);
-    socket.emit("AV", {id: id, wrl: "/avatars/default.wrl", translation: av.translation, rotation: av.rotation});
+  let initDetail;
+  try {
+    initDetail = await new Promise((resolve, reject) => { socket.on("JOIN", resolve); setTimeout(() => reject("Timed out waiting for JOIN"), 10000); });
+  } catch(e) {
+    console.error(e);
+    return;
   }
-  AVATARS.set(socket.id, {translation: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 1, z: 0, angle: 0}});
+  for(let [other_socket, av] of AVATARS) {
+    if(AVATARS.get(other_socket).room === initDetail.room) {
+      console.log("Preexisting:", [other_socket.id, av]);
+      socket.emit("AV", {id: other_socket.id, wrl: "/avatars/default.wrl", translation: av.translation, rotation: av.rotation});
+      other_socket.emit("AV", {id: socket.id, wrl: "/avatars/default.wrl", translation: initDetail.pos, rotation: initDetail.rot});
+      console.log("Telling other user that new avatar is", {id: socket.id, wrl: "/avatars/default.wrl", translation: initDetail.pos, rotation: initDetail.rot});
+    }
+  }
+  console.log(AVATARS);
+  AVATARS.set(socket, {translation: initDetail.pos, rotation: initDetail.rot, avatar: initDetail.avatar, room: initDetail.room});
+  socket.join(initDetail.room);
   socket.on("SE", function(msg) {
     console.log(msg);
-    io.emit("SE", msg);
+    io.to(AVATARS.get(socket).room).emit("SE", msg);
   });
   socket.on("AV", function(msg) {
     msg.id = socket.id;
     msg.wrl = "/avatars/default.wrl";
     console.log(msg);
-    socket.broadcast.emit("AV", msg);
-    if(AVATARS.get(socket.id)) {
+    console.log(AVATARS.get(socket).room);
+    socket.to(AVATARS.get(socket).room).emit("AV", msg);
+    if(AVATARS.get(socket)) {
       if(msg.translation) {
-        AVATARS.get(socket.id).translation = msg.translation;
+        AVATARS.get(socket).translation = msg.translation;
       }
       if(msg.rotation) {
-        AVATARS.get(socket.id).rotation = msg.rotation;
+        AVATARS.get(socket).rotation = msg.rotation;
       }
     }
   });
   socket.on("disconnect", function() {
-    AVATARS.delete(socket.id);
-    io.emit("AV:del", socket.id);
+    io.to(AVATARS.get(socket).room).emit("AV:del", socket.id);
+    AVATARS.delete(socket);
   });
 });
 
