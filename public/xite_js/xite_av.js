@@ -115,8 +115,7 @@
                         browser.currentScene.removeRootNode(avatar.inline);
                     }
                     if(avatar.import) {
-                        console.log(avatar.import.getImportedName());
-                        browser.currentScene.removeImportedNode(avatar.import.getImportedName());
+                        avatar.import.dispose();
                     }
                     AVATARS.delete(id);
                 });
