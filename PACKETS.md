@@ -42,5 +42,24 @@ Avatar update packet. Sent client->server and server->client.
 * rot
   * Array of 4 floats: x, y, z, angle.
 
+## SE
+
+Shared event packet. Sent client->server and server->client.
+
+* name
+  * name of the event
+* type
+  * VRML type of the event. One of:
+    * bool
+    * color
+    * float
+    * int32
+    * rotation
+    * string
+    * time
+    * vec2f
+    * vec3f
+* value
+  * JSONized value of event
 
 
