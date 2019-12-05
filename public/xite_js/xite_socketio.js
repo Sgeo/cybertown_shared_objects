@@ -16,5 +16,19 @@ BxxEvents.addEventListener("INIT:network", function(e){
   socket.on("AV:del", function(e) {
     BxxEvents.dispatchEvent(new CustomEvent("AV:fromServer:del", {detail: e}));
   });
-  socket.emit("JOIN", initDetail);
+  socket.on("AV:new", function(e) {
+    BxxEvents.dispatchEvent(new CustomEvent("AV:fromServer:new", {detail: e}));
+  });
+  socket.emit("JOIN", {
+      avatar: initDetail.avatar,
+      room: initDetail.room
+  }, function() {
+      // JOIN ACK
+      console.log("Got JOIN ack");
+      const browser = X3D.getBrowser();
+      socket.emit("AV", {detail: {
+          pos: [browser.viewpointPosition.x, browser.viewpointPosition.y, browser.viewpointPosition.z],
+          rot: [browser.viewpointOrientation.x, browser.viewpointOrientation.y, browser.viewpointOrientation.z, browser.viewpointOrientation.angle]
+      }});
+  });
 });

@@ -31,7 +31,8 @@
         return promise;
     }
     
-    BxxEvents.addEventListener("INIT", function() {
+    BxxEvents.addEventListener("INIT", function(initEvent) {
+        const avatarsData = initEvent.detail.avatarsData;
         
         const ROTATE180 = new X3D.SFRotation(0, 1, 0, Math.PI);
         
@@ -41,26 +42,25 @@
             if(eventType === X3D.X3DConstants.INITIALIZED_EVENT) {
                 
                 
-
-                
-                BxxEvents.addEventListener("AV:fromServer", async function(e) {
+                BxxEvents.addEventListener("AV:fromServer:new", async function(e) {
                     let eventData = e.detail;
                     let avatar = AVATARS.get(eventData.id);
                     if(!avatar) {
                         avatar = {};
                         AVATARS.set(eventData.id, avatar);
                     }
-                    avatar.transform = {};
-                    if(eventData.translation) {
-                        avatar.transform.translation = eventData.translation;
-                    }
-                    if(eventData.rotation) {
-                        avatar.transform.rotation = eventData.rotation;
-                    }
                     
                     if(!avatar.loading && !avatar.loaded) {
+                        let avURL;
+                        
+                        if(eventData.avatar && avatarsData[eventData.avatar] && avatarsData[eventData.avatar].url) {
+                            avURL = avatarsData[eventData.avatar].url;
+                        } else {
+                            avURL = avatarsData.default.url;
+                        }
+                        
                         avatar.loading = true;
-                        let avInline = await loadInlineAsync(browser, eventData.wrl);
+                        let avInline = await loadInlineAsync(browser, avURL);
                         let uniqueID = unique("Av-");
                         browser.currentScene.updateImportedNode(avInline, "Avatar", uniqueID);
                         avImport = browser.currentScene.getImportedNode(uniqueID);
@@ -71,13 +71,39 @@
                         avatar["import"] = avImport;
                     }
                     
-                    // avatar.transform may have changed during above await;
                     if(avatar["inline"]) {
-                        if(avatar.transform.translation) {
-                            avatar["import"].set_position = new X3D.SFVec3f(avatar.transform.translation.x, avatar.transform.translation.y, avatar.transform.translation.z);
+                        if(avatar.transform && avatar.transform.pos) {
+                            avatar["import"].set_position = new X3D.SFVec3f(...avatar.transform.pos);
                         }
-                        if(avatar.transform.rotation) {
-                            avatar["import"].rotation = ROTATE180.multiply(new X3D.SFRotation(avatar.transform.rotation.x, avatar.transform.rotation.y, avatar.transform.rotation.z, avatar.transform.rotation.angle));
+                        if(avatar.transform && avatar.transform.rot) {
+                            avatar["import"].rotation = ROTATE180.multiply(new X3D.SFRotation(...avatar.transform.rot));
+                        }
+                    }
+                });
+                
+                BxxEvents.addEventListener("AV:fromServer", async function(e) {
+                    let eventData = e.detail;
+                    let avatar = AVATARS.get(eventData.id);
+                    if(!avatar) {
+                        avatar = {};
+                        AVATARS.set(eventData.id, avatar);
+                    }
+                    if(!avatar.transform) {
+                        avatar.transform = {};
+                    }
+                    if(eventData.pos) {
+                        avatar.transform.pos = eventData.pos;
+                    }
+                    if(eventData.rot) {
+                        avatar.transform.rot = eventData.rot;
+                    }
+                    
+                    if(avatar["inline"]) {
+                        if(avatar.transform.pos) {
+                            avatar["import"].set_position = new X3D.SFVec3f(...avatar.transform.pos);
+                        }
+                        if(avatar.transform.rot) {
+                            avatar["import"].rotation = ROTATE180.multiply(new X3D.SFRotation(...avatar.transform.rot));
                         }
                     }
                 });

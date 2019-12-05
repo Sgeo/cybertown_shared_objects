@@ -19,37 +19,37 @@ let AVATARS = new Map();
 
 io.on('connection', async function(socket){
   console.log('a user connected');
-  AVATARS.set(socket, {translation: {x: 0, y: 0, z: 0}, rotation: {x: 0, y: 1, z: 0, angle: 0}});
+  AVATARS.set(socket, {pos: [0, 0, 0], rot: [0, 1, 0, 0]});
   socket.on("AV", function(msg) {
     msg.id = socket.id;
-    msg.wrl = "/avatars/default.wrl";
     console.log(msg);
     console.log(AVATARS.get(socket).room);
     if(AVATARS.get(socket) && AVATARS.get(socket).room) {
       socket.to(AVATARS.get(socket).room).emit("AV", msg);
     }
     if(AVATARS.get(socket)) {
-      if(msg.translation) {
-        AVATARS.get(socket).translation = msg.translation;
+      if(msg.pos) {
+        AVATARS.get(socket).pos = msg.pos;
       }
-      if(msg.rotation) {
-        AVATARS.get(socket).rotation = msg.rotation;
+      if(msg.rot) {
+        AVATARS.get(socket).rot = msg.rot;
       }
     }
   });
   let initDetail;
+  let ack; 
   try {
-    initDetail = await new Promise((resolve, reject) => { socket.on("JOIN", resolve); setTimeout(() => reject("Timed out waiting for JOIN"), 10000); });
+    [initDetail, ack] = await new Promise((resolve, reject) => { socket.on("JOIN", (data, ack) => { resolve([data, ack]); }); setTimeout(() => reject("Timed out waiting for JOIN"), 10000); });
   } catch(e) {
     console.error(e);
     return;
   }
   for(let [other_socket, av] of AVATARS) {
     if(AVATARS.get(other_socket).room === initDetail.room) {
-      console.log("Preexisting:", [other_socket.id, av]);
-      socket.emit("AV", {id: other_socket.id, wrl: "/avatars/default.wrl", translation: av.translation, rotation: av.rotation});
-      other_socket.emit("AV", {id: socket.id, wrl: "/avatars/default.wrl", translation: AVATARS.get(socket).translation, rotation: AVATARS.get(socket).rotation});
-      console.log("Telling other user that new avatar is", {id: socket.id, wrl: "/avatars/default.wrl", translation: AVATARS.get(socket).translation, rotation: AVATARS.get(socket).rotation});
+      socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar});
+      socket.emit("AV", {id: other_socket.id, pos: av.pos, rot: av.rot});
+      
+      other_socket.emit("AV:new", {id: socket.id, avatar: initDetail.avatar});
     }
   }
   console.log(AVATARS);
@@ -64,6 +64,7 @@ io.on('connection', async function(socket){
     io.to(AVATARS.get(socket).room).emit("AV:del", socket.id);
     AVATARS.delete(socket);
   });
+  ack(); // Acknolwedges to Client's JOIN that server is initialized
 });
 
 

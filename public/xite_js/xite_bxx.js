@@ -9,10 +9,10 @@ BxxEvents.addEventListener("INIT", function() {
             prox.size = new X3D.SFVec3f(1000000, 1000000, 1000000);
             prox.enabled = true;
             prox.addFieldCallback("position_changed", {}, function(val) { 
-                BxxEvents.dispatchEvent(new CustomEvent("AV:toServer", {detail: {translation: {x: val.x, y: val.y, z: val.z}}}));
+                BxxEvents.dispatchEvent(new CustomEvent("AV:toServer", {detail: {pos: [val.x, val.y, val.z]}}));
             });
             prox.addFieldCallback("orientation_changed", {}, function(val) { 
-                BxxEvents.dispatchEvent(new CustomEvent("AV:toServer", {detail: {rotation: {x: val.x, y: val.y, z: val.z, angle: val.angle}}}));
+                BxxEvents.dispatchEvent(new CustomEvent("AV:toServer", {detail: {rot: [val.x, val.y, val.z, val.angle]}}));
             });
             browser.currentScene.addRootNode(prox);
             console.log("Set up prox");
