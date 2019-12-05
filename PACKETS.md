@@ -37,9 +37,9 @@ Avatar update packet. Sent client->server and server->client.
 
 * id (server->client only)
   * Unique identifier of the user.
-* pos
+* pos (optional)
   * Array of 3 floats: x, y, z.
-* rot
+* rot (optional)
   * Array of 4 floats: x, y, z, angle.
 
 ## SE
