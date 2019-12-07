@@ -42,22 +42,67 @@
     <script type="text/javascript" src="/xite_js/xite_socketio.js"></script>
 
     <style type="text/css">
-    html, body {
-        height: 100%;
-    }
-    body {
-        margin: 0;
-    }
-
-X3DCanvas, .world {
-  height: 100%;
-  width: 100%;
-  scroll: none;
+html, body {
+height: 100%;
+Width: 100%;
+margin: 0;
+padding: 0;
+border: 0;
+Overflow: hidden;
 }
-    </style>
-  </head>
-  <body>
-    <div class="world" id="world">
-    </div>
-  </body>
+X3DCanvas {
+height: 100%;
+width: 100%;
+scroll: none;
+Overflow: hidden;
+}
+.world {
+height: 67%;
+width: 100%;
+scroll: none;
+Overflow: hidden;
+}
+.cc3d {
+height: 33%;
+width: 100%;
+scroll: none;
+Overflow: hidden;
+}
+.chatarea {
+height: 100%;
+width: 50%;
+Float: left;
+scroll: none;
+Overflow: hidden;
+position:relative;
+}
+.objarea {
+height: 100%;
+width: 50%;
+Float: right;
+scroll: none;
+Overflow: hidden;
+}
+.chatinput {
+position: absolute;
+width: 100%;
+bottom: 0;
+padding: 0;
+margin: 0;
+}
+</style>
+</head>
+<body>
+<div id="world" class="world">
+</div>
+<div class="cc3d">
+<div class="chatarea">
+<div id="chatlog">Chat here</div>
+<input type="text" id="chatinput" class="chatinput">
+</div>
+<div class="objarea">
+Objects ETC here
+</div>
+</div>
+</body>
 </html>
