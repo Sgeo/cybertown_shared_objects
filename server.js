@@ -60,6 +60,13 @@ io.on('connection', async function(socket){
     console.log(msg);
     io.to(AVATARS.get(socket).room).emit("SE", msg);
   });
+  socket.on("CHAT", function(chatdata) {
+    if(!chatdata || !chatdata.msg || typeof chatdata.msg !== "string") return;
+    console.log(chatdata);
+    if(AVATARS.get(socket).room) {
+      io.to(AVATARS.get(socket).room).emit("CHAT", {id: socket.id, msg: chatdata.msg});
+    }
+  });
   socket.on("disconnect", function() {
     io.to(AVATARS.get(socket).room).emit("AV:del", socket.id);
     AVATARS.delete(socket);

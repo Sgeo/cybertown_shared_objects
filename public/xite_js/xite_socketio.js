@@ -7,6 +7,12 @@ BxxEvents.addEventListener("INIT:network", function(e){
   socket.on("SE", function(e) {
     BxxEvents.dispatchEvent(new CustomEvent("SE:fromServer", {detail: e}));
   });
+  BxxEvents.addEventListener("CHAT:toServer", function(e) {
+    socket.emit("CHAT", e.detail);
+  });
+  socket.on("CHAT", function(e) {
+    BxxEvents.dispatchEvent(new CustomEvent("CHAT:fromServer", {detail: e}));
+  });
   BxxEvents.addEventListener("AV:toServer", function(e) {
     socket.emit("AV", e.detail);
   });
@@ -25,6 +31,7 @@ BxxEvents.addEventListener("INIT:network", function(e){
   }, function() {
       // JOIN ACK
       console.log("Got JOIN ack");
+      BxxEvents.dispatchEvent(new CustomEvent("CHAT:system", {detail: {msg: "Joined room."}}));
       const browser = X3D.getBrowser();
       socket.emit("AV", {detail: {
           pos: [browser.viewpointPosition.x, browser.viewpointPosition.y, browser.viewpointPosition.z],

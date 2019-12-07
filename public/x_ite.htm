@@ -40,7 +40,7 @@
     <script type="text/javascript" src="/xite_js/xite_se.js"></script>
     <script type="text/javascript" src="/xite_js/xite_av.js"></script>
     <script type="text/javascript" src="/xite_js/xite_socketio.js"></script>
-
+    <script type="text/javascript" src="/xite_js/xite_chat.js"></script>
     <style type="text/css">
 html, body {
 height: 100%;
@@ -72,8 +72,7 @@ Overflow: hidden;
 height: 100%;
 width: 50%;
 Float: left;
-scroll: none;
-Overflow: hidden;
+overflow: scroll;
 position:relative;
 }
 .objarea {
@@ -90,6 +89,12 @@ bottom: 0;
 padding: 0;
 margin: 0;
 }
+
+.submit {
+position:absolute;
+bottom:0;
+right:0;
+}
 </style>
 </head>
 <body>
@@ -97,8 +102,14 @@ margin: 0;
 </div>
 <div class="cc3d">
 <div class="chatarea">
-<div id="chatlog">Chat here</div>
+<div>
+<ul id="chatlog">
+</ul>
+</div>
+<form id="chatform">
 <input type="text" id="chatinput" class="chatinput">
+<input type="submit" class="submit">
+</form>
 </div>
 <div class="objarea">
 Objects ETC here
