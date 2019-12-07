@@ -1,5 +1,23 @@
 {
     "default": {
         "url": "/avatars/default.wrl"
+    },
+    "ne_game/redm": {
+        "url": "/places/ne_game/vrml/avatars/redm.wrl"
+    },
+    "ne_game/redf": {
+        "url": "/places/ne_game/vrml/avatars/redf.wrl"
+    },
+    "ne_game/bluem": {
+        "url": "/places/ne_game/vrml/avatars/bluem.wrl"
+    },
+    "ne_game/bluef": {
+        "url": "/places/ne_game/vrml/avatars/bluef.wrl"
+    },
+    "ne_game/gm": {
+        "url": "/places/ne_game/vrml/avatars/gm.wrl"
+    },
+    "ne_game/m": {
+        "url": "/places/ne_game/vrml/avatars/m.wrl"
     }
 }
