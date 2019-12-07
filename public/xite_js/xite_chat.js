@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
     BxxEvents.addEventListener("AV:fromServer:del", function(e) {
-        system(e.detail.id + " leaves.");
+        system(e.detail + " leaves.");
     });
 });
 
