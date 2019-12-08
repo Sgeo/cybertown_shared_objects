@@ -57,57 +57,71 @@ scroll: none;
 Overflow: hidden;
 }
 .world {
+Position: fixed;
+Top: 0;
+Left: 0;
 height: 67%;
 width: 100%;
 scroll: none;
 Overflow: hidden;
 }
-.cc3d {
-height: 33%;
-width: 100%;
-scroll: none;
-Overflow: hidden;
-}
 .chatarea {
-height: 100%;
+Position: fixed;
+Top: 67%;
+Left: 0;
+height: 30%;
 width: 50%;
-Float: left;
-overflow: scroll;
-position:relative;
+overflow-x: hidden;
+overflow-y: auto;
 }
 .objarea {
-height: 100%;
+Position: fixed;
+Top: 67%;
+Left: 50%;
+height: 33%;
 width: 50%;
-Float: right;
 scroll: none;
 Overflow: hidden;
 }
 .chatinput {
-position: absolute;
-width: 100%;
-bottom: 0;
+position: fixed;
+width: 50%;
+Top: 97%;
+Left: 0;
+Height: 3%;
 padding: 0;
 margin: 0;
+Overflow: hidden;
 }
-
 .submit {
-position:absolute;
-bottom:0;
-right:0;
+position: fixed;
+Top: 97%;
+right: 50%;
+}
+.width {
+Width: 100%;
+}
+textarea {
+max-width: 100%;
+}
+input.wide {
+display: block;
+width: 100%;
+padding: 0;
+border-width: 0;
 }
 </style>
 </head>
 <body>
 <div id="world" class="world">
 </div>
-<div class="cc3d">
 <div class="chatarea">
-<div>
 <ul id="chatlog">
 </ul>
 </div>
-<form id="chatform">
-<input type="text" id="chatinput" class="chatinput">
+<div class="chatinput">
+<form id="chatform" class="width">
+<input type="text" id="chatinput" class="width">
 <input type="submit" class="submit">
 </form>
 </div>
