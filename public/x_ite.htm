@@ -85,8 +85,7 @@ Overflow: hidden;
 }
 .chatinput {
 position: fixed;
-Min-width: 90%;
-Max-width: 100%;
+width: 100%;
 Top: 97%;
 Left: 0;
 Height: 3%;
@@ -94,11 +93,13 @@ padding: 0;
 margin: 0;
 Overflow: hidden;
 }
-
 .submit {
 position: fixed;
 Top: 97%;
 right: 50%;
+}
+.width {
+Width: 100%;
 }
 </style>
 </head>
@@ -110,8 +111,8 @@ right: 50%;
 </ul>
 </div>
 <div class="chatinput">
-<form id="chatform">
-<input type="text" id="chatinput">
+<form id="chatform" class="width">
+<input type="text" id="chatinput" class="width">
 <input type="submit" class="submit">
 </form>
 </div>
