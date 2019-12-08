@@ -57,50 +57,46 @@ scroll: none;
 Overflow: hidden;
 }
 .world {
-Position: absolute;
+Position: fixed;
 Top: 0;
+Right: 0;
 height: 67%;
 width: 100%;
 scroll: none;
 Overflow: hidden;
 }
-.cc3d {
-Position: absolute;
-Top: 67%;
-height: 33%;
-width: 100%;
-scroll: none;
-Overflow: hidden;
-}
 .chatarea {
-height: 100%;
+Position: fixed;
+Top: 67%;
+Right: 0;
+height: 30%;
 width: 50%;
-Float: left;
 overflow-x: hidden;
 overflow-y: auto;
-position:relative;
 }
 .objarea {
-height: 100%;
+Position: fixed;
+Top: 67%;
+Right: 50%;
+height: 33%;
 width: 50%;
-Float: right;
 scroll: none;
 Overflow: hidden;
 }
 .chatinput {
-position: absolute;
+position: fixed;
 width: 100%;
-Height: fit-content;
-bottom: 0;
+Top: 97%;
 Right: 0;
+Height: 3%;
 padding: 0;
 margin: 0;
 Overflow: hidden;
 }
 
 .submit {
-position:absolute;
-bottom:0;
+position: fixed;
+Top: 97%;
 right:0;
 }
 </style>
@@ -108,9 +104,7 @@ right:0;
 <body>
 <div id="world" class="world">
 </div>
-<div class="cc3d">
 <div class="chatarea">
-<div>
 <ul id="chatlog">
 </ul>
 </div>
@@ -119,7 +113,6 @@ right:0;
 <input type="text" id="chatinput">
 <input type="submit" class="submit">
 </form>
-</div>
 </div>
 <div class="objarea">
 Objects ETC here
