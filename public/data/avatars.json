@@ -1,6 +1,7 @@
 {
     "default": {
-        "url": "/avatars/default.wrl"
+        "url": "/avatars/default.wrl",
+        "gestures": ["Hallo","Hey","Agree","Like","Dislike","Disagree","Not now","Good bye","Appear","Disappear"]
     },
     "ne_game/redm": {
         "url": "/places/ne_game/vrml/avatars/redm.wrl"

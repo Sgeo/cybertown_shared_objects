@@ -105,6 +105,9 @@
                         if(avatar.transform.rot) {
                             avatar["import"].rotation = ROTATE180.multiply(new X3D.SFRotation(...avatar.transform.rot));
                         }
+                        if(typeof eventData.gesture === "number") {
+                            avatar["import"]["set_gesture" + eventData.gesture.toString()] = browser.getCurrentTime();
+                        }
                     }
                 });
                 
@@ -119,6 +122,22 @@
                     }
                     AVATARS.delete(id);
                 });
+                
+                // Gesture UI
+                const myAvatar = avatarsData[localStorage.getItem("avatar")] || avatarsData.default;
+                const gestureList = document.querySelector("#gestures");
+                if(myAvatar.gestures) {
+                    myAvatar.gestures.forEach(function(gestureName, gestureIndex) {
+                        let button = document.createElement("button");
+                        button.textContent = gestureName;
+                        let li = document.createElement("li");
+                        li.appendChild(button);
+                        gestureList.appendChild(li);
+                        button.addEventListener("click", function() {
+                            BxxEvents.dispatchEvent(new CustomEvent("AV:toServer", {detail: {gesture: gestureIndex+1}})); // Gestures in avs start at 1 for some reason.
+                        });
+                    });
+                }
             }
         });
     });
