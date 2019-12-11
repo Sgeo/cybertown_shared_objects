@@ -1,4 +1,9 @@
 BxxEvents.addEventListener("INIT:network", function(e){
+  
+  function system(msg) {
+    BxxEvents.dispatchEvent(new CustomEvent("CHAT:system", {detail: {msg: msg}}));
+  }
+  
   let initDetail = e.detail;
   let socket = io();
   BxxEvents.addEventListener("SE:toServer", function(e) {
@@ -25,17 +30,21 @@ BxxEvents.addEventListener("INIT:network", function(e){
   socket.on("AV:new", function(e) {
     BxxEvents.dispatchEvent(new CustomEvent("AV:fromServer:new", {detail: e}));
   });
-  socket.emit("JOIN", {
-      avatar: initDetail.avatar,
-      room: initDetail.room
-  }, function() {
-      // JOIN ACK
-      console.log("Got JOIN ack");
-      BxxEvents.dispatchEvent(new CustomEvent("CHAT:system", {detail: {msg: "Joined room."}}));
-      const browser = X3D.getBrowser();
-      socket.emit("AV", {detail: {
-          pos: [browser.viewpointPosition.x, browser.viewpointPosition.y, browser.viewpointPosition.z],
-          rot: [browser.viewpointOrientation.x, browser.viewpointOrientation.y, browser.viewpointOrientation.z, browser.viewpointOrientation.angle]
-      }});
+  socket.on("connect", function() {
+    socket.emit("JOIN", {
+        avatar: initDetail.avatar,
+        room: initDetail.room
+    }, function() {
+        // JOIN ACK
+        console.log("Got JOIN ack");
+        system("Joined room.");
+        const browser = X3D.getBrowser();
+        socket.emit("AV", {detail: {
+            pos: [browser.viewpointPosition.x, browser.viewpointPosition.y, browser.viewpointPosition.z],
+            rot: [browser.viewpointOrientation.x, browser.viewpointOrientation.y, browser.viewpointOrientation.z, browser.viewpointOrientation.angle]
+        }});
+    });
   });
+  socket.on("disconnect", () => system("Disconnected..."));
+  socket.on("reconnect", () => system("Reconnecting..."));
 });
