@@ -6,13 +6,15 @@ const http = require('http').createServer(app);
 
 const io = require('socket.io')(http);
 
+const path = require('path');
+
 
 app.use(express.static("public"));
 
 
 
 app.get('/', (req, res) => {
-  res.send('Hello Express app!')
+  res.sendFile(path.join(__dirname, "/public/index.htm"));
 });
 
 let AVATARS = new Map();
