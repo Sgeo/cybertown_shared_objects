@@ -14,7 +14,7 @@ eventOut SFBool isOver
 eventOut SFTime touchTime
 eventOut SFVec3f newPosition
 eventOut SFRotation newRotation
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+] "/externprotos/shared_xite.wrl#SharedObject"
 
 #############################################################################
 #Random Trigger
@@ -12803,7 +12803,7 @@ eventIn       SFString    set_mov
 exposedField  SFVec3f     translation    0 0 0
 exposedField  SFRotation  rotation       0 1 0 0
 exposedField  SFVec3f     scale          1 1 1 
-exposedField  MFString    off_image      "http://www.cybertown.com/places/movies/vrml/vidnet.gif"
+exposedField  MFString    off_image      "vidnet.gif"
 exposedField  MFString    controlURL     "javascript:loadCustom('http://www.cybertown.com/cgi-bin/cybertown/admin2/vidnetvpod/movie.pl?ac=3D',300,500)"
 exposedField  MFString    param          "target=action"
 ]{
