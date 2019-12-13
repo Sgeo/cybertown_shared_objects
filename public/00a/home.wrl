@@ -1598,7 +1598,7 @@ url "litedome.gif"
 Shape{
 appearance DEF rockwall Appearance {
 material Material {
-diffuseColor 0.537 0.196 0.196
+diffuseColor 1 1 1
 ambientIntensity 0.103
 specularColor 0.045 0.045 0.045
 shininess 0.287
@@ -1628,7 +1628,7 @@ url "woodfloor.gif"
 Shape{
 appearance DEF goldtrim Appearance {
 material Material {
-diffuseColor 0.5 0.5 0.5
+diffuseColor 1 1 1
 ambientIntensity 0.1
 specularColor 0.045 0.045 0.045
 shininess 0.387
@@ -1688,7 +1688,7 @@ url "alabaster_int.gif"
 Shape{
 appearance DEF alabaster Appearance {
 material Material {
-diffuseColor 0.278 0.192 0.914
+diffuseColor 1 1 1
 ambientIntensity 0.154
 specularColor 0.045 0.045 0.045
 shininess 0.287
@@ -1703,7 +1703,7 @@ url "alabaster.gif"
 Shape{
 appearance DEF darkdome Appearance {
 material Material {
-diffuseColor 0.192 0.31 0.545
+diffuseColor 1 1 1
 ambientIntensity 0.116
 specularColor 0.045 0.045 0.045
 shininess 0.287
@@ -1719,7 +1719,7 @@ url "darkdome.gif"
 Shape{
 appearance DEF poolwater Appearance {
 material Material {
-diffuseColor 0.5 0.5 0.5
+diffuseColor 1 1 1
 ambientIntensity 0.1
 specularColor 0.045 0.045 0.045
 shininess 0.287
@@ -1749,7 +1749,7 @@ url "cabinet.gif"
 Shape{
 appearance DEF metal Appearance {
 material Material {
-diffuseColor 0.988 0.357 0.49
+diffuseColor 1 1 1
 ambientIntensity 0.204
 specularColor 0.045 0.045 0.045
 shininess 0.287
@@ -1780,7 +1780,7 @@ url "updown.gif"
 Shape {
 appearance DEF glass Appearance {
 material Material {
-diffuseColor 0.671 0.957 1
+diffuseColor 1 1 1
 ambientIntensity 0.14
 specularColor 0.45 0.45 0.45
 shininess 0.287
@@ -13018,7 +13018,7 @@ coordIndex [1 0 7 6 5 4 3 2 -1, 9 8 0 1 -1, 10 9 1 2 -1, 11 10 2 3 -1, 12 11 3 4
 }}
 Shape {
 appearance Appearance {
-material Material {diffuseColor .5451 .19216 .51765 ambientIntensity .13943 specularColor .045 .045 .045 shininess .2875}
+material Material {diffuseColor 1 1 1 ambientIntensity .13943 specularColor .045 .045 .045 shininess .2875}
 texture ImageTexture {url "label03.jpg"}}
 geometry IndexedFaceSet { creaseAngle 3 solid TRUE
 coord Coordinate {point [-.085 0 .085, 0 0 .121, .085 0 .085, -.094 .151 .094, 0 .151 .133, .094 .151 .094,]} coordIndex [4 3 0 1 -1, 5 4 1 2 -1,]
@@ -13090,7 +13090,7 @@ coordIndex [1 0 7 6 5 4 3 2 -1, 9 8 0 1 -1, 10 9 1 2 -1, 11 10 2 3 -1, 12 11 3 4
 }}
 Transform {
 children Shape {
-appearance Appearance {texture ImageTexture {url "label02.jpg"}material Material {ambientIntensity .13943 diffuseColor .5451 .19216 .51765 specularColor .045 .045 .045 shininess .2875}}
+appearance Appearance {texture ImageTexture {url "label02.jpg"}material Material {ambientIntensity .13943 diffuseColor 1 1 1 specularColor .045 .045 .045 shininess .2875}}
 geometry IndexedFaceSet {solid FALSE creaseAngle 3.14159
 coord Coordinate { point [ -.073 .145 .073 0 .314 .103 -.073 .314 .073 0 .145 .103 .073 .314 .073 .073 .145 .073 .103 .314 0 .103 .145 0 ] }
 coordIndex [1 2 0 3 -1, 4 1 3 5 -1, 6 4 5 7 -1,]
@@ -13168,7 +13168,7 @@ coordIndex [1 0 7 6 5 4 3 2 -1, 9 8 0 1 -1, 10 9 1 2 -1, 11 10 2 3 -1, 12 11 3 4
 Transform {
 children Shape {
 appearance Appearance {
-texture ImageTexture {url "label01.jpg"}material Material {ambientIntensity .13943 diffuseColor .5451 .19216 .51765 specularColor .045 .045 .045 shininess .2875}}
+texture ImageTexture {url "label01.jpg"}material Material {ambientIntensity .13943 diffuseColor 1 1 1 specularColor .045 .045 .045 shininess .2875}}
 geometry IndexedFaceSet {solid FALSE creaseAngle 3.14159
 coord Coordinate { point [ .169 .234 0 0 .234 .169 .119 .234 .119 .166 .394 0 0 .394 .166 .117 .394 .117 ] }
 coordIndex [5 4 1 2 -1, 3 5 2 0 -1,]
@@ -13211,7 +13211,7 @@ Shape {
 appearance DEF bar_app_1 Appearance {
 material Material {
 ambientIntensity .10327
-diffuseColor .53725 .19608 .19608
+diffuseColor 1 1 1
 specularColor .045 .045 .045
 shininess .2875
 }
