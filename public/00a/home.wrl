@@ -1265,7 +1265,7 @@ fieldOfView 0.602
 description "Recroom"
 }
 
-NavigationInfo { headlight FALSE visibilityLimit 200 }
+NavigationInfo { headlight FALSE visibilityLimit 200 type ["WALK" "ANY"] speed 10 }
 
 
 
