@@ -192,9 +192,9 @@ eventOut SFString string_changed eventOut SFTime  time_changed
 eventOut SFVec2f vec2f_changed   eventOut SFVec3f vec3f_changed  
 ]{ 
 Script {
-field SFBool   local IS local
-field SFBool   debug IS debug
-field SFString name  IS name 
+exposedField SFBool   local IS local
+exposedField SFBool   debug IS debug
+exposedField SFString name  IS name 
 #eventIn SFString set_name IS set_name  eventIn SFString set_type IS set_type eventOut SFString name_changed IS name_changed                                       eventOut SFString  type_changed IS type_changed
 eventIn  SFBool     boolFromServer     IS boolFromServer 
 eventIn  SFColor    colorFromServer    IS colorFromServer 
@@ -351,10 +351,12 @@ coordIndex [ 0 1 2 3 -1 3 2 4 5 -1 5 4 6 7 -1 7 6 8 9 -1 9 8 10 11 -1 11 10 12 1
 }}
 DEF c_interp ColorInterpolator{key[0,.5,1] keyValue[0 1 1,.8 1 1,0 1 1]}
 DEF c_clock  TimeSensor{cycleInterval 1 loop TRUE}
+
+]
 ROUTE c_clock.fraction_changed  TO c_interp.set_fraction
 ROUTE c_interp.value_changed    TO c_mat.set_diffuseColor
 ROUTE c_interp.value_changed    TO c_mat.set_emissiveColor
-]}
+}
 ]}
 
 
@@ -368,9 +370,9 @@ eventIn SFNode    set_sharedZone    IS set_sharedZone
 
 field    SFNode   sharedDrink     Group{}
 field    SFNode   move_interp     USE move_interp
-field    SFInt32  myBottle        IS myBottle
-field    SFInt32  drinkID         IS drinkID
-field    SFVec3f  start_position  IS startPosition
+exposedField    SFInt32  myBottle        IS myBottle
+exposedField    SFInt32  drinkID         IS drinkID
+exposedField    SFVec3f  start_position  IS startPosition
 field    SFBool   moved           FALSE
 
 eventOut SFTime     fillTime_changed
@@ -513,16 +515,16 @@ eventIn SFInt32 destroy
 eventIn SFBool  set_up
 eventIn SFTime  set_count     IS set_count
 
-field SFVec3f position        IS translation
-field SFInt32 bottleID        IS bottleID
-field SFVec3f liquid_offset   IS liquid_offset
-field MFNode  glass_geometry  IS glass_geometry
-field MFNode  liquid_geometry IS liquid_geometry
-field SFNode  sharedZone      IS sharedZone
+exposedField SFVec3f position        IS translation
+exposedField SFInt32 bottleID        IS bottleID
+exposedField SFVec3f liquid_offset   IS liquid_offset
+exposedField MFNode  glass_geometry  IS glass_geometry
+exposedField MFNode  liquid_geometry IS liquid_geometry
+exposedField SFNode  sharedZone      IS sharedZone
 field SFNode  trigger         Group{}
 field SFNode  bottle          USE bottle
 field SFNode  drinks          USE drinks
-field MFVec3f pourKeys        IS pourKeys
+exposedField MFVec3f pourKeys        IS pourKeys
 
 field SFTime  last_time       0
 field SFInt32 drink_count     0
@@ -625,8 +627,8 @@ DEF s Script{
 eventIn            SFTime    get_info IS get_info
 eventIn            SFString  set_info IS set_info
 eventIn            SFTime    get_infoOnload 
-field              SFString  PI_name  IS name
-field              SFBool    onLoad   IS onLoad
+exposedField              SFString  PI_name  IS name
+exposedField              SFBool    onLoad   IS onLoad
 exposedField       SFString  ID       IS ID
 exposedField       SFString  plc      IS plc
 exposedField       SFString  DTY      IS DTY
@@ -1470,9 +1472,9 @@ stopTime_changed = Browser.getWorldStartTime();
 }
 "
 }
+]
 #ROUTE sound_control.stopTime_changed TO waterfall_sound.set_stopTime
 #ROUTE sound_control.stopTime_changed TO pool_sound.set_stopTime
-
 ROUTE sound_control.stopTime_changed TO door_sound.set_stopTime
 ROUTE sound_control.stopTime_changed TO door_sound2.set_stopTime
 ROUTE sound_control.stopTime_changed TO door_sound3.set_stopTime
@@ -1485,7 +1487,7 @@ ROUTE sound_control.stopTime_changed TO door_sound9.set_stopTime
 ROUTE sound_control.stopTime_changed TO faucet_sound1.set_stopTime
 ROUTE sound_control.stopTime_changed TO faucet_sound2.set_stopTime
 ROUTE sound_control.stopTime_changed TO faucet_sound3.set_stopTime
-]}#end sounds
+}#end sounds
 
 
 
@@ -2956,6 +2958,9 @@ DEF toggle11 Toggle{}#door bed door left
 DEF toggle11SH SharedToggle{}
 
 
+
+
+]
 ROUTE ProxSenso_bedroomdoor.enterTime TO toggle11.set_toggle
 ROUTE ProxSenso_bedroomdoor.exitTime TO toggle11.set_toggle
 
@@ -2969,8 +2974,6 @@ ROUTE toggle11SH.trueTime_changed TO door_sound3.set_startTime
 
 ROUTE sh_clock11.fraction_changed TO door_upperleft-COORD-INTERP.set_fraction
 ROUTE door_upperleft-COORD-INTERP.value_changed TO door_upperleft-COORD.set_point
-
-]
 }
 DEF door_upperright Transform {#bedroom
 translation 3 .1 0
@@ -3930,6 +3933,9 @@ keyValue [-1.8 -17.3 -5.2,
 ]
 
 }
+
+
+]
 ROUTE sinkTouch.touchTime TO toggle8.set_toggle
 ROUTE toggle8.state_changed TO event_8.set_bool
 ROUTE event_8.bool_changed TO toggle8SH.set_toggleState
@@ -3945,8 +3951,7 @@ ROUTE rightfaucet-COORD-INTERP.value_changed TO rightfaucet-COORD.set_point
 
 ROUTE toggle8SH.trueTime_changed TO faucet_sound2.set_startTime
 ROUTE toggle8SH.falseTime_changed TO faucet_sound2.set_stopTime
-
-]}#end faucet
+}#end faucet
 
 DEF waterflowleft Transform {#what is this for?
 translation 0 0 0
@@ -4381,8 +4386,7 @@ texCoordIndex [
 }
 ]
 }
-]}
-
+]
 ROUTE BathTouch.touchTime TO toggle10.set_toggle
 ROUTE toggle10.state_changed TO event_10.set_bool
 ROUTE event_10.bool_changed TO toggle10SH.set_toggleState
@@ -4391,6 +4395,9 @@ ROUTE toggle10SH.falseTime_changed TO sh_clock10.set_reverse
 
 ROUTE toggle10SH.trueTime_changed TO faucet_sound3.set_startTime
 ROUTE toggle10SH.falseTime_changed TO faucet_sound3.set_stopTime
+}
+
+
 
 DEF tubflowright Transform {
 translation 0 0 0
@@ -5420,6 +5427,8 @@ DEF sh_clock4 ReversableClock{cycleInterval .25 isForward FALSE}
 DEF toggle4 Toggle{}#rec door left
 DEF toggle4SH SharedToggle{}
 
+
+]
 ROUTE ProxSensor_recroomdoor01.enterTime TO toggle4.set_toggle
 ROUTE ProxSensor_recroomdoor01.exitTime TO toggle4.set_toggle
 
@@ -5435,7 +5444,7 @@ ROUTE recroomdoor_left-COORD-INTERP.value_changed TO recroomdoor_left-COORD.set_
 
 ROUTE sh_clock4.fraction_changed TO recroomdoor_right-COORD-INTERP.set_fraction
 ROUTE recroomdoor_right-COORD-INTERP.value_changed TO recroomdoor_right-COORD.set_point
-]}
+}
 Transform{
 children[
 DEF ProxSensor01 Transform {
@@ -5649,6 +5658,8 @@ DEF sh_clock6 ReversableClock{cycleInterval .25 isForward FALSE}
 DEF toggle6 Toggle{}#rec door leftb
 DEF toggle6SH SharedToggle{}#rec door rightb
 
+
+]
 ROUTE ProxSensor01.enterTime TO toggle6.set_toggle
 ROUTE ProxSensor01.exitTime TO toggle6.set_toggle
 ROUTE toggle6.state_changed TO event_6.set_bool
@@ -5663,7 +5674,7 @@ ROUTE recroomdoor_leftb-COORD-INTERP.value_changed TO recroomdoor_leftb-COORD.se
 
 ROUTE sh_clock6.fraction_changed TO recroomdoor_rightb-COORD-INTERP.set_fraction
 ROUTE recroomdoor_rightb-COORD-INTERP.value_changed TO recroomdoor_rightb-COORD.set_point
-]}
+}
 ]}#end recroom group
 
 
@@ -6592,6 +6603,9 @@ DEF sh_clock13 ReversableClock{cycleInterval .2 isForward FALSE}
 DEF toggle13 Toggle{}#door den right1
 DEF toggle13SH SharedToggle{}
 
+
+
+]
 ROUTE ProxSensor_dendoor01.enterTime TO toggle13.set_toggle
 ROUTE ProxSensor_dendoor01.exitTime TO toggle13.set_toggle
 
@@ -6607,8 +6621,7 @@ ROUTE doorden_left01-COORD-INTERP.value_changed TO doorden_left01-COORD.set_poin
 
 ROUTE sh_clock13.fraction_changed TO doorden_right01-COORD-INTERP.set_fraction
 ROUTE doorden_right01-COORD-INTERP.value_changed TO doorden_right01-COORD.set_point
-
-]}
+}
 
 Transform{
 children[
@@ -6788,6 +6801,9 @@ DEF sh_clock12 ReversableClock{cycleInterval .2 isForward FALSE}
 DEF toggle12 Toggle{}#door den right1
 DEF toggle12SH SharedToggle{}
 
+
+
+]
 ROUTE ProxSensor_dendoor02.enterTime TO toggle12.set_toggle
 ROUTE ProxSensor_dendoor02.exitTime TO toggle12.set_toggle
 
@@ -6803,8 +6819,7 @@ ROUTE doorden_left02-COORD-INTERP.value_changed TO doorden_left02-COORD.set_poin
 
 ROUTE sh_clock12.fraction_changed TO doorden_right02-COORD-INTERP.set_fraction
 ROUTE doorden_right02-COORD-INTERP.value_changed TO doorden_right02-COORD.set_point
-
-]}
+}
 
 ]}#end den group
 
@@ -7629,14 +7644,7 @@ DEF toggle3 Toggle{}#door den right1
 DEF toggle3SH SharedToggle{}
 DEF sh_clock3 ReversableClock{cycleInterval 1 isForward FALSE}
 
-ROUTE TouchSensor_fridgedor-SENSOR.touchTime TO toggle3.set_toggle
-ROUTE toggle3.state_changed TO event_3.set_bool
-ROUTE event_3.bool_changed TO toggle3SH.set_toggleState
-ROUTE toggle3SH.trueTime_changed TO sh_clock3.set_forward
-ROUTE toggle3SH.falseTime_changed TO sh_clock3.set_reverse
 
-ROUTE sh_clock3.fraction_changed TO fridgedoor-COORD-INTERP.set_fraction
-ROUTE fridgedoor-COORD-INTERP.value_changed TO fridgedoor-COORD.set_point
 
 DEF kitchenwalls_out Transform {
 translation 0 0 0
@@ -8059,6 +8067,15 @@ keyValue [12.4 -12 -2.59,
 12 -12 -2.69, 12.4 -11.5 -2.69, 12 -11.5 -2.69, ]
 }
 ]
+ROUTE TouchSensor_fridgedor-SENSOR.touchTime TO toggle3.set_toggle
+ROUTE toggle3.state_changed TO event_3.set_bool
+ROUTE event_3.bool_changed TO toggle3SH.set_toggleState
+ROUTE toggle3SH.trueTime_changed TO sh_clock3.set_forward
+ROUTE toggle3SH.falseTime_changed TO sh_clock3.set_reverse
+
+ROUTE sh_clock3.fraction_changed TO fridgedoor-COORD-INTERP.set_fraction
+ROUTE fridgedoor-COORD-INTERP.value_changed TO fridgedoor-COORD.set_point
+
 ROUTE sh_clock5.fraction_changed TO kitchsinkwater-POS-INTERP.set_fraction
 ROUTE kitchsinkwater-POS-INTERP.value_changed TO kitchsinkwater.set_translation
 ROUTE sh_clock5.fraction_changed TO kitchsinkwater-COORD-INTERP.set_fraction
@@ -8915,6 +8932,10 @@ DEF toggle16SH SharedToggle{}
 
 
 
+
+
+
+DEF pool Transform {
 #ROUTE TouchSensor_poolcover-SENSOR.touchTime TO poolcover-TIMER.startTime
 ROUTE TouchSensor_poolcover-SENSOR.touchTime TO toggle16.set_toggle
 ROUTE toggle16.state_changed TO event_16.set_bool
@@ -8937,8 +8958,6 @@ ROUTE sh_clock16.fraction_changed TO poolcover_panel-COORD-INTERP.set_fraction
 ROUTE poolcover_panel-COORD-INTERP.value_changed TO poolcover_panel-COORD.set_point
 
 
-
-DEF pool Transform {
 translation 0 0 0
 rotation -1 0 0 -3.14
 scale 3.48 1 3.48
@@ -10365,14 +10384,17 @@ keyValue [-23.7 -17.7 34.2,
 ]
 ROUTE waterfall-TIMER.fraction_changed TO waterfall-COORD-INTERP.set_fraction
 ROUTE waterfall-COORD-INTERP.value_changed TO waterfall-COORD.set_point
-}
-
 
 ROUTE sVis.isActive TO sClock.set_enabled
 ROUTE ss.value_changed TO tt.set_translation
 #ROUTE ss.value_changed TO tt2.set_translation
 ROUTE sClock.fraction_changed TO sInterp.set_fraction
 ROUTE sInterp.value_changed TO ss.set_trans
+
+}
+
+
+
 
 
 DEF riverbed Transform {
@@ -10972,6 +10994,8 @@ DEF sh_clock2 ReversableClock{cycleInterval .25 isForward FALSE}
 DEF toggle2 Toggle{}#front doorleft
 DEF toggle2SH SharedToggle{}
 
+
+]
 ROUTE ProxSensor_frontdoor.enterTime TO toggle2.set_toggle
 ROUTE ProxSensor_frontdoor.exitTime TO toggle2.set_toggle
 
@@ -10987,7 +11011,7 @@ ROUTE frontdoor_right-COORD-INTERP.value_changed TO frontdoor_right-COORD.set_po
 
 ROUTE sh_clock2.fraction_changed TO frontdoor_left-COORD-INTERP.set_fraction
 ROUTE frontdoor_left-COORD-INTERP.value_changed TO frontdoor_left-COORD.set_point
-]}
+}
 
 DEF ProxSensor_patiodoor Transform {
 translation -16.5 2.01 -10.7
@@ -11202,6 +11226,8 @@ DEF sh_clock7 ReversableClock{cycleInterval .25 isForward FALSE}
 DEF toggle7 Toggle{}#patio door
 DEF toggle7SH SharedToggle{}
 
+
+]
 ROUTE ProxSensor_patiodoor.enterTime TO toggle7.set_toggle
 ROUTE ProxSensor_patiodoor.exitTime TO toggle7.set_toggle
 
@@ -11214,7 +11240,7 @@ ROUTE toggle7SH.trueTime_changed TO door_sound8.set_startTime
 
 ROUTE sh_clock7.fraction_changed TO patio_door-COORD-INTERP.set_fraction
 ROUTE patio_door-COORD-INTERP.value_changed TO patio_door-COORD.set_point
-]}
+}
 
 
 DEF ProxSensor_backdoor Transform {
@@ -11587,6 +11613,8 @@ DEF sh_clock9 ReversableClock{cycleInterval .25 isForward FALSE}
 DEF toggle9 Toggle{}#backdoor
 DEF toggle9SH SharedToggle{}
 
+
+]
 ROUTE ProxSensor_backdoor.enterTime TO toggle9.set_toggle
 ROUTE ProxSensor_backdoor.exitTime TO toggle9.set_toggle
 ROUTE toggle9.state_changed TO event_9.set_bool
@@ -11600,7 +11628,6 @@ ROUTE toggle9SH.trueTime_changed TO door_sound2.set_startTime
 
 ROUTE sh_clock9.fraction_changed TO backdoor-COORD-INTERP.set_fraction
 ROUTE backdoor-COORD-INTERP.value_changed TO backdoor-COORD.set_point
-]
 }
 
 DEF bar Transform {
@@ -12186,6 +12213,10 @@ DEF toggle1 Toggle{}#garage
 DEF toggle1SH SharedToggle{}
 DEF sh_clock1 ReversableClock{cycleInterval 1.0 isForward FALSE}
 
+
+
+
+]
 ROUTE TouchSensor_garagedoor-SENSOR.touchTime TO toggle1.set_toggle
 ROUTE toggle1.state_changed TO event_1.set_bool
 ROUTE event_1.bool_changed TO toggle1SH.set_toggleState
@@ -12196,9 +12227,7 @@ ROUTE toggle1SH.trueTime_changed TO door_sound9.set_startTime
 
 ROUTE sh_clock1.fraction_changed TO garage_door-COORD-INTERP.set_fraction
 ROUTE garage_door-COORD-INTERP.value_changed TO garage_door-COORD.set_point
-
-
-]}
+}
 
 
 ]}
@@ -12997,13 +13026,15 @@ texCoord TextureCoordinate {point [.049 0, .494 0, .955 0, 0 1, .491 1, 1 1,]} t
 }}
 ]}
 ]}
+
+
+]
 ROUTE fizzy_b.fraction_changed   TO fizzy_c.set_fraction
 ROUTE fizzy_c.value_changed      TO fizzy_a.set_translation
 ROUTE fizzy_b.fraction_changed   TO fizzy_d.set_fraction
 ROUTE fizzy_d.value_changed      TO fizzy_a.set_rotation
 ROUTE Trigger1.touchTime         TO fizzy_b.set_startTime
 
-]
 }
 
 DEF bottle2 Bottle{
@@ -13073,13 +13104,14 @@ scaleOrientation 0 1 0 .055584
 ######################################
 ]}
 ]}
+
+
+]
 ROUTE malt_b.fraction_changed   TO malt_c.set_fraction
 ROUTE malt_c.value_changed      TO malt_a.set_translation
 ROUTE malt_b.fraction_changed   TO malt_d.set_fraction
 ROUTE malt_d.value_changed      TO malt_a.set_rotation
 ROUTE Trigger2.touchTime        TO malt_b.set_startTime
-
-]
 }
 
 DEF bottle3 Bottle{
@@ -13149,13 +13181,16 @@ translation 0 -.098208 0
 ######################################
 ]}
 ]}
+
+
+]
+
 ROUTE sparkling_b.fraction_changed   TO sparkling_c.set_fraction
 ROUTE sparkling_c.value_changed      TO sparkling_a.set_translation
 ROUTE sparkling_b.fraction_changed   TO sparkling_d.set_fraction
 ROUTE sparkling_d.value_changed      TO sparkling_a.set_rotation
 ROUTE Trigger3.touchTime             TO sparkling_b.set_startTime
 
-]
 }
 
 DEF effect FizzEffect{}

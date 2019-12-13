@@ -6,5 +6,9 @@
     "home00": {
         "url": "/000/home.wrl",
         "room": "home00"
+    },
+    "home0a": {
+        "url": "/00a/home.wrl",
+        "room": "home0a"
     }
 }
