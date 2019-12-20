@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/create3000/cobweb/master/stable/3/3.0/cobweb.css"/>
+      <script type="text/javascript" src="/cobweb.min.js"></script>
+      <script type="text/javascript" src="/webvr-ui.min.js"></script>
+      <script type="text/javascript">
+        function doHash(hash) {
+            if(hash) {
+                sgLoadWorld(hash.substring(1));
+            } else {
+                document.getElementById("elem").style.display = "";
+                if(window.Browser) {
+                    Browser.replaceWorld(Browser.createX3DFromString(""));
+                    document.querySelector("X3DCanvas").remove();
+                }
+            }
+        }
+        window.addEventListener("hashchange", function() {
+            doHash(document.location.hash);
+        });
+        window.addEventListener("load", function() {
+            doHash(document.location.hash);
+        });
+        function sgLoadWorld(url) {
+            document.getElementById("elem").style.display = "none";
+            var x3dcanvas = X3D.createBrowser();
+            x3dcanvas.setAttribute("src", url);
+            document.body.appendChild(x3dcanvas);
+            window.Browser = X3D.getBrowser(x3dcanvas);
+            console.log("Retrieved Browser");
+        }
+      </script>
+   <style>
+X3DCanvas {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+}
+   </style>
+   </head>
+   <body>
+   <div id="elem">
+    <ul>
+     <li><a href="#/places/enter/vrml/enter.wrl">Cybertown Plaza</a></li>
+     <li><a href="#/places/e_lobby/vrml/e_lobby.wrl">Cybertown ePlex Lobby</a></li>
+     <li><a href="#/places/shopping/vrml/shopping_cobweb.wrl">Cybertown Mall</a></li>
+     <li><a href="#/places/jail/vrml/jail.wrl">Cybertown Jail</a></li>
+     <li><a href="#/places/club/vrml/club.wrl">Cybertown Club</a></li>
+     <!--<li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/000/home.wrl');">Home 0</a>/<a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/003/home.wrl');">Home 3</a></li>
+     <li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/001/home.wrl');">Home 1</a>/<a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/004/home.wrl');">Home 4</a></li>
+     <li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/002/home.wrl');">Home 2</a>/<a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/005/home.wrl');">Home 5</a></li>
+     <li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/006/home.wrl');">Home 6</a></li>-->
+     <li><a href="#/home/0101000000000000/property/vrml/007/home.wrl">Home 7</a> (elevator doesn't use shaft correctly; broken sun/moon adjustor)</li>
+     <!--<li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/008/home.wrl');">Home 8</a></li>
+     <li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/009/home.wrl');">Home 9</a></li>
+     <li><a href="javascript:sgLoadWorld('home/0101000000000000/property/vrml/00a/home.wrl');">Home A</a></li>-->
+    </ul>
+    <hr>
+    Please note that WebVR support is experimental, and has only been tested on Chromium on Oculus Rift. It seems to be unusably bad on Daydream at the moment.
+   </div>
+   </body>
+</html>

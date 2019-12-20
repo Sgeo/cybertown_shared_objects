@@ -1,0 +1,802 @@
+#VRML V2.0 utf8
+
+EXTERNPROTO BXXShim[]["../../../externprotos/bxxshim/bxxshim.wrl#BXXShim"]
+
+BXXShim{}
+
+PROTO ElevatorControl_2[
+field MFString floorNames ["Lobby","Casino","Arcade","Art Gallery","Arena", "vDrome","Black Sun Club"]
+field MFString floorUrls ["/cgi-bin/colonycity/place?plc=e_lobby&ac=place&ID=0000000000000038&force=p"
+"/cgi-bin/colonycity/place?plc=casino&ac=place&ID=0000000000000018&force=p",
+"/cgi-bin/colonycity/place?plc=arcade&ac=place&ID=0000000000000019&force=p",
+"/cgi-bin/colonycity/place?plc=gallery&ac=place&ID=000000000000001a&force=p",
+"/cgi-bin/colonycity/place?plc=arena&ac=place&ID=0000000000000037&force=p",
+"/cgi-bin/colonycity/place?plc=movies&ac=place&ID=000000000000001b&force=p",
+"/cgi-bin/colonycity/place?plc=nightclub&ac=place&ID=000000000000001c&force=p"
+]
+field SFInt32 startFloor 0
+field MFString floorParams []
+exposedField SFBool enabled FALSE
+eventOut SFBool isActive
+eventOut MFString load_changed
+]{
+Transform{children[
+LOD {range [65]
+level [
+Transform {children [
+Transform {translation -1 2.05 .2 scale 1 .5 1
+children Shape {
+appearance Appearance {material Material {emissiveColor .1 1 .1  specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry DEF floor0 Text {
+fontStyle FontStyle {size .35 family "SANS" style "ITALIC" justify "LEFT"}
+string ""
+}}}
+
+Transform{translation .25 -.5 .1
+children[
+
+Transform {children[
+DEF up_button TouchSensor{enabled IS enabled}
+Shape {
+appearance Appearance {material Material {emissiveColor .88 .15 .01 specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry IndexedFaceSet { solid FALSE
+coord Coordinate {point [ .813 2 .05 .85 2.2 .05 .887 2 .05 .813 2 -.05 .85 2.2 -.05 .887 2 -.05]}
+coordIndex [ 2 0 1 -1 0 1 4 3 -1 2 0 3 5 -1 1 2 5 4 -1 4 5 3 -1 ]
+}}
+DEF up_switch Switch{
+whichChoice -1
+choice[
+Transform {translation 1.05 2 .1
+children Shape {
+appearance Appearance {material Material {emissiveColor .1 1 .1 specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .25 family "SANS" style "ITALIC" justify "LEFT"}
+#string "Scroll Up"
+}}}]}
+]}
+Transform {children[
+DEF down_button TouchSensor{enabled IS enabled}
+Shape {
+appearance Appearance {material Material {emissiveColor .88 .15 .01 specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry IndexedFaceSet { solid FALSE
+coord Coordinate {point [ .887 1.5 .05 .85 1.3 .05 .813 1.5 .05 .887 1.5 -.05 .85 1.3 -.05 .813 1.5 -.05]}
+coordIndex [ 2 0 1 -1 0 1 4 3 -1 2 0 3 5 -1 1 2 5 4 -1 4 5 3 -1 ]
+}}
+DEF down_switch Switch{
+whichChoice -1
+choice[
+Transform {translation 1.05 1.3 .1
+children Shape {
+appearance Appearance {material Material {diffuseColor .1 1 .1 specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .25 family "SANS" style "ITALIC" justify "LEFT"}
+#string "Scroll Down"
+}}}]}
+]}
+Transform { translation .85 1.75 0 rotation 1 0 0 1.57 children[
+DEF go_button TouchSensor{enabled IS enabled}
+Shape {
+appearance Appearance {material Material {emissiveColor .0251 .69 .0349 specularColor .36 .54 .522 diffuseColor 0 0 0}}
+geometry Cylinder {radius .05 height .1}
+}
+DEF go_switch Switch{
+whichChoice -1
+choice[
+Transform {translation -.4 .09 .1 rotation 1 0 0 -1.571
+children Shape {
+appearance Appearance {material Material {diffuseColor .1 1 .1 specularColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .25 family "SANS" style "ITALIC" justify "LEFT"}
+string "GO"
+}}}]}
+]}
+]}
+Sound{intensity 1
+source DEF clickSound AudioClip{url ["../../ent_complex/elevator/16.wav"]loop FALSE}
+maxBack 5000 maxFront 5000 minBack 10 minFront 10
+}
+
+]}
+Transform {children []}
+]} #END Store name text LOD
+
+DEF DS Script{
+eventIn SFTime set_up
+eventIn SFTime set_down
+eventIn SFTime set_go
+field SFInt32 index IS startFloor
+field SFInt32 max 0
+field SFBool isShort FALSE
+field MFString floorNames IS floorNames
+field MFString floorUrls IS floorUrls
+field MFString parameter ["target=place"]
+eventOut MFString s0_changed
+eventIn SFBool up_over
+eventIn SFBool down_over
+eventIn SFBool go_over
+eventOut SFInt32 up_choice
+eventOut SFInt32 down_choice
+eventOut SFInt32 go_choice
+eventOut MFString load_changed IS load_changed
+url"vrmlscript:
+function send(){
+s0_changed = new MFString(floorNames[index]);
+}
+function set_up(v,t){
+index += 1;
+if(index > max){index = max;}
+send();
+}
+function set_down(v,t){
+index -= 1;
+if(index <0){index = 0;}
+send();
+}
+function set_go(v,t){
+load_changed = new MFString(floorUrls[index]);
+}
+function up_over(v,t){
+if(v){up_choice = 0;}
+else{up_choice = -1;}
+}
+function down_over(v,t){
+if(v){down_choice = 0;}
+else{down_choice = -1;}
+}
+function go_over(v,t){
+if(v){go_choice = 0;}
+else{go_choice = -1;}
+}
+function initialize(){
+max = floorNames.length - 1;
+s0_changed = new MFString(floorNames[index]);
+}
+"}
+]}
+ROUTE DS.s0_changed TO floor0.set_string
+ROUTE up_button.touchTime TO DS.set_up
+ROUTE down_button.touchTime TO DS.set_down
+ROUTE go_button.touchTime TO DS.set_go
+ROUTE up_button.touchTime TO clickSound.set_startTime
+ROUTE down_button.touchTime TO clickSound.set_startTime
+ROUTE go_button.touchTime TO clickSound.set_startTime
+ROUTE up_button.isOver TO DS.up_over
+ROUTE DS.up_choice TO up_switch.set_whichChoice
+ROUTE down_button.isOver TO DS.down_over
+ROUTE DS.down_choice TO down_switch.set_whichChoice
+ROUTE go_button.isOver TO DS.go_over
+ROUTE DS.go_choice TO go_switch.set_whichChoice
+}#END ElevatorControl_2 PROTO
+
+
+
+PROTO CasinoElevator[
+eventIn MFNode set_loaded
+eventIn MFString set_load
+field SFVec3f translation 0 0 0
+field SFRotation rotation 0 1 0 0
+field MFString parameter ["target=place"]
+field SFInt32 startFloor 0
+field MFFloat LODrange [70]
+field SFBool sound TRUE
+eventOut MFString nav_changed
+eventOut SFTime loaded_changed
+]{
+
+Group{children[
+Transform{  translation IS translation rotation IS rotation
+children[
+
+Transform {translation 0 -3 0 children[
+Shape {
+appearance Appearance {texture ImageTexture{url"../../ent_complex/elevator/edoor2.jpg"}}
+geometry IndexedFaceSet { creaseAngle 3
+coord DEF doors Coordinate { point [  .06 3 0  .06 3 1  .06 5.75 1  .06 5.75 0  .06 3 -1  .06 3 0  .06 5.75 0  .06 5.75 -1 ] }
+coordIndex [0 1 2 3 -1, 4 5 6 7 -1,]
+texCoord TextureCoordinate{point[.5 0,1 0,1 1,.5 1,0 0,.5 0,.5 1,0 1]}
+texCoordIndex[]
+solid FALSE
+}}
+
+
+
+Transform {
+children Shape {
+appearance Appearance {
+material Material {
+diffuseColor .4 .3 0
+specularColor .8 .1 0
+shininess 0
+emissiveColor .1 .05 0
+ambientIntensity 0
+}
+}
+
+geometry        IndexedFaceSet {creaseAngle 3
+coord Coordinate {
+point       [ 0 3 -1.25,
+0 3 1.25,
+0 5.75 1.25,
+0 5.75 -1.25,
+0 6 1.25,
+0 6 -1.25,
+0 3 1,
+0 5.75 1,
+0 3 -1,
+0 5.75 -1,
+0 6 0,
+0.13 3 1,
+0.13 5.75 1,
+0.13 5.75 -1,
+0.13 3 -1,
+0.13 3 1.25,
+0.13 6 1.25,
+0.13 6 -1.25,
+0.13 3 -1.25 ]
+}
+
+coordIndex    [ 6, 1, 2, 7, -1, 0, 8, 9,
+3, -1, 7, 2, 4, 10, -1, 3,
+9, 10, 5, -1, 9, 7, 10, -1,
+6, 7, 12, 11, -1, 7, 9, 13,
+12, -1, 9, 8, 14, 13, -1, 11,
+12, 16, 15, -1, 12, 13, 17, 16,
+-1, 13, 14, 18, 17, -1 ]
+
+}
+
+
+}
+}
+
+]}
+]}
+
+
+
+
+Transform{ translation IS translation rotation IS rotation
+children[
+
+Transform{
+translation 0 .75 0
+rotation 0 1 0 1.571
+children DEF md ElevatorControl_2{startFloor IS startFloor}
+}
+
+DEF wait Switch{
+whichChoice 0
+choice[
+Group{children[
+Transform {translation .5 2.45 0  rotation 0 1 0 1.571 scale 1 .5 1
+children Shape {
+appearance Appearance {material Material {emissiveColor 1 .75 0  specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .3 family "SANS" style "ITALIC" justify "MIDDLE"}
+string ["In Transit..."]
+}}}
+Transform {translation .5 2.25 0  rotation 0 1 0 1.571 scale 1 .5 1
+children Shape {
+appearance Appearance {material Material {emissiveColor 1 .75 0  specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .25 family "SANS" style "ITALIC" justify "MIDDLE"}
+string ["Wait until doors open.", "Thank you!"]
+}}}
+]}
+
+Transform {translation 5.5 2.65 0  rotation 0 -1 0 1.571 scale 1 .5 1
+children Shape {
+appearance Appearance {material Material {emissiveColor 1 .75 0  specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .25 family "SANS" style "ITALIC" justify "MIDDLE"}
+string ["Welcome to the ePlex"," ","Please turn around","for elevator controls"]
+}}}
+
+]}
+
+
+LOD{
+range [137]
+level[
+
+Transform {translation -.1 3 0  rotation 0 -1 0 1.571 scale 1 .5 1
+children Shape {
+appearance Appearance {material Material {emissiveColor 0 1 .2  specularColor 0 0 0 diffuseColor 0 0 0}}
+geometry Text {
+fontStyle FontStyle {size .5 family "SANS" style "BOLD" justify "MIDDLE"}
+string ["ELEVATOR"]
+}}}
+Group{}
+]}
+
+
+Transform { translation 0 -3 0
+children [
+
+Transform {
+children Shape {
+appearance Appearance {
+texture ImageTexture {
+url "../../ent_complex/elevator/parkay2.jpg"
+}
+textureTransform TextureTransform {
+scale 4 4
+}
+}
+geometry
+IndexedFaceSet {
+coord Coordinate {
+point [ .06 3 1.25 5.938 3 1.25 5.938 3 -1.25 .06 3 -1.25 2.03 3 0 1.045 3
+2.125 1.045 3 -2.125 4.953 3 -2.125 4.953 3 2.125 .06 3 0 ] }
+coordIndex [ 2 7 4 -1 8 1 4 -1 2 4 1 -1 6 4 7 -1 4 5 8 -1 0 5 4 9 -1 4 3 9 -1
+4 6 3 -1 ] texCoordIndex [ 2 7 4 -1 8 1 4 -1 2 4 1 -1 6 4 7 -1 4 5 8 -1 0
+5 4 9 -1 4 3 9 -1 4 6 3 -1 ]
+texCoord
+TextureCoordinate { point [ .003 .284 1.003 .284 1.003 .709 .003 .709 .338
+.497 .171 .135 .171 .858 .836 .858 .836 .135 .003 .497 ] }
+}
+}
+}
+Transform {
+children Shape {
+appearance Appearance {
+texture ImageTexture {
+url "../../ent_complex/elevator/doc17.jpg"
+}
+textureTransform DEF _2 TextureTransform {
+scale 1.1 1
+}
+}
+geometry        DEF _2 IndexedFaceSet {
+coord Coordinate {
+point       [ 0.06 3 -1.25,
+1.045 3 -2.125,
+1.045 5.375 -2.125,
+0.06 5.25 -1.25,
+1.045 6 -2.125,
+0.06 6 -1.25,
+4.953 3 -2.125,
+4.953 5.375 -2.125,
+4.953 6 -2.125,
+5.938 3 -1.25,
+5.938 5.375 -1.25,
+5.938 6 -1.25,
+5.938 3 1.25,
+5.938 5.375 1.25,
+5.938 6 1.25,
+4.953 3 2.125,
+4.953 5.375 2.125,
+4.953 6 2.125,
+1.045 3 2.125,
+1.045 5.375 2.125,
+1.045 6 2.125,
+0.06 3 1.25,
+0.06 5.25 1.25,
+0.06 6 1.25,
+3 6 2.125,
+3 5.375 2.125,
+3 3 2.125,
+2.999 6 -2.125,
+2.999 5.375 -2.125,
+2.999 3 -2.125,
+5.875 5.316 -1.188,
+5.875 5.316 1.188,
+5.875 3.059 1.188,
+5.875 3.059 -1.188 ]
+}
+
+coordIndex    [ 0, 1, 2, 3, -1, 3, 2, 4,
+5, -1, 6, 9, 10, 7, -1, 7,
+10, 11, 8, -1, 10, 13, 14, 11,
+-1, 12, 15, 16, 13, -1, 13, 16,
+17, 14, -1, 18, 21, 22, 19, -1,
+19, 22, 23, 20, -1, 16, 25, 24,
+17, -1, 25, 19, 20, 24, -1, 26,
+25, 16, 15, -1, 2, 28, 27, 4,
+-1, 28, 7, 8, 27, -1, 7, 28,
+29, 6, -1, 12, 13, 31, 32, -1,
+10, 9, 33, 30, -1 ]
+texCoord      TextureCoordinate {
+point       [ 0 0,
+0.183 0,
+0.183 0.789,
+0.183 0.997,
+0.903 0,
+0.903 0.787,
+0.903 0.994,
+0.717 0,
+0.717 0.787,
+0.717 0.994,
+0.186 0,
+0.186 0.787,
+0.186 0.994,
+0.007 0.002,
+0.008 0.789,
+0.008 0.996,
+0.181 0,
+0.181 0.786,
+0.181 0.993,
+0.017 0,
+0.541 0.993,
+0.541 0.786,
+0.541 0,
+0.545 0.997,
+0.545 0.789,
+0.545 0,
+0 0.748,
+0 0.997,
+0.907 0.997,
+0.907 0.789,
+0.907 0,
+0.017 0.744,
+0.017 0.992,
+0.899 0.998,
+0.899 0.791,
+0.899 0.005 ]
+}
+
+creaseAngle   3.14159
+normalIndex   [  ]
+texCoordIndex [ 0, 1, 2, 26, -1, 26, 2, 3,
+27, -1, 4, 7, 8, 5, -1, 5,
+8, 9, 6, -1, 8, 11, 12, 9,
+-1, 10, 13, 14, 11, -1, 11, 14,
+15, 12, -1, 16, 19, 31, 17, -1,
+17, 31, 32, 18, -1, 34, 21, 20,
+33, -1, 21, 17, 18, 20, -1, 22,
+21, 34, 35, -1, 2, 24, 23, 3,
+-1, 24, 29, 28, 23, -1, 29, 24,
+25, 30, -1, 10, 11, 11, 10, -1,
+8, 7, 7, 8, -1 ]
+}
+}
+}
+Transform {
+children Shape {
+appearance Appearance {
+texture ImageTexture {
+url "../../ent_complex/elevator/wall4.jpg"
+}
+}
+geometry
+IndexedFaceSet {
+coord Coordinate {
+point [ .06 6 -1.25 1.045 6 -2.125 4.953 6 -2.125 5.938 6 -1.25 5.938 6 1.25
+4.953 6 2.125 1.045 6 2.125 .06 6 1.25 2.03 6.563 0 4.99 6 -2.092 ] }
+coordIndex [ 1 2 9 8 -1 9 3 8 -1 3 4 8 -1 4 5 8 -1 5 6 8 -1 6 7 8 -1 0 8 7 -1
+0 1 8 -1 ] texCoordIndex [ 1 2 9 8 -1 9 3 8 -1 3 4 8 -1 4 5 8 -1 5 6 8 -1
+6 7 8 -1 0 8 7 -1 0 1 8 -1 ]
+texCoord
+TextureCoordinate { point [ -.001 .718 .167 .868 .831 .868 .999 .718 .999
+.291 .831 .142 .167 .142 -.001 .291 .334 .505 .838 .862 ] }
+creaseAngle 3.14159
+}
+}
+}
+Transform {
+children Shape {
+appearance Appearance {
+material Material {
+ambientIntensity 0
+diffuseColor 0 0 0
+specularColor .63 .92 1
+}
+}
+geometry
+IndexedFaceSet {
+coord Coordinate {
+point [ 1.125 3 -2.125 2.938 3 -2.125 2.938 3.148 -2.125 1.125 3.148 -2.125
+5.938 3 -1.188 5.938 3 1.188 5.938 3.148 1.188 5.938 3.148 -1.188 2.938 3
+2.125 1.063 3 2.125 1.063 3.148 2.125 2.938 3.148 2.125 2.938 3.297 -2.125
+2.938 3.445 -2.125 1.125 3.445 -2.125 1.125 3.297 -2.125 5.938 3.297 1.188
+5.938 3.445 1.188 5.938 3.445 -1.188 5.938 3.297 -1.188 1.063 3.297 2.125
+1.063 3.445 2.125 2.938 3.445 2.125 2.938 3.297 2.125 1.063 3.594 2.125 1.063
+3.742 2.125 2.938 3.742 2.125 2.938 3.594 2.125 5.938 3.594 1.188 5.938 3.742
+1.188 5.938 3.742 -1.188 5.938 3.594 -1.188 2.938 3.594 -2.125 2.938 3.742
+-2.125 1.125 3.742 -2.125 1.125 3.594 -2.125 2.938 3.891 -2.125 2.938 4.039
+-2.125 1.125 4.039 -2.125 1.125 3.891 -2.125 5.938 3.891 1.188 5.938 4.039
+1.188 5.938 4.039 -1.188 5.938 3.891 -1.188 1.063 3.891 2.125 1.063 4.039
+2.125 2.938 4.039 2.125 2.938 3.891 2.125 1.063 4.188 2.125 1.063 4.336 2.125
+2.938 4.336 2.125 2.938 4.188 2.125 5.938 4.188 1.188 5.938 4.336 1.188 5.938
+4.336 -1.188 5.938 4.188 -1.188 2.938 4.188 -2.125 2.938 4.336 -2.125 1.125
+4.336 -2.125 1.125 4.188 -2.125 2.938 4.484 -2.125 2.938 4.633 -2.125 1.125
+4.633 -2.125 1.125 4.484 -2.125 5.938 4.484 1.188 5.938 4.633 1.188 5.938
+4.633 -1.188 5.938 4.484 -1.188 1.063 4.484 2.125 1.063 4.633 2.125 2.938
+4.633 2.125 2.938 4.484 2.125 1.063 4.781 2.125 1.063 4.93 2.125 2.938 4.93
+2.125 2.938 4.781 2.125 5.938 4.781 1.188 5.938 4.93 1.188 5.938 4.93 -1.188
+5.938 4.781 -1.188 2.938 4.781 -2.125 2.938 4.93 -2.125 1.125 4.93 -2.125
+1.125 4.781 -2.125 2.938 5.078 -2.125 2.938 5.227 -2.125 1.125 5.227 -2.125
+1.125 5.078 -2.125 5.938 5.078 1.188 5.938 5.227 1.188 5.938 5.227 -1.188
+5.938 5.078 -1.188 1.063 5.078 2.125 1.063 5.227 2.125 2.938 5.227 2.125 2.938
+5.078 2.125 ] }
+coordIndex [ 0 1 2 3 -1 4 5 6 7 -1 8 9 10 11 -1 12 13 14 15 -1 16 17 18 19 -1
+20 21 22 23 -1 24 25 26 27 -1 28 29 30 31 -1 32 33 34 35 -1 36 37 38 39 -1 40
+41 42 43 -1 44 45 46 47 -1 48 49 50 51 -1 52 53 54 55 -1 56 57 58 59 -1 60 61
+62 63 -1 64 65 66 67 -1 68 69 70 71 -1 72 73 74 75 -1 76 77 78 79 -1 80 81 82
+83 -1 84 85 86 87 -1 88 89 90 91 -1 92 93 94 95 -1 ]
+creaseAngle 3.14159
+}
+}
+}
+DEF shaft Transform {
+children Shape {
+appearance Appearance {
+material Material {
+ambientIntensity 0
+diffuseColor .35 .38 .32
+specularColor .8 1 .83
+shininess .12
+}
+}
+geometry DEF _5 IndexedFaceSet {
+coord Coordinate {
+point [ 0 13.813 -1.471 .871 13.813 -2.5 .871 -3.938 -2.5 0 -3.938 -1.471
+0 13.813 1.471 0 -3.938 1.471 .871 13.813 2.5 .871 -3.938 2.5 4.938 13.813
+-2.5 4.938 -3.938 -2.5 6.096 13.813 -1.471 6.096 -3.938 -1.471 6.096 13.813
+1.471 6.096 -3.938 1.471 4.938 13.813 2.5 4.938 -3.938 2.5 0 13.813 -.735
+0 -3.938 -.735 0 13.813 .735 0 -3.938 .735 6.096 13.813 -.735 6.096 -3.938
+-.735 6.096 13.813 .735 6.096 -3.938 .735 1.451 13.813 2.5 1.451 -3.938 2.5
+2.609 13.813 2.5 2.609 -3.938 2.5 2.609 13.813 -2.5 2.609 -3.938 -2.5 1.451
+13.813 -2.5 1.451 -3.938 -2.5 0 2.992 -.735 0 2.992 -1.471 0 3.008 1.471 0
+3.008 .735 0 5.812 -.735 0 5.812 -1.471 0 5.812 1.471 0 5.812 .735 0 5.063
+-1.125 0 2.992 -1.125 0 3.008 1.125 0 5.063 1.125 ] }
+coordIndex [ 37 33 3 2 1 0 -1 7 5 34 38 4 6 -1 9 11 10 8 -1 13 15 14 12 -1 11
+21 20 10 -1 23 13 12 22 -1 25 7 6 24 -1 15 27 26 14 -1 29 9 8 28 -1 2 31 30
+1 -1 17 3 33 32 -1 5 19 35 34 -1 37 0 16 36 -1 39 18 4 38 -1 33 37 40 41 -1
+42 43 38 34 -1 ]
+creaseAngle 3.14159
+}
+}
+translation 0 0 0
+}
+DEF shaft_lights Transform {
+children Shape {
+appearance Appearance {
+texture ImageTexture {
+url "../../ent_complex/elevator/new1.jpg"
+}
+textureTransform DEF tt TextureTransform {
+scale 1 20
+}
+}
+geometry DEF _6 IndexedFaceSet {
+coord Coordinate {
+point [ 0 13.813 .735 0 5.75 .735 0 5.75 -.735 0 13.813 -.735 0 2.938 .735
+0 -3.938 .735 0 -3.938 -.735 0 2.938 -.735 1.451 -3.938 2.5 1.451 13.813 2.5
+2.609 13.813 2.5 2.609 -3.938 2.5 6.063 13.813 -.735 6.063 -3.938 -.735 6.063
+-3.938 .735 6.063 13.813 .735 2.609 -3.938 -2.5 2.609 13.813 -2.5 1.451 13.813
+-2.5 1.451 -3.938 -2.5 ] }
+coordIndex [ 0 1 2 3 -1 4 5 6 7 -1 8 9 10 11 -1 12 13 14 15 -1 16 17 18 19
+-1 ] texCoord
+TextureCoordinate { point [ 0 .999 0 .506 .997 .506 .997 .999 0 .387 0 0 .997
+0 .997 .387 .003 .002 .003 1.001 .998 1.002 .998 .002 .995 1.002 .995 .002
+.003 1.002 .003 .001 ] }
+creaseAngle 3.14159
+texCoordIndex
+[ 0 1 2 3 -1 4 5 6 7 -1 8 9 10 11 -1 12 13 8 14 -1 13 12 9 15 -1 ]
+}
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+ambientIntensity .25
+diffuseColor 0  .2 .3
+specularColor .05 .85 .9
+shininess .12
+}
+}
+geometry
+IndexedFaceSet {
+coord Coordinate {
+point [ 2.999 3 -2.125 2.999 5.375 -2.125 1.045 5.375 -2.125 1.045 3 -2.125
+2.919 5.278 -2.063 2.919 3.097 -2.063 1.125 3.097 -2.063 1.125 5.278 -2.063
+2.845 5.188 -2.125 2.845 3.188 -2.125 1.199 3.188 -2.125 1.199 5.188 -2.125
+3 5.375 2.125 3 3 2.125 2.966 3.063 2.063 2.966 5.313 2.063 1.045 5.375 2.125
+1.114 5.313 2.063 1.045 3 2.125 1.114 3.063 2.063 2.926 3.125 2.125 2.926
+5.25 2.125 1.176 5.25 2.125 1.176 3.125 2.125 5.875 5.316 1.188 5.875 5.316
+-1.188 5.938 5.256 -1.125 5.938 5.256 1.125 5.875 3.059 1.188 5.938 3.119
+1.125 5.875 3.059 -1.188 5.938 3.119 -1.125 5.938 5.375 1.25 5.938 5.375 -1.25
+] }
+coordIndex [0 1 4 5 -1 2 3 6 7 -1 1 2 7 4 -1 5 4 8 9 -1
+7 6 10 11 -1 4 7 11 8 -1 12 13 14 15 -1 16 12 15 17 -1 18 16 17 19 -1 15 14
+20 21 -1 17 15 21 22 -1 19 17 22 23 -1 24 25 26 27 -1 28 24 27 29 -1 25 30 31
+26 -1 32 33 25 24 -1 ]
+creaseAngle 3.14159
+}
+}
+
+DEF up_clock TimeSensor{ cycleInterval 8  loop TRUE enabled TRUE}
+DEF down_clock TimeSensor{ cycleInterval 8  loop TRUE enabled TRUE}
+DEF ud_script Script{
+eventIn SFFloat set_up
+eventIn SFFloat set_down
+eventOut SFVec2f translation_changed
+eventOut SFTime stop_changed
+url"vrmlscript:
+function set_up(v,t){ translation_changed = new SFVec2f(0,v);}
+function set_down(v,t){ translation_changed = new SFVec2f(0,(v * -1));}
+function initialize(){ stop_changed = Browser.getTime();}
+"}
+
+
+
+]}
+
+DEF door_open_interp CoordinateInterpolator{ key[0,1] keyValue[ .06 3 0  .06 3 1  .06 5.75 1  .06 5.75 0  .06 3 -1  .06 3 0  .06 5.75 0  .06 5.75 -1   .06 3 1  .06 3 1  .06 5.75 1  .06 5.75 1  .06 3 -1  .06 3 -1  .06 5.75 -1  .06 5.75 -1 ]}
+DEF door_close_interp CoordinateInterpolator{ key[0,1] keyValue[ .06 3 1  .06 3 1  .06 5.75 1  .06 5.75 1  .06 3 -1  .06 3 -1  .06 5.75 -1 .06 5.75 -1  .06 3 0  .06 3 1  .06 5.75 1  .06 5.75 0  .06 3 -1  .06 3 0  .06 5.75 0  .06 5.75 -1  ]}
+DEF door_open TimeSensor{cycleInterval .1 loop FALSE enabled TRUE}
+DEF door_close TimeSensor{cycleInterval .1 loop FALSE enabled TRUE}
+DEF enter_clock TimeSensor{cycleInterval 5 loop FALSE enabled TRUE}
+DEF leave_clock TimeSensor{cycleInterval 5 loop FALSE enabled TRUE}
+DEF pause_leave_clock TimeSensor{cycleInterval 5 loop FALSE enabled TRUE}
+DEF view_pos_interp PositionInterpolator{key[0,.6,1]keyValue[]}
+DEF view_or_interp OrientationInterpolator{key[0,1] keyValue[]}
+DEF door_sensor ProximitySensor{ size 5 5 5 center -1 1.75 0 enabled FALSE}
+DEF move_clock TimeSensor{cycleInterval 1 loop FALSE enabled TRUE}
+
+DEF view_trans Transform{
+children[
+DEF elev_view Viewpoint{}
+]}
+
+Viewpoint {position -3 1.75 0 orientation 0 1 0 -1.571}
+DEF s Group{}
+]}#END main positioning Transform
+
+
+
+DEF limit_clock TimeSensor{cycleInterval 3 loop FALSE enabled TRUE}
+
+DEF door_script Script{
+eventIn SFTime open
+eventIn SFTime close
+field SFBool isOpen FALSE
+eventOut SFTime openTime_changed
+eventOut SFTime closeTime_changed
+url"vrmlscript:
+function open(v,t){  if(!isOpen){openTime_changed = v; isOpen = true; }}
+function close(v,t){  if(isOpen){closeTime_changed = v; isOpen = false;}}
+"}
+
+DEF elev_script Script{
+eventIn MFString set_startTime IS set_load
+eventIn SFBool set_load
+eventIn MFNode set_loaded IS set_loaded
+eventIn SFBool set_enter
+eventIn SFBool set_done
+field SFVec3f pos 0 0 0
+field SFVec3f offset IS translation
+field SFRotation rotation IS rotation
+field MFString loadUrl []
+field MFString parameter IS parameter
+field SFNode view USE elev_view
+field SFNode self USE elev_script
+field SFNode sg USE s
+field SFNode ds USE door_script
+field SFNode pos_interp USE view_pos_interp
+field SFNode or_interp USE view_or_interp
+field SFBool moved FALSE
+field SFBool isLoaded FALSE
+field SFBool sound IS sound
+eventOut SFTime startTime_changed
+eventOut SFTime enter_changed
+eventOut SFTime door_openTime_changed
+eventOut SFTime door_closeTime_changed
+eventOut SFTime hum_startTime_changed
+eventOut SFTime hum_stopTime_changed
+eventOut SFTime move_startTime_changed
+eventOut SFBool hum_loop_changed
+eventOut SFBool enabled_changed
+eventOut SFBool doorEnabled_changed
+eventOut SFInt32 choice_changed
+eventOut MFString nav_type_changed IS nav_changed
+eventOut SFTime doneTime_changed IS loaded_changed
+eventIn SFBool set_limit
+field SFNode hum Group{}
+field SFNode door Group{}
+directOutput TRUE
+url"vrmlscript:
+function set_done(v,t){
+if(v){return;}
+else{
+nav_type_changed = new MFString('WALK');
+doneTime_changed = t;
+enabled_changed = true;
+}
+}
+function set_enter(v,t){
+if(v){return;}
+else{
+choice_changed = 1;
+if(!moved){move_startTime_changed = t+.5; moved = true;}
+}
+}
+function set_startTime(v,t){
+loadUrl = v;
+startTime_changed = t;
+enabled_changed = false;
+door_closeTime_changed= t+1;
+hum_startTime_changed = t+1;
+}
+function set_load(v,t){
+if(v){return;}
+enabled_changed = false;
+Browser.loadURL(loadUrl,parameter);
+}
+function set_loaded(v,t){
+if(isLoaded){return;}
+isLoaded = true;
+door_openTime_changed = t+5;
+door_closeTime_changed = t + 20;
+hum_stopTime_changed = t+5;
+enter_changed = t;
+}
+function set_stop(v,t){
+enabled_changed = true;
+}
+function set_limit(v,t){
+if(v){return;}
+else{
+set_loaded(sg,t);
+}
+}
+function initialize(){
+if(!sound){Browser.setSoundEnabled(false);}
+if(sound){
+h  = Browser.createVrmlFromString('Sound{intensity 1 source AudioClip{url [\"../../ent_complex/elevator/engine.wav\"]loop FALSE} maxBack 100 maxFront 100 minBack 10 minFront 10}')[0];
+d = Browser.createVrmlFromString('Sound{intensity 1 source AudioClip{url [\"../../ent_complex/elevator/bzzz.wav\"]loop FALSE} maxBack 100 maxFront 100 minBack 10 minFront 10}')[0];
+sg.addChildren = new MFNode(h, d);
+Browser.addRoute(self,'hum_startTime_changed',h.source,'set_startTime');
+Browser.addRoute(self,'hum_loop_changed',h.source,'set_loop');
+Browser.addRoute(self,'hum_stopTime_changed',h.source,'set_stopTime');
+Browser.addRoute(ds,'openTime_changed',d.source,'set_startTime');
+}
+time = Browser.getTime();
+hum_loop_changed = true;
+hum_startTime_changed = time;
+view.set_bind = true;
+pos = view.position = new SFVec3f(6,1.75,0);
+or = view.orientation = new SFRotation(0,1,0,1.571);
+pos_interp.keyValue = new MFVec3f(new SFVec3f(0,0,0),new SFVec3f(-6,0,0),new SFVec3f(-8 - (Math.random() * 4),0, ((Math.random() * 6) - 3) ));
+}
+"}
+
+]}
+
+ROUTE ud_script.stop_changed TO up_clock.set_stopTime
+ROUTE ud_script.stop_changed TO down_clock.set_stopTime
+ROUTE up_clock.fraction_changed TO ud_script.set_up
+ROUTE down_clock.fraction_changed TO ud_script.set_down
+ROUTE ud_script.translation_changed TO tt.set_translation
+
+ROUTE elev_script.enter_changed TO enter_clock.set_startTime
+ROUTE enter_clock.isActive TO elev_script.set_enter
+ROUTE elev_script.hum_startTime_changed TO limit_clock.set_startTime
+ROUTE limit_clock.isActive TO elev_script.set_limit
+ROUTE elev_script.startTime_changed TO pause_leave_clock.set_startTime
+ROUTE pause_leave_clock.isActive TO elev_script.set_load
+ROUTE door_sensor.enterTime TO door_script.open
+ROUTE door_sensor.exitTime TO door_script.close
+ROUTE elev_script.door_openTime_changed TO door_script.open
+ROUTE elev_script.door_closeTime_changed TO door_script.close
+ROUTE door_script.openTime_changed TO door_open.set_startTime
+ROUTE door_script.closeTime_changed TO door_close.set_startTime
+ROUTE door_open.fraction_changed TO door_open_interp.set_fraction
+ROUTE door_open_interp.value_changed TO doors.set_point
+ROUTE door_close.fraction_changed TO door_close_interp.set_fraction
+ROUTE door_close_interp.value_changed TO doors.set_point
+ROUTE elev_script.enabled_changed TO door_sensor.set_enabled
+ROUTE elev_script.enabled_changed TO md.set_enabled
+ROUTE elev_script.hum_startTime_changed TO up_clock.set_startTime
+ROUTE elev_script.hum_stopTime_changed TO up_clock.set_stopTime
+ROUTE md.load_changed TO elev_script.set_startTime
+ROUTE elev_script.choice_changed TO wait.set_whichChoice
+ROUTE elev_script.move_startTime_changed TO move_clock.set_startTime
+ROUTE move_clock.fraction_changed TO view_pos_interp.set_fraction
+ROUTE move_clock.isActive TO elev_script.set_done
+ROUTE view_pos_interp.value_changed TO view_trans.set_translation
+}#END CasinoElevator PROTO
+
+
+CasinoElevator{}

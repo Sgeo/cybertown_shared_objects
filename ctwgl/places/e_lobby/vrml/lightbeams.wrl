@@ -1,0 +1,486 @@
+#VRML V2.0 utf8
+
+# Produced by 3D Studio MAX VRML97 exporter, Version 3.01, Revision 0
+# MAX File: lightbeams.max, Date: Wed Aug 30 10:56:01 2000
+#Re modified and optimized by  2k0 aka sam conway 2k0@happy-bunny.co.uk
+
+
+Collision {
+collide FALSE
+children [
+
+DEF lightbeam01 Transform {
+translation -1.5961 -3.1239 -75.113
+rotation 0.26679 -0.94397 0.19429 -0.57346
+scale 2.1558 0.63377 2.1558
+scaleOrientation 0 -1 0 -0.26167
+children [
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.63137 0.019608 0.72157
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.5051 0.015686 0.57725
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+solid FALSE
+coord DEF lightbeam01-COORD Coordinate {
+point [ -5.7713 -6.7494 4.3337 -1.7337 -6.4218 6.3652 1.1433 -2.6211 3.8181
+4.3848 -2.9651 6.1288 6.4529 .34859 3.6466 1.7855 .2652 .96747 3.9531 3.2484
+-1.0856 5.935 3.3929 -.070121 8.1253 7.153 -2.9797 3.8573 6.8324 -5.1558 .92655
+1.6009 -1.0385 -2.4628 1.8675 -3.3503 -1.2177 3.7942 -4.7682 -3.9943 4.0627
+-6.7182 -5.8676 .14968 -3.4491 -2.4214 .16783 -1.4223 -3.3934 -2.381 .85449
+-5.3142 -2.3023 -.37464 -6.8249 -4.6806 1.3913 -4.6755 -4.7623 2.7595 -2.9735
+39.588 1.6688 -.84685 39.588 2.7923 .79825 39.588 1.3478 2.4835 39.588 2.6318
+3.6872 39.588 1.2274 1.2396 39.588 -.2572 2.4835 39.588 -1.4208 3.5267 39.588
+-.85907 4.8107 39.588 -2.5042 2.5637 39.588 -3.7079 .83838 39.588 -1.3807
+-.9271 39.588 -2.6647 -.20486 39.588 -3.4672 -1.6493 39.588 -4.5505 -2.7728
+39.588 -2.7048 -.96723 39.588 -1.5813 -1.5691 39.588 -.29733 -2.5722 39.588
+-.97944 -3.45 39.588 .019825 -2.3272 39.588 .77907 ]
+}
+texCoord DEF lightbeam01-TEXCOORD
+TextureCoordinate { point [ 1 0 0 0 1 1 0 1 ] } coordIndex [ 2 3 23 -1 2 23
+22 -1 9 10 30 -1 9 30 29 -1 16 17 37 -1 16 37 36 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.05098 0.019608 0.72157
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.040784 0.015686 0.57725
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam01-COORD
+texCoord USE lightbeam01-TEXCOORD
+coordIndex [ 0 1 21 -1 0 21 20 -1 8 9 29 -1 8 29 28 -1 13 14 34 -1 13 34 33
+-1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.019608 0.66275 0.72157
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.015686 0.5302 0.57725
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam01-COORD
+texCoord USE lightbeam01-TEXCOORD
+coordIndex [ 3 4 24 -1 3 24 23 -1 12 13 33 -1 12 33 32 -1 17 18 38 -1 17 38
+37 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.019608 0.72157 0.019608
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.015686 0.57725 0.015686
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam01-COORD
+texCoord USE lightbeam01-TEXCOORD
+coordIndex [ 4 5 25 -1 4 25 24 -1 7 8 28 -1 7 28 27 -1 11 12 32 -1 11 32 31
+-1 18 19 39 -1 18 39 38 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1
+]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.76863 0.72157 0.18431
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.6149 0.57725 0.14745
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam01-COORD
+texCoord USE lightbeam01-TEXCOORD
+coordIndex [ 1 2 22 -1 1 22 21 -1 6 7 27 -1 6 27 26 -1 10 11 31 -1 10 31 30
+-1 15 16 36 -1 15 36 35 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1
+]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.85098 0.22745 0.10588
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.68078 0.18196 0.084706
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam01-COORD
+texCoord USE lightbeam01-TEXCOORD
+coordIndex [ 5 6 26 -1 5 26 25 -1 14 15 35 -1 14 35 34 -1 19 0 20 -1 19 20 39
+-1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+coord USE lightbeam01-COORD
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+coord USE lightbeam01-COORD
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+coord USE lightbeam01-COORD
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam01-FACES IndexedFaceSet {
+coord USE lightbeam01-COORD
+}
+}
+]
+}
+DEF lightbeam02 Transform {
+translation -1.5961 -3.1239 -43.352
+rotation 0.69731 -0.65915 0.28156 -0.78017
+scale 2.1558 0.83657 2.1558
+scaleOrientation 0 -1 0 -0.10481
+children [
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.63137 0.019608 0.72157
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.5051 0.015686 0.57725
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+solid FALSE
+coord DEF lightbeam02-COORD Coordinate {
+point [ -5.7713 -6.7494 4.3337 -1.7337 -6.4218 6.3652 1.1433 -2.6211 3.8181
+4.3848 -2.9651 6.1288 6.4529 .34859 3.6466 1.7855 .2652 .96747 3.9531 3.2484
+-1.0856 5.935 3.3929 -.070121 8.1253 7.153 -2.9797 3.8573 6.8324 -5.1558 .92655
+1.6009 -1.0385 -2.4628 1.8675 -3.3503 -1.2177 3.7942 -4.7682 -3.9943 4.0627
+-6.7182 -5.8676 .14968 -3.4491 -2.4214 .16783 -1.4223 -3.3934 -2.381 .85449
+-5.3142 -2.3023 -.37464 -6.8249 -4.6806 1.3913 -4.6755 -4.7623 2.7595 -2.9735
+39.588 1.6688 -.84685 39.588 2.7923 .79825 39.588 1.3478 2.4835 39.588 2.6318
+3.6872 39.588 1.2274 1.2396 39.588 -.2572 2.4835 39.588 -1.4208 3.5267 39.588
+-.85907 4.8107 39.588 -2.5042 2.5637 39.588 -3.7079 .83838 39.588 -1.3807
+-.9271 39.588 -2.6647 -.20486 39.588 -3.4672 -1.6493 39.588 -4.5505 -2.7728
+39.588 -2.7048 -.96723 39.588 -1.5813 -1.5691 39.588 -.29733 -2.5722 39.588
+-.97944 -3.45 39.588 .019825 -2.3272 39.588 .77907 ]
+}
+texCoord DEF lightbeam02-TEXCOORD
+TextureCoordinate { point [ 1 0 0 0 1 1 0 1 ] } coordIndex [ 2 3 23 -1 2 23
+22 -1 9 10 30 -1 9 30 29 -1 16 17 37 -1 16 37 36 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.05098 0.019608 0.72157
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.040784 0.015686 0.57725
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam02-COORD
+texCoord USE lightbeam02-TEXCOORD
+coordIndex [ 0 1 21 -1 0 21 20 -1 8 9 29 -1 8 29 28 -1 13 14 34 -1 13 34 33
+-1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.019608 0.66275 0.72157
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.015686 0.5302 0.57725
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam02-COORD
+texCoord USE lightbeam02-TEXCOORD
+coordIndex [ 3 4 24 -1 3 24 23 -1 12 13 33 -1 12 33 32 -1 17 18 38 -1 17 38
+37 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.019608 0.72157 0.019608
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.015686 0.57725 0.015686
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam02-COORD
+texCoord USE lightbeam02-TEXCOORD
+coordIndex [ 4 5 25 -1 4 25 24 -1 7 8 28 -1 7 28 27 -1 11 12 32 -1 11 32 31
+-1 18 19 39 -1 18 39 38 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1
+]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.76863 0.72157 0.18431
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.6149 0.57725 0.14745
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam02-COORD
+texCoord USE lightbeam02-TEXCOORD
+coordIndex [ 1 2 22 -1 1 22 21 -1 6 7 27 -1 6 27 26 -1 10 11 31 -1 10 31 30
+-1 15 16 36 -1 15 36 35 -1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1
+]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.85098 0.22745 0.10588
+ambientIntensity 0.23093
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+transparency 0.7
+emissiveColor 0.68078 0.18196 0.084706
+}
+texture ImageTexture {
+url "graylight.png"
+}
+textureTransform TextureTransform {
+center 0.5 0.5
+rotation 1.5708
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+solid FALSE
+coord USE lightbeam02-COORD
+texCoord USE lightbeam02-TEXCOORD
+coordIndex [ 5 6 26 -1 5 26 25 -1 14 15 35 -1 14 35 34 -1 19 0 20 -1 19 20 39
+-1 ] texCoordIndex
+[ 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 1 0 2 -1 1 2 3 -1 ]
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+coord USE lightbeam02-COORD
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+coord USE lightbeam02-COORD
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+coord USE lightbeam02-COORD
+}
+}
+Shape {
+appearance Appearance {
+material Material {
+diffuseColor 0.5 0.5 0.5
+ambientIntensity 0.1
+specularColor 0.045 0.045 0.045
+shininess 0.2875
+}
+}
+geometry DEF lightbeam02-FACES IndexedFaceSet {
+coord USE lightbeam02-COORD
+}
+}
+]
+}
+]}

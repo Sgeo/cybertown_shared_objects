@@ -1,0 +1,38 @@
+PROTO BXXShim [] {
+    DEF prox ProximitySensor {
+        size 1000000 1000000 1000000
+        enabled FALSE
+    }
+    DEF scr Script {
+        mustEvaluate TRUE
+        eventOut SFBool emulatePosOr
+        field SFNode self USE scr
+        eventIn SFVec3f position
+        eventIn SFRotation orientation
+        
+        url "vrmlscript:
+            function initialize() {
+                Browser.getTime = function() {
+                    return this.systemTime;
+                };
+                if(!Browser.getAvatarHeight) {
+                    Browser.getAvatarHeight = Browser.navigationInfoNode.getAvatarHeight.bind(Browser.navigationInfoNode);
+                }
+                if(!Browser.viewpointPosition) {
+                    emulatePosOr = true;
+                }
+            }
+            function position(pos, time) {
+                Browser.viewpointPosition = pos;
+            }
+            
+            function orientation(or, time) {
+                Browser.viewpointOrientation = or;
+            }
+        "
+    }
+    ROUTE scr.emulatePosOr TO prox.set_enabled
+    ROUTE prox.position_changed TO scr.position
+    ROUTE prox.orientation_changed TO scr.orientation
+    
+}
