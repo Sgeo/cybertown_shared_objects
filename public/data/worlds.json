@@ -3,6 +3,10 @@
         "url": "/gameshow/vrml/gameshow.wrl",
         "room": "gameshow"
     },
+    "enter": {
+        "url": "/enter/vrml/enter.wrl",
+        "room": "enter"
+    },
     "home00": {
         "url": "/000/home.wrl",
         "room": "home00"
