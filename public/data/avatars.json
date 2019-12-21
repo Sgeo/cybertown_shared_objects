@@ -1,28 +1,12 @@
 {
     "default": {
+        "name": "Default",
         "url": "/avatars/default.wrl",
         "gestures": ["Hallo","Hey","Agree","Like","Dislike","Disagree","Not now","Good bye","Appear","Disappear"]
     },
-    "m1": {
+    "tonaki/m1": {
+        "name": "Tonaki's m1",
         "url": "/avatars/m1.wrl",
         "gestures": ["Bonjour01","Rire jim","Frowns jim","Agrees jim","Smiles jim","Disagrees jim","Non jim","Rejet jim","Good by jim","Superzen lil","Pose homme","Marche"]
-    },
-    "ne_game/redm": {
-        "url": "/places/ne_game/vrml/avatars/redm.wrl"
-    },
-    "ne_game/redf": {
-        "url": "/places/ne_game/vrml/avatars/redf.wrl"
-    },
-    "ne_game/bluem": {
-        "url": "/places/ne_game/vrml/avatars/bluem.wrl"
-    },
-    "ne_game/bluef": {
-        "url": "/places/ne_game/vrml/avatars/bluef.wrl"
-    },
-    "ne_game/gm": {
-        "url": "/places/ne_game/vrml/avatars/gm.wrl"
-    },
-    "ne_game/m": {
-        "url": "/places/ne_game/vrml/avatars/m.wrl"
     }
 }

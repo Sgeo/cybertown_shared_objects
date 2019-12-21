@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<ul id="avatars"></ul>
+<script type="text/javascript">
+fetch("/data/avatars.json").then(resp => resp.json()).then(function(avatarsData) {
+    const ul = document.querySelector("#avatars");
+    for(const avatar of Object.keys(avatarsData)) {
+        const button = document.createElement("button");
+        button.textContent = avatarsData[avatar].name;
+        button.addEventListener("click", function(e) {
+            localStorage.setItem("avatar", avatar);
+        });
+        
+        const li = document.createElement("li");
+        li.appendChild(button);
+        ul.appendChild(li);
+    }
+});
+</script>
+</body>
+</html>
