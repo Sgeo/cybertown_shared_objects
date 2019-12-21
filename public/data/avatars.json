@@ -3,6 +3,10 @@
         "url": "/avatars/default.wrl",
         "gestures": ["Hallo","Hey","Agree","Like","Dislike","Disagree","Not now","Good bye","Appear","Disappear"]
     },
+    "m1": {
+        "url": "/avatars/m1.wrl",
+        "gestures": ["Bonjour01","Rire jim","Frowns jim","Agrees jim","Smiles jim","Disagrees jim","Non jim","Rejet jim","Good by jim","Superzen lil","Pose homme","Marche"]
+    },
     "ne_game/redm": {
         "url": "/places/ne_game/vrml/avatars/redm.wrl"
     },
