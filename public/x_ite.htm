@@ -56,79 +56,97 @@ width: 100%;
 scroll: none;
 Overflow: hidden;
 }
+.grid {
+display: grid;
+grid-gap: 1px;
+grid-template-rows: 4vh 63vh 29vh 4vh;
+grid-template-columns: 44vw 6vw 50vw;
+justify-items: stretch;
+justify-content: stretch;
+align-content: stretch;
+background-color: grey;
+}
+.titlebar {
+grid-area: title;
+grid-column: 1 / 4;
+grid-row: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #444477;
+color: white;
+}
 .world {
-Position: fixed;
-Top: 0;
-Left: 0;
-height: 67%;
-width: 100%;
-scroll: none;
+grid-area: world;
+grid-column: 1 / 4;
+grid-row: 2;
+text-align: center;
 Overflow: hidden;
+background-color: black;	
 }
 .chatarea {
-Position: fixed;
-Top: 67%;
-Left: 0;
-height: 30%;
-width: 50%;
+grid-area: read;
+grid-column: 1 / 3;
+grid-row: 3;
+text-align: center;
 overflow-x: hidden;
 overflow-y: auto;
-}
-.objarea {
-Position: fixed;
-Top: 67%;
-Left: 50%;
-height: 33%;
-width: 50%;
-scroll: none;
-Overflow: scroll;
+background-color: #447744;
+color: white;
 }
 .chatinput {
-position: fixed;
-width: 50%;
-Top: 97%;
-Left: 0;
-Height: 3%;
-padding: 0;
-margin: 0;
+grid-area: input;
+grid-column: 1;
+grid-row: 4;
+Overflow: scroll;
+background-color: #447744;	
+}
+.button {
+grid-area: submit;
+grid-column: 2;
+grid-row: 4;
 Overflow: hidden;
+background-color: #447744;	
 }
-.submit {
-position: fixed;
-Top: 97%;
-right: 50%;
+.objarea {
+grid-area: object;
+grid-column: 3;
+grid-row: 3 / 5;
+Overflow: hidden;
+background-color: #447744;
+color: white;
 }
-.width {
-Width: 100%;
-}
-textarea {
-max-width: 100%;
-}
-input.wide {
-display: block;
+.fill {
 width: 100%;
-padding: 0;
-border-width: 0;
+height: 100%;
+}
+input[type=submit] {
+width: 6vw;
+height: 4vh;
+font-size: 0.8em;
 }
 </style>
 </head>
 <body>
-<div id="world" class="world">
-</div>
-<div class="chatarea">
-<ul id="chatlog">
-</ul>
-</div>
-<div class="chatinput">
-<form id="chatform" class="width">
-<input type="text" id="chatinput" class="width">
-<input type="submit" class="submit">
-</form>
-</div>
-<div class="objarea">
-<h1>Gestures</h1>
-<ul id="gestures"></ul>
-</div>
+<div class="grid">
+  <div class="titlebar">Cybertown Revival Layout Test</div>
+  <div id="world" class="world"></div>
+  <div class="chatarea">
+	  <ul id="chatlog"></ul>
+	  </div>
+  <div class="chatinput">
+	  <form id="chatform" class="fill">
+      <input type="text" id="chatinput" class="fill">
+      </div>
+  <div class="button">
+	  <input type="submit" value="Send" class="submit">
+	  </form>
+	  </div>
+  <div class="objarea">
+	  <h1>Gestures</h1>
+	  <ul id="gestures">
+	  </ul>
+	</div>
 </div>
 </body>
 </html>
