@@ -11,6 +11,26 @@
         "url": "/000/home.wrl",
         "room": "home00"
     },
+    "home01": {
+        "url": "/001/home.wrl",
+        "room": "home01"
+    },
+    "home02": {
+        "url": "/002/home.wrl",
+        "room": "home02"
+    },
+    "home03": {
+        "url": "/003/home.wrl",
+        "room": "home03"
+    },
+    "home04": {
+        "url": "/004/home.wrl",
+        "room": "home04"
+    },
+    "home05": {
+        "url": "/005/home.wrl",
+        "room": "home05"
+    },
     "home0a": {
         "url": "/00a/home.wrl",
         "room": "home0a"
