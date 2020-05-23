@@ -19,7 +19,7 @@ exposedField    MFString sendToChat
 exposedField    SFFloat  beamToDistance
 exposedField    MFString groupChatName
 exposedField    MFString groupChat
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#BlaxxunZone"
+] "/externprotos/shared_xite.wrl#BlaxxunZone"
 
 EXTERNPROTO SharedObject [
 exposedField SFVec3f translation

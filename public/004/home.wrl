@@ -18,7 +18,7 @@ exposedField    MFString sendToChat
 exposedField    SFFloat  beamToDistance
 exposedField    MFString groupChatName
 exposedField    MFString groupChat
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#BlaxxunZone"
+] "/externprotos/shared_xite.wrl#BlaxxunZone"
 
 EXTERNPROTO SharedObject [
 exposedField SFVec3f translation
@@ -31,7 +31,7 @@ eventOut SFBool isOver
 eventOut SFTime touchTime
 eventOut SFVec3f newPosition
 eventOut SFRotation newRotation
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+] "/externprotos/shared_xite.wrl#SharedObject"
 
 EXTERNPROTO SharedEvent [ 
 exposedField   SFString	name
@@ -40,7 +40,7 @@ eventIn	       SFTime   set_time
 eventOut       SFTime   timeToServer 
 eventIn	       SFTime   timeFromServer 
 eventOut       SFTime   time_changed 
-] [ "http://www.blaxxun.de/vrml/protos/shared.wrl#SharedEvent" ]
+] [ "/externprotos/shared_xite.wrl#SharedEvent" ]
 
 DEF SharedZone BlaxxunZone { 
   events [ 
@@ -52,7 +52,8 @@ DEF Scene Group {}
 NavigationInfo {
 headlight FALSE
 visibilityLimit 70
-speed 0.3
+speed 3
+type "WALK"
 
 }
 
