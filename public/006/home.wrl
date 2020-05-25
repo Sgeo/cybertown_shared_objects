@@ -11,7 +11,7 @@ eventOut SFBool isOver
 eventOut SFTime touchTime
 eventOut SFVec3f newPosition
 eventOut SFRotation newRotation
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+] "/externprotos/bxx/shared_xite.wrl#SharedObject"
 
 PROTO Televator [
 eventIn SFFloat set_time
@@ -234,7 +234,7 @@ DEF lights_on SharedEvent{name "P_lightson"}
 NavigationInfo {
 avatarSize [ .25 1.6 .75 ]
 headlight FALSE
-speed 1
+speed 10
 type "WALK"
 #visibilityLimit 100
 }
