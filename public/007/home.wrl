@@ -173,7 +173,9 @@ function set_down(v){
 
 "}
 
-]}
+]
+}
+DEF antiGrav NavigationInfo { type "NONE" }
 ROUTE utProx.isActive TO ts.set_uptrigger
 ROUTE ts.upTime_changed TO utClock.set_startTime
 ROUTE utClock.fraction_changed TO utInterp.set_fraction
@@ -188,6 +190,9 @@ ROUTE utClock.isActive TO ts.set_up
 ROUTE dtClock.isActive TO ts.set_down
 
 ROUTE ts.bind_changed TO tView.set_bind
+
+ROUTE utClock.isActive TO antiGrav.set_bind
+ROUTE dtClock.isActive TO antiGrav.set_bind
 
 
 
