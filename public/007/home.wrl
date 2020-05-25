@@ -11,7 +11,7 @@ eventOut SFBool isOver
 eventOut SFTime touchTime
 eventOut SFVec3f newPosition
 eventOut SFRotation newRotation
-] "http://www.cybertown.com/externprotos/bxx/shared.wrl#SharedObject"
+] "/externprotos/bxx/shared_xite.wrl#SharedObject"
 
 PROTO CeilingFan1[
 field SFVec3f position 0 0 0
@@ -337,7 +337,7 @@ DEF l4 DirectionalLight {direction 0 -.2 -.5}
 NavigationInfo {
 avatarSize [ .25 1.6 .5 ]
 headlight FALSE
-speed 1
+speed 10
 type "WALK"
 visibilityLimit 100
 }
