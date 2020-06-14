@@ -6,16 +6,26 @@
 <h1><a href="/avatars.htm">Avatar select</a></h1>
 <h1>Worlds</h1>
 <ul>
-<li><a href="/x_ite.htm#enter">Cybertown Plaza</a></li>
-<li><a href="/x_ite.htm#gameshow">Cybertown Gameshow</a></li>
-<li><a href="/x_ite.htm#home00">Cybertown Home 00</a></li>
-<li><a href="/x_ite.htm#home01">Cybertown Home 01</a></li>
-<li><a href="/x_ite.htm#home02">Cybertown Home 02</a></li>
-<li><a href="/x_ite.htm#home03">Cybertown Home 03</a></li>
-<li><a href="/x_ite.htm#home04">Cybertown Home 04</a></li>
-<li><a href="/x_ite.htm#home05">Cybertown Home 05</a></li>
-<li><a href="/x_ite.htm#home06">Cybertown Home 06</a></li>
-<li><a href="/x_ite.htm#home07">Cybertown Home 07</a></li>
+<li><a href="/x_ite.htm#enter">Cybertown Plaza</a> (<span class="count" id="count_enter">loading...</span>)</li>
+<li><a href="/x_ite.htm#gameshow">Cybertown Gameshow</a> (<span class="count" id="count_gameshow">loading...</span>)</li>
+<li><a href="/x_ite.htm#home00">Cybertown Home 00</a> (<span class="count" id="count_home00">loading...</span>)</li>
+<li><a href="/x_ite.htm#home01">Cybertown Home 01</a> (<span class="count" id="count_home01">loading...</span>)</li>
+<li><a href="/x_ite.htm#home02">Cybertown Home 02</a> (<span class="count" id="count_home02">loading...</span>)</li>
+<li><a href="/x_ite.htm#home03">Cybertown Home 03</a> (<span class="count" id="count_home03">loading...</span>)</li>
+<li><a href="/x_ite.htm#home04">Cybertown Home 04</a> (<span class="count" id="count_home04">loading...</span>)</li>
+<li><a href="/x_ite.htm#home05">Cybertown Home 05</a> (<span class="count" id="count_home05">loading...</span>)</li>
+<li><a href="/x_ite.htm#home06">Cybertown Home 06</a> (<span class="count" id="count_home06">loading...</span>)</li>
+<li><a href="/x_ite.htm#home07">Cybertown Home 07</a> (<span class="count" id="count_home07">loading...</span>)</li>
 </ul>
+<script>
+    fetch("/population").then(resp => resp.json()).then(function(population) {
+        for(let elem of document.querySelectorAll(".count")) {
+            elem.textContent = "0";
+        }
+        for(let [name, count] of Object.entries(population)) {
+            document.querySelector(`#count_${name}`).textContent = count.toString();
+        }
+    });
+</script>
 </body>
 </html>

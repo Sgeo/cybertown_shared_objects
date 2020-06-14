@@ -32,11 +32,27 @@ app.use(express.static("public"));
 
 
 
+
+
+let AVATARS = new Map();
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.htm"));
 });
 
-let AVATARS = new Map();
+app.get('/population', (req, res) => {
+  res.setHeader("Cache-Control", "no-store");
+  let population = {};
+  for(let avatar of AVATARS.values()) {
+    if(avatar.room) {
+      if(!population[avatar.room]) {
+        population[avatar.room] = 0;
+      }
+      population[avatar.room] += 1;
+    }
+  }
+  res.send(population);
+});
 
 io.on('connection', async function(socket){
   console.log('a user connected');
