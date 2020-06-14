@@ -4,9 +4,28 @@ const app = express();
 
 const http = require('http').createServer(app);
 
+const https = require('https');
+
 const io = require('socket.io')(http);
 
 const path = require('path');
+
+function webhook_message(from, message) {
+  if(!process.env.CHAT_WEBHOOK_URL) return;
+  let body = JSON.stringify({
+    username: from,
+    content: message
+  });
+  let req = https.request(process.env.CHAT_WEBHOOK_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Length": body.length
+    }
+  });
+  req.write(body);
+  req.end();
+}
 
 
 app.use(express.static("public"));
@@ -21,6 +40,7 @@ let AVATARS = new Map();
 
 io.on('connection', async function(socket){
   console.log('a user connected');
+  webhook_message("System", `${socket.id} connected.`);
   AVATARS.set(socket, {pos: [0, 0, 0], rot: [0, 1, 0, 0]});
   socket.on("AV", function(msg) {
     msg.id = socket.id;
@@ -46,6 +66,7 @@ io.on('connection', async function(socket){
     console.error(e);
     return;
   }
+  webhook_message("System", `${socket.id} entered room \`${initDetail.room}\``);
   for(let [other_socket, av] of AVATARS) {
     if(AVATARS.get(other_socket).room === initDetail.room) {
       socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar});
@@ -65,6 +86,7 @@ io.on('connection', async function(socket){
   socket.on("CHAT", function(chatdata) {
     if(!chatdata || !chatdata.msg || typeof chatdata.msg !== "string") return;
     console.log(chatdata);
+    webhook_message(socket.id, chatdata.msg);
     if(AVATARS.get(socket).room) {
       io.to(AVATARS.get(socket).room).emit("CHAT", {id: socket.id, msg: chatdata.msg});
     }
@@ -72,6 +94,7 @@ io.on('connection', async function(socket){
   socket.on("disconnect", function() {
     io.to(AVATARS.get(socket).room).emit("AV:del", socket.id);
     AVATARS.delete(socket);
+    webhook_message("System", `${socket.id} disconnected.`);
   });
   ack(); // Acknolwedges to Client's JOIN that server is initialized
 });
