@@ -86,8 +86,8 @@ io.on('connection', async function(socket){
   socket.on("CHAT", function(chatdata) {
     if(!chatdata || !chatdata.msg || typeof chatdata.msg !== "string") return;
     console.log(chatdata);
-    webhook_message(socket.id, chatdata.msg);
     if(AVATARS.get(socket).room) {
+      webhook_message(`${socket.id} in ${AVATARS.get(socket).room}`, chatdata.msg);
       io.to(AVATARS.get(socket).room).emit("CHAT", {id: socket.id, msg: chatdata.msg});
     }
   });
