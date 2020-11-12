@@ -3,6 +3,15 @@
 <head>
 </head>
 <body>
+<h1>Nickname</h1>
+<form id="nick_form"><label for="nick">Nickname: </label><input type="text" id="nick"><input type="submit" value="Save"></form>
+<script>
+document.querySelector("#nick_form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    localStorage.setItem("nick", document.querySelector("#nick").value);
+});
+</script>
+<h1>Avatar</h1>
 <ul id="avatars"></ul>
 <script type="text/javascript">
 fetch("/data/avatars.json").then(resp => resp.json()).then(function(avatarsData) {
