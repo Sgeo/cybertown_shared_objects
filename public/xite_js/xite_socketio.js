@@ -33,7 +33,8 @@ BxxEvents.addEventListener("INIT:network", function(e){
   socket.on("connect", function() {
     socket.emit("JOIN", {
         avatar: initDetail.avatar,
-        room: initDetail.room
+        room: initDetail.room,
+        nick: initDetail.nick
     }, function() {
         // JOIN ACK
         console.log("Got JOIN ack");

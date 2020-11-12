@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     BxxEvents.addEventListener("CHAT:fromServer", function(e) {
         let li = document.createElement("li");
-        li.textContent = e.detail.id + ":\t" + e.detail.msg;
+        li.textContent = e.detail.nick + ":\t" + e.detail.msg;
         chatlog.appendChild(li);
     });
     

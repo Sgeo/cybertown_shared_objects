@@ -82,10 +82,9 @@ io.on('connection', async function(socket){
     console.error(e);
     return;
   }
-  webhook_message("System", `${socket.id} entered room \`${initDetail.room}\``);
   for(let [other_socket, av] of AVATARS) {
     if(AVATARS.get(other_socket).room === initDetail.room) {
-      socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar});
+      socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar, nick: av.nick});
       socket.emit("AV", {id: other_socket.id, pos: av.pos, rot: av.rot});
       
       other_socket.emit("AV:new", {id: socket.id, avatar: initDetail.avatar});
@@ -94,6 +93,12 @@ io.on('connection', async function(socket){
   console.log(AVATARS);
   AVATARS.get(socket).avatar = initDetail.avatar;
   AVATARS.get(socket).room = initDetail.room;
+  if(initDetail.nick) {
+    AVATARS.get(socket).nick = `"${initDetail.nick}"`;
+  } else {
+    AVATARS.get(socket).nick = `<${socket.id}>`;
+  }
+  webhook_message("System", `${AVATARS.get(socket).nick} entered room \`${initDetail.room}\``);
   socket.join(initDetail.room);
   socket.on("SE", function(msg) {
     console.log(msg);
@@ -104,7 +109,7 @@ io.on('connection', async function(socket){
     console.log(chatdata);
     if(AVATARS.get(socket).room) {
       webhook_message(`${socket.id} in ${AVATARS.get(socket).room}`, chatdata.msg);
-      io.to(AVATARS.get(socket).room).emit("CHAT", {id: socket.id, msg: chatdata.msg});
+      io.to(AVATARS.get(socket).room).emit("CHAT", {nick: AVATARS.get(socket).nick, msg: chatdata.msg});
     }
   });
   socket.on("disconnect", function() {
