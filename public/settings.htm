@@ -6,6 +6,7 @@
 <h1>Nickname</h1>
 <form id="nick_form"><label for="nick">Nickname: </label><input type="text" id="nick"><input type="submit" value="Save"></form>
 <script>
+document.querySelector("#nick").value = localStorage.getItem("nick") || "";
 document.querySelector("#nick_form").addEventListener("submit", function(e) {
     e.preventDefault();
     localStorage.setItem("nick", document.querySelector("#nick").value);
