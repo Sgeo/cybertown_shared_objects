@@ -82,15 +82,6 @@ io.on('connection', async function(socket){
     console.error(e);
     return;
   }
-  for(let [other_socket, av] of AVATARS) {
-    if(AVATARS.get(other_socket).room === initDetail.room) {
-      socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar, nick: av.nick});
-      socket.emit("AV", {id: other_socket.id, pos: av.pos, rot: av.rot});
-      
-      other_socket.emit("AV:new", {id: socket.id, avatar: initDetail.avatar});
-    }
-  }
-  console.log(AVATARS);
   AVATARS.get(socket).avatar = initDetail.avatar;
   AVATARS.get(socket).room = initDetail.room;
   if(initDetail.nick) {
@@ -99,6 +90,16 @@ io.on('connection', async function(socket){
     AVATARS.get(socket).nick = `<${socket.id}>`;
   }
   webhook_message("System", `${AVATARS.get(socket).nick} entered room \`${initDetail.room}\``);
+  for(let [other_socket, av] of AVATARS) {
+    if(AVATARS.get(other_socket).room === initDetail.room) {
+      socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar, nick: av.nick});
+      socket.emit("AV", {id: other_socket.id, pos: av.pos, rot: av.rot});
+      
+      other_socket.emit("AV:new", {id: socket.id, avatar: initDetail.avatar, nick: AVATARS.get(socket).nick});
+    }
+  }
+  console.log(AVATARS);
+
   socket.join(initDetail.room);
   socket.on("SE", function(msg) {
     console.log(msg);
