@@ -93,7 +93,7 @@ io.on('connection', async function(socket){
       socket.emit("AV:new", {id: other_socket.id, avatar: av.avatar, nick: av.nick});
       socket.emit("AV", {id: other_socket.id, pos: av.pos, rot: av.rot});
       
-      other_socket.emit("AV:new", {id: socket.id, avatar: initDetail.avatar, incoming_nick});
+      other_socket.emit("AV:new", {id: socket.id, avatar: initDetail.avatar, nick: incoming_nick});
     }
   }
   console.log(AVATARS);
