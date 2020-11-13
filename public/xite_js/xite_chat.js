@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const chatinput = document.querySelector("#chatinput");
     const chatlog = document.querySelector("#chatlog");
+    const chatarea = document.querySelector("#chatarea");
     
     document.querySelector("#chatform").addEventListener("submit", function(e) {
         e.preventDefault();
@@ -18,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function chat(from, msg) {
-        let shouldScroll = Math.ceil(chatlog.scrollHeight - chatlog.scrollTop) === chatlog.clientHeight; // https://stackoverflow.com/a/44893438
+        let shouldScroll = Math.ceil(chatarea.scrollHeight - chatarea.scrollTop) === chatarea.clientHeight; // https://stackoverflow.com/a/44893438
         let li = document.createElement("li");
         li.textContent = from + ":\t" + msg;
         chatlog.appendChild(li);
         if(shouldScroll) {
-            chatlog.scrollTop = chatlog.scrollHeight;
+            chatarea.scrollTop = chatarea.scrollHeight;
         }
     }
     
