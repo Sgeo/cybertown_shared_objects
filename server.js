@@ -23,7 +23,7 @@ function webhook_message(from, message) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Content-Length": body.length
+      "Content-Length": Buffer.byteLength(body)
     }
   });
   req.write(body);
