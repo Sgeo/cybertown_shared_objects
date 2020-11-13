@@ -112,7 +112,7 @@
                 });
                 
                 BxxEvents.addEventListener("AV:fromServer:del", async function(e) {
-                    let id = e.detail;
+                    let id = e.detail.id;
                     let avatar = AVATARS.get(id);
                     if(avatar.inline) {
                         browser.currentScene.removeRootNode(avatar.inline);

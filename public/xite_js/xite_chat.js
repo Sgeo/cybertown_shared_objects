@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     BxxEvents.addEventListener("CHAT:system", function(e) {
         let li = document.createElement("li");
-        li.textContent = "System:\t" + e.detail.msg;
+        li.textContent = "<System>:\t" + e.detail.msg;
         chatlog.appendChild(li);
     });
     
@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     BxxEvents.addEventListener("AV:fromServer:new", function(e) {
-        system(e.detail.id + " enters.");
+        system(e.detail.nick + " enters.");
     });
     
     BxxEvents.addEventListener("AV:fromServer:del", function(e) {
-        system(e.detail + " leaves.");
+        system(e.detail.nick + " leaves.");
     });
 });
 

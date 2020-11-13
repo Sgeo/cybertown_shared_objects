@@ -108,14 +108,14 @@ io.on('connection', async function(socket){
     if(!chatdata || !chatdata.msg || typeof chatdata.msg !== "string") return;
     console.log(chatdata);
     if(AVATARS.get(socket).room) {
-      webhook_message(`${socket.id} in ${AVATARS.get(socket).room}`, chatdata.msg);
+      webhook_message(`${AVATARS.get(socket).nick} in ${AVATARS.get(socket).room}`, chatdata.msg);
       io.to(AVATARS.get(socket).room).emit("CHAT", {nick: AVATARS.get(socket).nick, msg: chatdata.msg});
     }
   });
   socket.on("disconnect", function() {
-    io.to(AVATARS.get(socket).room).emit("AV:del", socket.id);
+    io.to(AVATARS.get(socket).room).emit("AV:del", {id: socket.id, nick: AVATARS.get(socket).nick});
+    webhook_message("System", `${AVATARS.get(socket).nick} disconnected.`);
     AVATARS.delete(socket);
-    webhook_message("System", `${socket.id} disconnected.`);
   });
   ack(); // Acknolwedges to Client's JOIN that server is initialized
 });
