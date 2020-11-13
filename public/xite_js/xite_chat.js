@@ -10,16 +10,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
     BxxEvents.addEventListener("CHAT:fromServer", function(e) {
-        let li = document.createElement("li");
-        li.textContent = e.detail.nick + ":\t" + e.detail.msg;
-        chatlog.appendChild(li);
+        chat(e.detail.nick, e.detail.msg);
     });
     
     BxxEvents.addEventListener("CHAT:system", function(e) {
-        let li = document.createElement("li");
-        li.textContent = "<System>:\t" + e.detail.msg;
-        chatlog.appendChild(li);
+        chat("<System>", e.detail.msg);
     });
+
+    function chat(from, msg) {
+        let shouldScroll = Math.ceil(chatlog.scrollHeight - chatlog.scrollTop) === chatlog.clientHeight; // https://stackoverflow.com/a/44893438
+        let li = document.createElement("li");
+        li.textContent = from + ":\t" + msg;
+        chatlog.appendChild(li);
+        if(shouldScroll) {
+            chatlog.scrollTop = chatlog.scrollHeight;
+        }
+    }
     
     // System generated chat
     
