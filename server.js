@@ -12,12 +12,9 @@ const path = require('path');
 
 function webhook_message(from, message) {
   if(!process.env.CHAT_WEBHOOK_URL) return;
-  let embed = {
-    author: {name: from},
-    description: message
-  };
   let body = JSON.stringify({
-    embeds: [embed]
+    username: from,
+    content: message
   });
   let req = https.request(process.env.CHAT_WEBHOOK_URL, {
     method: "POST",
