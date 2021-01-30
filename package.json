@@ -19,6 +19,6 @@
   "homepage": "https://github.com/Sgeo/cybertown_shared_objects#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^3.0.0"
   }
 }
